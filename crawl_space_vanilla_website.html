@@ -546,6 +546,7 @@
   <main>
     <div id="home" class="page active"></div>
     <div id="article" class="page"></div>
+    <div id="crawl-space-dehumidifier" class="page"></div>
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
@@ -585,6 +586,7 @@
       {
         title: "Water in Crawl Space After Rain: Causes, Fixes, and When It’s Serious",
         slug: "/water-in-crawl-space/",
+        page: "article",
         category: "Waterproofing",
         summary: "Learn why crawl spaces collect water after storms, what warning signs matter, and which fixes may be worth discussing with a professional.",
         readTime: "9 min read",
@@ -633,9 +635,10 @@
       {
         title: "Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One",
         slug: "/crawl-space-dehumidifier/",
+        page: "crawl-space-dehumidifier",
         category: "Equipment",
-        summary: "Learn when a dehumidifier helps, when it masks a bigger issue, and how sizing and drainage affect long-term performance.",
-        readTime: "8 min read",
+        summary: "Neutral buyer’s guide to crawl space dehumidifier cost, sizing, drainage setup, and when humidity control should be paired with broader moisture repairs.",
+        readTime: "12 min read",
         updated: "May 25, 2026"
       }
     ];
@@ -694,6 +697,7 @@
     }
 
     function articleCard(article, target = "article") {
+      const page = article.page || target;
       return `
         <article class="article-card">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
@@ -704,7 +708,7 @@
           <p>${escapeHtml(article.summary)}</p>
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:16px;margin-top:18px">
             <span style="color:var(--muted-2);font-size:12px;font-weight:800">Updated ${escapeHtml(article.updated)}</span>
-            <button class="text-link" data-page="${target}">Read →</button>
+            <button class="text-link" data-page="${page}">Read →</button>
           </div>
         </article>
       `;
@@ -1029,6 +1033,66 @@
       `;
     }
 
+    function renderDehumidifierArticle() {
+      $("#crawl-space-dehumidifier").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Dehumidifiers", "Best Crawl Space Dehumidifier"])}
+            <article class="article-body" style="max-width:920px">
+              <span class="badge">Equipment Guide</span>
+              <h1 class="page-title" style="margin-top:16px">Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One</h1>
+              <p class="lead">A damp crawl space can drive musty odors, raise indoor humidity, and increase mold risk. This neutral buyer’s guide explains when a crawl space dehumidifier helps, what it typically costs, how to size a unit, and when to fix drainage or moisture-entry issues first.</p>
+              <div class="article-meta-row"><span>Last updated: May 25, 2026</span><span>•</span><span>12 min read</span><span>•</span><span>Author: Editorial Team</span></div>
+
+              <section class="article-section">
+                <h2>Quick summary</h2>
+                <ul class="list-cards">
+                  <li>✓ A dehumidifier controls <strong>air humidity</strong>, not standing water or failed drainage.</li>
+                  <li>✓ Many crawl-space-rated units cost about <strong>$900–$2,000+</strong> for equipment only.</li>
+                  <li>✓ Sizing depends on square footage, humidity, drainage, ventilation, and vapor barrier condition.</li>
+                  <li>✓ If you have water intrusion, mold, or damaged wood, address root causes before relying on equipment alone.</li>
+                </ul>
+              </section>
+
+              <section class="article-section">
+                <h2>Do you need a crawl space dehumidifier?</h2>
+                <p>You may need one if your crawl space stays humid without obvious standing water and you notice musty odors, condensation on ducts, damp insulation, or persistently high indoor humidity. In many homes, a dehumidifier is most effective as part of a larger moisture-control system.</p>
+                ${callout("Rule of thumb", "A dehumidifier controls humidity. It does not replace drainage repair, waterproofing, mold remediation, structural repair, or a proper vapor barrier.")}
+              </section>
+
+              <section class="article-section">
+                <h2>What to look for</h2>
+                <div class="grid-2">
+                  ${["Pint capacity and airflow (CFM)", "Coverage matched to crawl space conditions", "Low-clearance form factor", "Built-in humidistat", "Continuous drainage", "Condensate pump compatibility", "Auto-defrost", "Accessible filter and serviceable parts", "Energy efficiency and warranty"].map(item => `<div class="plain-card"><strong>${item}</strong></div>`).join("")}
+                </div>
+              </section>
+
+              <section class="article-section">
+                <h2>Typical cost ranges</h2>
+                <div class="cost-table">
+                  <table>
+                    <thead><tr><th>Cost item</th><th>Typical range</th><th>Notes</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Portable dehumidifier</strong></td><td>$200–$600</td><td>Often not ideal for crawl space conditions.</td></tr>
+                      <tr><td><strong>Crawl-space-rated unit</strong></td><td>$900–$2,000+</td><td>More durable with continuous drainage support.</td></tr>
+                      <tr><td><strong>High-capacity unit</strong></td><td>$1,500–$2,500+</td><td>Useful for larger or very humid spaces.</td></tr>
+                      <tr><td><strong>Condensate pump</strong></td><td>$100–$250+</td><td>Needed when gravity drainage is not possible.</td></tr>
+                      <tr><td><strong>Full moisture-control project</strong></td><td>$1,500–$10,000+</td><td>May include vapor barrier, drainage, sump pump, mold remediation, or encapsulation.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="article-section">
+                <h2>When a dehumidifier is not enough</h2>
+                <p>If you have standing water, recurring rain intrusion, visible mold, rotted wood, sagging floors, poor grading, wet insulation, or failed vapor barrier sections, solve those root causes first. Then add a properly sized dehumidifier for long-term humidity control.</p>
+              </section>
+            </article>
+          </div>
+        </section>
+      `;
+    }
+
     function renderAbout() {
       $("#about").innerHTML = `
         <section class="section">
@@ -1067,6 +1131,7 @@
       const titles = {
         home: "CrawlWise | Crawl Space Education & Homeowner Guides",
         article: "Water in Crawl Space After Rain | CrawlWise",
+        "crawl-space-dehumidifier": "Best Crawl Space Dehumidifier | CrawlWise",
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education"
@@ -1100,6 +1165,7 @@
     function init() {
       renderHome();
       renderArticle();
+      renderDehumidifierArticle();
       renderHub();
       renderFindHelp();
       renderAbout();
