@@ -1106,7 +1106,7 @@
         <section class="section">
           <div class="container">
             ${breadcrumb(["Home", "Dehumidifiers", "Best Crawl Space Dehumidifier"])}
-            <article class="article-body" style="max-width:920px">
+            <div class="article-layout"><aside class="desktop-only"><div class="toc"><p class="toc-title">Table of contents</p>${toc.map(item => `<a href="#${slugify(item)}">${item}</a>`).join("")}</div></aside><article class="article-body">
               <span class="badge">Equipment Guide</span>
               <h1 class="page-title" style="margin-top:16px">Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One</h1>
               <p class="lead">A damp crawl space can make your home smell musty, raise indoor humidity, encourage mold growth, and put wood framing, insulation, ducts, and floors at risk. For many homeowners, a crawl space dehumidifier is one of the most effective ways to control humidity under the house.</p>
@@ -1114,7 +1114,9 @@
               <p>If your crawl space has standing water, active leaks, poor drainage, mold, a missing vapor barrier, or damaged wood, buying a dehumidifier alone may not fix the real problem. The right approach depends on whether you are dealing with air humidity, ground moisture, bulk water, or a larger crawl space repair issue.</p>
               <p>This guide explains how to choose the best crawl space dehumidifier, how much one typically costs, how to size a unit, and when it makes sense to call a crawl space moisture-control professional.</p>
               <p>This article follows the provided lead-generation content brief: it is positioned as a neutral buyer’s guide for homeowners researching crawl space dehumidifiers, costs, sizing, and when professional inspection may be needed.</p>
-              <div class="article-meta-row"><span>Last updated: May 25, 2026</span><span>•</span><span>20 min read</span><span>•</span><span>Author: Editorial Team</span></div>
+              <div class="article-meta-row"><span>Last updated: May 25, 2026</span><span>•</span><span>20 min read</span><span>•</span><span>Author: CrawlWise Editorial Team</span><span>•</span><span>Reviewer: Crawl Space Professional Placeholder</span></div>
+              <details class="mobile-toc plain-card"><summary style="font-weight:950;cursor:pointer">Table of contents</summary><div style="display:grid;gap:8px;margin-top:12px">${toc.map(item => `<a href="#${slugify(item)}" style="color:var(--clay);font-weight:850">${item}</a>`).join("")}</div></details>
+              <div class="plain-card" style="margin-bottom:26px"><p style="margin:0;font-size:15px"><strong>Editorial disclosure:</strong> This website provides educational information for homeowners. We are not a substitute for a licensed inspection, structural engineer, mold professional, or contractor. In some cases, we may connect users with service providers.</p></div>
 
               <section class="article-section">
                 <h2>Do You Need a Crawl Space Dehumidifier?</h2>
@@ -1147,7 +1149,7 @@
               <section class="article-section"><h2>Recommended Next Steps</h2><div class="cost-table"><table><thead><tr><th>Situation</th><th>Best Next Step</th></tr></thead><tbody><tr><td>Mild humidity, no water, no mold</td><td>Compare crawl-space-rated dehumidifiers</td></tr><tr><td>High humidity in an encapsulated crawl space</td><td>Check sizing, drainage, and humidistat settings</td></tr><tr><td>Standing water after rain</td><td>Address drainage or waterproofing first</td></tr><tr><td>Musty odor or visible mold</td><td>Inspect for mold and moisture source</td></tr><tr><td>Missing or torn vapor barrier</td><td>Repair or replace vapor barrier</td></tr><tr><td>Sagging floors or damaged wood</td><td>Get structural or foundation evaluation</td></tr><tr><td>Unsure what is causing the problem</td><td>Request inspection from a crawl space specialist</td></tr></tbody></table></div></section>
 
               <section class="article-section"><h2>FAQ: Crawl Space Dehumidifiers</h2><p><strong>What size dehumidifier do I need for my crawl space?</strong> It depends on crawl space size, height, humidity level, climate, ventilation, vapor barrier condition, and drainage.</p><p><strong>How much does a crawl space dehumidifier cost?</strong> A crawl-space-rated dehumidifier often costs around $900 to $2,000 or more for the unit alone.</p><p><strong>Is a crawl space dehumidifier worth it?</strong> It can be worth it for humidity control and comfort when water intrusion is not the primary issue.</p><p><strong>Can I use a regular dehumidifier in a crawl space?</strong> Usually not ideal in harsh crawl space environments.</p><p><strong>Do I need a dehumidifier if my crawl space is encapsulated?</strong> Often yes, depending on conditions.</p><p><strong>Where does the water go?</strong> Through gravity drain lines, condensate pumps, sump systems, or approved discharge points.</p><p><strong>Can it stop mold?</strong> It helps control humidity conditions but does not remove existing mold.</p><p><strong>Is it enough if there is standing water?</strong> No—fix bulk water intrusion first.</p></section>
-            </article>
+            </article><aside class="desktop-only">${sidebarCta()}</aside></div>
           </div>
         </section>
       `;
