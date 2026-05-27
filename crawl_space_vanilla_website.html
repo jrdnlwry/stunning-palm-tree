@@ -547,6 +547,7 @@
     <div id="home" class="page active"></div>
     <div id="article" class="page"></div>
     <div id="crawl-space-dehumidifier" class="page"></div>
+    <div id="crawl-space-encapsulation" class="page"></div>
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
@@ -595,8 +596,9 @@
       {
         title: "Crawl Space Encapsulation: When It’s Worth It, Costs, and Alternatives",
         slug: "/crawl-space-encapsulation/",
+        page: "crawl-space-encapsulation",
         category: "Encapsulation",
-        summary: "Understand what encapsulation does, when it is overkill, and what to compare before committing to a major crawl space project.",
+        summary: "Understand what crawl space encapsulation includes, when it is worth considering, what it costs, and when vapor barriers, drainage, mold remediation, or other repairs may need to come first.",
         readTime: "11 min read",
         updated: "May 25, 2026"
       },
@@ -701,6 +703,7 @@
       home: '/',
       article: '/water-in-crawl-space/',
       "crawl-space-dehumidifier": '/crawl-space-dehumidifier/',
+      "crawl-space-encapsulation": '/crawl-space-encapsulation/',
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
       about: '/about/'
@@ -1020,6 +1023,49 @@
       return faqs.map(([q,a]) => `<details class="faq-item"><summary>${q}</summary><p>${a}</p></details>`).join("");
     }
 
+
+
+    function renderEncapsulationArticle() {
+      const toc = ["What Is Crawl Space Encapsulation?", "When Crawl Space Encapsulation Is Worth It", "When Encapsulation May Not Be Enough", "Crawl Space Encapsulation vs. Vapor Barrier vs. Waterproofing", "Crawl Space Encapsulation Cost: What Affects the Price?", "Does Mold Change the Encapsulation Process?", "How to Compare Crawl Space Encapsulation Contractors", "Questions to Ask Before Hiring a Contractor", "Red Flags in Crawl Space Encapsulation Quotes", "Should You Get Multiple Quotes?", "Crawl Space Encapsulation Alternatives", "Is Crawl Space Encapsulation Right for Your Home?", "Compare Crawl Space Encapsulation Contractors Near You", "Frequently Asked Questions"];
+      $("#crawl-space-encapsulation").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Encapsulation", "Crawl Space Encapsulation"])}
+            <div class="article-layout">
+              <aside class="desktop-only"><div class="toc"><p class="toc-title">Table of contents</p>${toc.map(item => `<a href="#${slugify(item)}">${item}</a>`).join("")}</div></aside>
+              <article class="article-body">
+                <span class="badge">Encapsulation</span>
+                <h1 class="page-title" style="margin-top:16px">Crawl Space Encapsulation: When It’s Worth It, Costs, and Alternatives</h1>
+                <p class="lead">If your crawl space smells musty, feels damp, has falling insulation, or keeps showing up in inspection reports, you may be wondering whether crawl space encapsulation is the right fix.</p>
+                <div class="article-meta-row"><span>Last updated: May 25, 2026</span><span>•</span><span>11 min read</span><span>•</span><span>Author: CrawlWise Editorial Team</span><span>•</span><span>Reviewer: Crawl Space Professional Placeholder</span></div>
+                <details class="mobile-toc plain-card"><summary style="font-weight:950;cursor:pointer">Table of contents</summary><div style="display:grid;gap:8px;margin-top:12px">${toc.map(item => `<a href="#${slugify(item)}" style="color:var(--clay);font-weight:850">${item}</a>`).join("")}</div></details>
+                <div class="plain-card" style="margin-bottom:26px"><p style="margin:0;font-size:15px"><strong>Editorial disclosure:</strong> This website provides educational information for homeowners. We are not a substitute for a licensed inspection, structural engineer, mold professional, or contractor. In some cases, we may connect users with service providers.</p></div>
+                ${articleSection("what-is-crawl-space-encapsulation", "What Is Crawl Space Encapsulation?", `<p>Crawl space encapsulation is the process of sealing off the crawl space from ground moisture, outside air, and excess humidity.</p><p>In simple terms, it turns a damp, exposed crawl space into a cleaner, more controlled area under the home.</p><ul class="list-cards"><li>✓ A heavy-duty vapor barrier over the ground</li><li>✓ Sealing crawl space walls and support piers</li><li>✓ Sealing vents and air gaps</li><li>✓ Removing damaged insulation or debris</li><li>✓ Adding a crawl space dehumidifier</li><li>✓ Installing drainage or a sump pump if water is present</li><li>✓ Treating mold or mildew if needed</li></ul><p>Encapsulation is more involved than simply laying plastic on the ground. A basic vapor barrier usually covers the soil to reduce ground moisture. Encapsulation is a more complete system designed to manage moisture, humidity, and air movement throughout the crawl space.</p><p>That said, encapsulation is not always the right starting point. If there is standing water, active leakage, plumbing failure, severe mold, or damaged floor framing, those problems may need to be fixed first.</p>`)}
+                ${articleSection("when-crawl-space-encapsulation-is-worth-it", "When Crawl Space Encapsulation Is Worth It", `<p>Crawl space encapsulation is usually worth evaluating when moisture is creating recurring problems under the home or inside the living space.</p><ul class="list-cards"><li>✓ Musty odors inside the house</li><li>✓ High indoor humidity</li><li>✓ Condensation on ductwork, pipes, or joists</li><li>✓ Damp or falling insulation</li><li>✓ Mold or mildew concerns</li><li>✓ Pest activity in the crawl space</li><li>✓ Wood rot risk</li><li>✓ Moisture readings flagged during an inspection</li><li>✓ Cold floors or uncomfortable rooms above the crawl space</li><li>✓ Repeated crawl space moisture problems after rain</li><li>✓ A home sale or purchase inspection that identifies crawl space concerns</li></ul><p><strong>What problem am I actually trying to solve?</strong></p><p>If the main issue is ground moisture and humidity, encapsulation may be appropriate. If the issue is bulk water entering after storms, drainage or waterproofing may need to come first. If mold is already present, remediation may be needed before the area is sealed.</p>`)}
+                ${articleSection("when-encapsulation-may-not-be-enough", "When Encapsulation May Not Be Enough", `<p>Encapsulation can help control moisture, but it may not solve every crawl space problem by itself.</p><ul class="list-cards"><li>⚠️ Standing water after rain</li><li>⚠️ Poor exterior grading</li><li>⚠️ Clogged or missing gutters</li><li>⚠️ Downspouts draining near the foundation</li><li>⚠️ Foundation cracks</li><li>⚠️ Plumbing leaks</li><li>⚠️ Severe mold contamination</li><li>⚠️ Rotted joists or beams</li><li>⚠️ Sagging or uneven floors</li><li>⚠️ Termite or pest damage</li><li>⚠️ Damaged ductwork</li><li>⚠️ Wet insulation that needs removal</li></ul><p>For example, if water is entering through the foundation during heavy rain, a vapor barrier alone will not stop that water. You may need exterior drainage improvements, interior drainage, a sump pump, grading fixes, or gutter/downspout corrections.</p>${callout("Rule of thumb", "Encapsulation controls moisture and humidity, but it should not be used to hide standing water, active leaks, mold contamination, or structural damage.")}`}
+                <div class="inline-cta"><div><h3>Not sure what kind of crawl space issue you have?</h3><p>Start with a symptom and we’ll help identify what type of professional may be appropriate.</p></div><button class="btn btn-white" data-page="find-help">Find out what help you may need</button></div>
+                ${articleSection("crawl-space-encapsulation-vs-vapor-barrier-vs-waterproofing", "Crawl Space Encapsulation vs. Vapor Barrier vs. Waterproofing", `<p>Homeowners often hear several terms used interchangeably: vapor barrier, encapsulation, waterproofing, and mold remediation. They are related, but they are not the same thing.</p><div class="cost-table"><table><thead><tr><th>Solution</th><th>Best For</th><th>Usually Includes</th><th>Limitations</th></tr></thead><tbody><tr><td><strong>Vapor barrier</strong></td><td>Basic ground moisture control</td><td>Plastic or reinforced liner over exposed soil</td><td>May not fully seal walls, vents, piers, or humidity sources</td></tr><tr><td><strong>Encapsulation</strong></td><td>Whole-space moisture and humidity control</td><td>Ground liner, sealed walls/piers, sealed vents, air sealing, sometimes dehumidifier</td><td>Higher cost; may require prep work, drainage, or mold treatment first</td></tr><tr><td><strong>Waterproofing / drainage</strong></td><td>Standing water or active water intrusion</td><td>Drainage system, sump pump, grading or downspout corrections</td><td>Does not always control humidity by itself</td></tr><tr><td><strong>Mold remediation</strong></td><td>Existing mold growth</td><td>Cleaning, treatment, removal, or professional remediation</td><td>Does not solve the moisture source by itself</td></tr></tbody></table></div>`)}
+                ${articleSection("crawl-space-encapsulation-cost-what-affects-the-price", "Crawl Space Encapsulation Cost: What Affects the Price?", `<p>Crawl space encapsulation costs can vary widely because no two crawl spaces have the same scope.</p><h3>Crawl Space Size</h3><p>Larger crawl spaces require more liner material, more labor, and more sealing.</p><h3>Crawl Space Height and Accessibility</h3><p>A tight crawl space is harder and slower to work in.</p><h3>Existing Insulation and Debris</h3><p>Old insulation, construction debris, or damaged vapor barrier may need to be removed before encapsulation begins.</p><h3>Vapor Barrier Thickness</h3><p>Thicker or reinforced liners may cost more but can be more durable.</p><h3>Drainage Needs</h3><p>If water enters the crawl space, drainage may be required before encapsulation.</p><h3>Dehumidifier Installation</h3><p>Many full encapsulation systems include a crawl space dehumidifier to control humidity after sealing.</p><h3>Mold Treatment</h3><p>If mold or mildew is present, treatment or remediation may be needed first.</p><h3>Structural Repairs</h3><p>Rotted joists, damaged beams, sagging floors, or termite damage can add significant cost.</p><h3>Warranty and Material Differences</h3><p>Two quotes may look similar but include very different liners, drainage systems, dehumidifiers, warranties, and labor scopes.</p>`)}
+                ${articleSection("does-mold-change-the-encapsulation-process", "Does Mold Change the Encapsulation Process?", `<p>Yes. Mold can change the scope of a crawl space encapsulation project.</p><ul class="list-cards"><li>✓ Is this surface mildew or a more serious mold issue?</li><li>✓ Does the affected material need to be cleaned, treated, or removed?</li><li>✓ Is mold remediation included in the quote?</li><li>✓ Will the moisture source be corrected before sealing?</li><li>✓ Is third-party testing recommended?</li><li>✓ Are you sealing over any contaminated material?</li></ul>`)}
+                ${articleSection("how-to-compare-crawl-space-encapsulation-contractors", "How to Compare Crawl Space Encapsulation Contractors", `<p>Before hiring anyone, compare the actual scope of work, not just the price.</p><ul class="list-cards"><li>✓ Did they physically inspect the crawl space?</li><li>✓ Did they identify the source of moisture?</li><li>✓ Did they provide a written scope of work?</li><li>✓ Did they explain warranty terms clearly?</li><li>✓ Did they separate required repairs from optional upgrades?</li><li>✓ Did they avoid high-pressure sales tactics?</li></ul>`)}
+                ${articleSection("questions-to-ask-before-hiring-a-contractor", "Questions to Ask Before Hiring a Contractor", `<h3>1. What problem are you solving?</h3><p>Ask whether the main issue is humidity, ground moisture, water intrusion, mold, insulation damage, pests, or structural damage.</p><h3>2. Is encapsulation enough, or do I need drainage?</h3><p>If there is standing water or water entry after rain, drainage may need to come before encapsulation.</p><h3>3. Will you remove old insulation or debris?</h3><p>Make sure the quote states whether removal is included.</p><h3>4. What vapor barrier thickness do you recommend?</h3><p>Ask what material they use and why they recommend it.</p><h3>5. Will the vents be sealed?</h3><p>Full encapsulation usually includes sealing vents and outside air gaps.</p>`)}
+                ${articleSection("red-flags-in-crawl-space-encapsulation-quotes", "Red Flags in Crawl Space Encapsulation Quotes", `<ul class="list-cards"><li>⚠️ Quote given without inspecting the crawl space</li><li>⚠️ No explanation of the moisture source</li><li>⚠️ No written scope of work</li><li>⚠️ No discussion of drainage when standing water is present</li><li>⚠️ Vague warranty language</li><li>⚠️ Contractor claims encapsulation will fix every crawl space issue</li></ul>`)}
+                ${articleSection("should-you-get-multiple-quotes", "Should You Get Multiple Quotes?", `<p>Yes. Contractors may recommend very different scopes, so compare scope, materials, warranty, drainage plan, mold plan, and moisture-control strategy.</p>`)}
+                ${articleSection("crawl-space-encapsulation-alternatives", "Crawl Space Encapsulation Alternatives", `<h3>Basic Vapor Barrier</h3><p>A vapor barrier may be enough if the crawl space is generally dry but has exposed soil contributing to ground moisture.</p><h3>Drainage Improvements</h3><p>If water enters after rain, drainage should be evaluated.</p><h3>Crawl Space Dehumidifier</h3><p>If humidity is the primary issue, a properly sized crawl space dehumidifier may be part of the solution.</p><h3>Mold Remediation</h3><p>If mold is present, remediation may be needed before sealing.</p><h3>Insulation Replacement</h3><p>Wet, sagging, or damaged insulation may need replacement.</p><h3>Gutter and Downspout Improvements</h3><p>Extending downspouts and improving grading may help.</p><h3>Foundation or Structural Repair</h3><p>Structural repair may be needed before or alongside moisture control.</p>`)}
+                ${articleSection("is-crawl-space-encapsulation-right-for-your-home", "Is Crawl Space Encapsulation Right for Your Home?", `<ul class="list-cards"><li>✓ You smell musty odors inside the home</li><li>✓ Your crawl space has high humidity</li><li>✓ Mold or mildew has been identified</li><li>✓ A home inspection flagged crawl space moisture</li><li>⚠️ There is standing water</li><li>⚠️ Water enters during rain</li><li>⚠️ There are plumbing leaks</li><li>⚠️ Floors are sagging or structural wood is damaged</li></ul>`)}
+                ${articleSection("compare-crawl-space-encapsulation-contractors-near-you", "Compare Crawl Space Encapsulation Contractors Near You", `<p>Compare local crawl space contractors and request quotes based on your project details. A good quote should explain the moisture source, recommended solution, materials, warranty, and whether any prep work is needed before encapsulation.</p><p>We do not perform crawl space work directly. We help homeowners understand their options and connect with relevant local providers when appropriate.</p>`)}
+                <section class="article-section"><h2>Related guides</h2><div class="grid-2">${[articles[0], articles[2], articles[3], articles[6]].map(a => articleCard(a, a.page || "hub")).join("")}</div></section>
+                <section id="frequently-asked-questions" class="article-section"><h2>Frequently Asked Questions</h2><details class="faq-item"><summary>Is crawl space encapsulation worth it?</summary><p>Crawl space encapsulation can be worth it if your crawl space has persistent humidity, musty odors, moisture problems, mold concerns, falling insulation, or inspection issues.</p></details><details class="faq-item"><summary>How much does crawl space encapsulation cost?</summary><p>The cost depends on crawl space size, access, liner thickness, insulation removal, drainage needs, dehumidifier installation, mold treatment, and local labor rates.</p></details><details class="faq-item"><summary>Is a vapor barrier the same as encapsulation?</summary><p>No. A vapor barrier usually refers to a floor liner; encapsulation is a more complete moisture-control system.</p></details><details class="faq-item"><summary>Does encapsulation stop standing water?</summary><p>Encapsulation alone usually does not stop active water intrusion; drainage or grading fixes may be needed first.</p></details></section>
+                <section class="plain-card"><h2 style="font-size:24px">Author & reviewer</h2><p>Written by the CrawlWise Editorial Team. Reviewed by a crawl space, waterproofing, mold, or structural professional placeholder before publication. Replace this placeholder with a real reviewer profile as the site matures.</p></section>
+                <section class="plain-card" style="margin-top:18px;background:var(--surface-warm)"><h2 style="font-size:24px">Get homeowner-friendly repair checklists</h2><p>Occasional guides on crawl space moisture, cost questions, contractor red flags, and maintenance checks.</p><div class="zip-row"><input class="input" placeholder="Email address"><button class="btn btn-primary">Subscribe</button></div></section>
+              </article>
+              <aside class="desktop-only">${sidebarCta()}</aside>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
     function renderFindHelp() {
       $("#find-help").innerHTML = `
         <section class="section">
@@ -1147,6 +1193,7 @@
         home: "CrawlWise | Crawl Space Education & Homeowner Guides",
         article: "Water in Crawl Space After Rain | CrawlWise",
         "crawl-space-dehumidifier": "Best Crawl Space Dehumidifier | CrawlWise",
+        "crawl-space-encapsulation": "Crawl Space Encapsulation: Costs, Alternatives, and When It's Worth It | CrawlWise",
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education"
@@ -1183,6 +1230,7 @@
       renderHome();
       renderArticle();
       renderDehumidifierArticle();
+      renderEncapsulationArticle();
       renderHub();
       renderFindHelp();
       renderAbout();
