@@ -551,6 +551,7 @@
     <div id="best-crawl-space-dehumidifier" class="page"></div>
     <div id="crawl-space-moisture" class="page"></div>
     <div id="crawl-space-mold-remediation" class="page"></div>
+    <div id="sagging-floors-crawl-space" class="page"></div>
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
@@ -652,6 +653,7 @@
       {
         title: "Sagging or Uneven Floors: Crawl Space, Foundation, and Joist Problems Explained",
         slug: "/sagging-floors-crawl-space/",
+        page: "sagging-floors-crawl-space",
         category: "Structural",
         summary: "Understand how joists, beams, moisture, settlement, and foundation issues can show up as uneven or bouncy floors.",
         readTime: "12 min read",
@@ -720,6 +722,7 @@
       "best-crawl-space-dehumidifier": '/best-crawl-space-dehumidifier/',
       "crawl-space-moisture": '/crawl-space-moisture/',
       "crawl-space-mold-remediation": '/crawl-space-mold-remediation/',
+      "sagging-floors-crawl-space": '/sagging-floors-crawl-space/',
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
       about: '/about/'
@@ -755,7 +758,7 @@
 
     function hubCard(hub) {
       const [icon, title, copy, questions] = hub;
-      const targetPage = title.includes("Water") ? "article" : title === "Crawl Space Repair" ? "crawl-space-repair-near-me" : "hub";
+      const targetPage = title.includes("Water") ? "article" : title === "Crawl Space Repair" ? "crawl-space-repair-near-me" : title.includes("Sagging") ? "sagging-floors-crawl-space" : "hub";
       return `
         <article class="hub-card">
           <div class="hub-icon">${icon}</div>
@@ -771,7 +774,7 @@
 
     function symptomGrid() {
       return symptoms.map(([icon, label]) => {
-        const targetPage = label.includes("Standing water") ? "article" : label.includes("Sagging") || label.includes("Wood rot") ? "crawl-space-repair-near-me" : "hub";
+        const targetPage = label.includes("Standing water") ? "article" : label.includes("Sagging") ? "sagging-floors-crawl-space" : label.includes("Wood rot") ? "crawl-space-repair-near-me" : "hub";
         return `
         <a class="symptom-card" href="${pagePath(targetPage)}" data-page="${targetPage}">
           <span class="symptom-left"><span class="icon-box">${icon}</span>${escapeHtml(label)}</span>
@@ -1825,6 +1828,183 @@
       `;
     }
 
+    function renderSaggingFloorsArticle() {
+      const toc = [
+        "Why Sagging or Uneven Floors Should Not Be Ignored",
+        "Common Causes of Sagging or Uneven Floors",
+        "How to Tell Whether It’s a Crawl Space, Joist, or Foundation Problem",
+        "When Sagging Floors Are Serious",
+        "Can Sagging Floors Be Fixed?",
+        "DIY vs Professional Repair",
+        "What to Expect During an Inspection",
+        "Questions to Ask Before Hiring a Contractor",
+        "Get Matched With a Local Crawl Space or Foundation Specialist",
+        "FAQs About Sagging and Uneven Floors"
+      ];
+
+      const symptomRows = [
+        ["Bouncy floors", "Weak joists, long spans, wood rot, poor support", "Crawl space or structural repair contractor"],
+        ["Sloping floors across a large area", "Foundation settlement, beam issue, support movement", "Foundation contractor or structural engineer"],
+        ["Soft spots in one room", "Subfloor damage, joist rot, localized framing issue", "Crawl space or framing specialist"],
+        ["Foundation cracks plus uneven floors", "Possible foundation movement", "Foundation contractor or structural engineer"],
+        ["Musty odor plus sagging floors", "Crawl space moisture, mold, wood rot", "Crawl space moisture and structural contractor"],
+        ["Sticking doors or windows", "Structural shifting, settlement, framing movement", "Inspector, engineer, or foundation specialist"],
+        ["Visible cracked floor joist", "Joist damage, overloading, rot, improper cuts", "Structural repair contractor or engineer"],
+        ["Standing water in crawl space", "Drainage issue, waterproofing issue, poor vapor protection", "Crawl space waterproofing contractor"]
+      ];
+
+      const faqs = [
+        ["Are uneven floors always a foundation problem?", "No. Uneven floors can be caused by foundation movement, but they can also result from crawl space moisture, damaged joists, weak beams, settling supports, or normal age-related movement in older homes."],
+        ["Can a crawl space cause sagging floors?", "Yes. Crawl space moisture, wood rot, mold, poor support, and damaged joists can all contribute to sagging or uneven floors above the crawl space."],
+        ["Is a cracked floor joist dangerous?", "A cracked floor joist can be serious, especially if it is load-bearing, worsening, or connected to rot, moisture, or structural movement. A professional should evaluate visible joist damage."],
+        ["Can floor joists be repaired without replacing the whole floor?", "Often, yes. Depending on the damage, joists may be reinforced, sistered, supported, or partially replaced. The correct repair depends on the cause and severity of the damage."],
+        ["How do I know if I need a structural engineer?", "You may need a structural engineer if there are major cracks, significant floor slope, visible structural damage, foundation movement, or disagreement between contractors about the cause or repair method."],
+        ["Can moisture in a crawl space cause structural damage?", "Yes. Persistent crawl space moisture can contribute to wood rot, mold, weakened joists, damaged beams, and support problems."],
+        ["Should I fix crawl space moisture before repairing joists?", "In many cases, yes. If moisture caused the joist damage, the moisture source should be corrected as part of the repair plan. Otherwise, new or reinforced wood may eventually face the same problem."],
+        ["How urgent are sagging floors?", "It depends on the severity and whether the problem is changing. Rapid movement, soft floors, visible joist damage, foundation cracks, or moisture issues should be inspected promptly."],
+        ["What kind of contractor fixes sagging floors?", "Depending on the cause, you may need a crawl space repair contractor, structural repair specialist, foundation repair contractor, framing contractor, or structural engineer."],
+        ["Can foundation cracks and uneven floors be related?", "Yes. Foundation movement can cause floors to slope or become uneven. However, not all uneven floors are caused by foundation cracks, and not all cracks indicate major structural failure. Diagnosis is important."]
+      ];
+
+      const relatedGuides = [articles[1], articles[0], articles[6], articles[5], articles[2]].filter(Boolean);
+
+      $("#sagging-floors-crawl-space").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Structural", "Sagging or Uneven Floors"])}
+            <div class="article-layout">
+              <aside class="desktop-only"><div class="toc"><p class="toc-title">Table of contents</p>${toc.map(item => `<a href="#${slugify(item)}">${escapeHtml(item)}</a>`).join("")}</div></aside>
+              <article class="article-body">
+                <span class="badge">Structural</span>
+                <h1 class="page-title" style="margin-top:16px">Sagging or Uneven Floors: Crawl Space, Foundation, and Joist Problems Explained</h1>
+                <p class="lead">Sagging, sloping, bouncy, or uneven floors can be unsettling for any homeowner. Sometimes the issue is minor settling in an older home. Other times, uneven floors can point to crawl space moisture, damaged floor joists, settling supports, or foundation movement.</p>
+                <div class="article-meta-row"><span>Last updated: May 25, 2026</span><span>•</span><span>12 min read</span><span>•</span><span>Author: CrawlWise Editorial Team</span><span>•</span><span>Reviewer: Crawl Space Professional Placeholder</span></div>
+                <div class="plain-card" style="margin-bottom:26px"><p style="margin:0;font-size:15px"><strong>Editorial disclosure:</strong> This website provides educational information for homeowners. We are not a substitute for a licensed inspection, structural engineer, mold professional, or contractor. In some cases, we may connect users with service providers.</p></div>
+                <details class="mobile-toc"><summary>Table of contents</summary><div class="toc-links">${toc.map(item => `<a href="#${slugify(item)}">${escapeHtml(item)}</a>`).join("")}</div></details>
+
+                <section class="plain-card" style="margin-bottom:26px;background:var(--surface-warm)"><p style="margin:0"><strong>Uneven floors are not always a foundation failure, but they are a structural symptom worth diagnosing correctly.</strong></p></section>
+                <p>If your floors feel soft, slope noticeably, bounce when you walk, or appear uneven from room to room, the issue may start below the floor system. In homes with crawl spaces, floor problems are often connected to moisture, wood rot, weakened joists, poor support, or shifting foundation components.</p>
+                <p>This guide explains the most common causes of sagging floors, how to tell whether the problem may be related to your crawl space, joists, or foundation, and when it makes sense to call a professional.</p>
+
+                ${articleSection("why-sagging-or-uneven-floors-should-not-be-ignored", "Why Sagging or Uneven Floors Should Not Be Ignored", `
+                  <p>Uneven floors can happen for several reasons. In some older homes, minor slope may be the result of natural settling over time. But when the issue appears suddenly, gets worse, or comes with other warning signs, it deserves closer attention.</p>
+                  <p>Common symptoms that may appear with sagging or uneven floors include:</p>
+                  <ul class="list-cards"><li>✓ Bouncy or spongy floors</li><li>✓ Soft spots underfoot</li><li>✓ Cracks in drywall or plaster</li><li>✓ Sticking doors or windows</li><li>✓ Gaps between floors, walls, or baseboards</li><li>✓ Musty odors from the crawl space</li><li>✓ Visible foundation cracks</li><li>✓ Standing water or dampness below the home</li></ul>
+                  <p>A single symptom does not always mean there is a major structural problem. But multiple symptoms together can suggest that something is shifting, weakening, or deteriorating beneath the home.</p>
+                  <p>For example, a slightly uneven floor in a 70-year-old house may not be urgent. But uneven floors combined with crawl space moisture, cracked joists, or widening wall cracks should be evaluated more carefully.</p>
+                `)}
+
+                ${articleSection("common-causes-of-sagging-or-uneven-floors", "Common Causes of Sagging or Uneven Floors", `
+                  <h3>Crawl Space Moisture and Wood Rot</h3>
+                  <p>In homes with crawl spaces, moisture is one of the most common contributors to structural floor problems.</p>
+                  <p>When excess humidity, standing water, poor drainage, or inadequate vapor protection affects a crawl space, the wooden framing above it can weaken over time. Floor joists, beams, subflooring, and support posts may absorb moisture, develop fungal growth, or begin to rot.</p>
+                  <p>Signs that moisture may be contributing to floor problems include:</p>
+                  <ul class="list-cards"><li>✓ Musty smells inside the home</li><li>✓ Damp or humid crawl space air</li><li>✓ Mold or mildew on wood surfaces</li><li>✓ Dark staining on joists or beams</li><li>✓ Sagging insulation</li><li>✓ Soft or crumbly wood</li><li>✓ Standing water after rain</li><li>✓ Floors that feel soft or spongy</li></ul>
+                  <p>The key point is that structural repairs may not last if the moisture source is not fixed first. Sistering a damaged joist or adding support posts may help the floor system, but if the crawl space remains wet, the same problem can return.</p>
+                  <p>A complete repair plan may need to address both the damaged wood and the moisture conditions that caused the damage.</p>
+                  ${callout("Rule of thumb", "Structural repairs may not last if the crawl space remains wet. A complete plan should diagnose both the damaged wood and the moisture source that caused it.")}
+                  <h3>Damaged, Cracked, or Over-Spanned Floor Joists</h3>
+                  <p>Floor joists are horizontal framing members that support your floor. If they crack, split, rot, bow, or become overloaded, the floor above may begin to sag or bounce.</p>
+                  <p>A cracked floor joist does not always mean the entire floor system is failing, but it should be taken seriously. Joists can weaken because of moisture, age, poor installation, termite damage, plumbing cuts, excessive loads, or long unsupported spans.</p>
+                  <p>Possible signs of joist damage include:</p>
+                  <ul class="list-cards"><li>✓ A localized dip in one area of the floor</li><li>✓ A bouncy or springy feeling when walking</li><li>✓ Soft spots in specific rooms</li><li>✓ Visible cracks or splits in crawl space joists</li><li>✓ Sagging between support beams</li><li>✓ Uneven floors above a crawl space</li></ul>
+                  <p>Common repair methods may include joist sistering, joist reinforcement, beam installation, support posts, crawl space jacks, or replacement of damaged sections. The right solution depends on the cause and severity of the damage.</p>
+                  <p>This is not usually a good DIY guessing project. The floor system carries live and dead loads, so changes to joists, beams, or supports should be evaluated carefully.</p>
+                  <h3>Settling Piers or Inadequate Crawl Space Supports</h3>
+                  <p>Many crawl spaces have piers, posts, beams, or columns that help carry the weight of the floor system. If these supports settle, shift, compress, or were spaced incorrectly, the floor above may begin to sag.</p>
+                  <p>This can happen when:</p>
+                  <ul class="list-cards"><li>✓ Soil under the support compresses</li><li>✓ Piers were poorly installed</li><li>✓ Support spacing is inadequate</li><li>✓ Wooden posts rot or weaken</li><li>✓ Temporary supports were used improperly</li><li>✓ Crawl space moisture affects framing and supports</li></ul>
+                  <p>In some cases, adjustable crawl space jacks or new support posts may be used to stabilize or lift sagging areas. However, homeowners should be careful about trying to jack up floors themselves. Raising a floor too quickly or without understanding the load path can crack walls, damage finishes, or create new stress points.</p>
+                  <p>The goal is not just to lift the floor. The goal is to understand why it sagged in the first place.</p>
+                  <h3>Foundation Movement or Settlement</h3>
+                  <p>Uneven floors can also be related to foundation movement. When parts of the foundation settle, shift, or crack, the framing above may move with it.</p>
+                  <p>Foundation-related warning signs may include:</p>
+                  <ul class="list-cards"><li>⚠️ Stair-step cracks in masonry</li><li>⚠️ Horizontal foundation cracks</li><li>⚠️ Large or widening cracks</li><li>⚠️ Doors and windows that no longer close correctly</li><li>⚠️ Sloping floors across a large area</li><li>⚠️ Gaps around trim, walls, or ceilings</li><li>⚠️ Cracks appearing in multiple rooms</li><li>⚠️ Separation around exterior walls or porches</li></ul>
+                  <p>Not every foundation crack is catastrophic. Some small cracks may be cosmetic or related to normal shrinkage. But cracks combined with uneven floors, sticking doors, or visible movement should be evaluated.</p>
+                  <p>Depending on the severity, you may need a foundation repair contractor, structural engineer, or qualified home inspector to determine whether the issue is cosmetic, structural, or actively moving.</p>
+                  <h3>Poor Drainage Around the Home</h3>
+                  <p>Water outside the home can also contribute to crawl space and foundation problems.</p>
+                  <p>If water pools near the foundation, flows toward the house, or enters the crawl space after rain, it can create moisture issues below the home. Over time, water can contribute to wood rot, soil movement, foundation settlement, and support instability.</p>
+                  <p>Common drainage-related contributors include:</p>
+                  <ul class="list-cards"><li>✓ Missing gutters</li><li>✓ Short downspouts</li><li>✓ Negative grading toward the home</li><li>✓ Poor yard drainage</li><li>✓ Clogged drains</li><li>✓ Water pooling near the foundation</li><li>✓ Crawl space vents allowing humid air inside</li></ul>
+                  <p>In many cases, long-term repair involves more than fixing the floor itself. Drainage, gutters, downspouts, grading, vapor barriers, or crawl space waterproofing may also be part of the solution.</p>
+                `)}
+
+                ${articleSection("how-to-tell-whether-it-s-a-crawl-space-joist-or-foundation-problem", "How to Tell Whether It’s a Crawl Space, Joist, or Foundation Problem", `
+                  <p>The same symptom can have multiple causes. A sagging floor might be caused by a damaged joist, a settling pier, crawl space moisture, foundation movement, or a combination of issues.</p>
+                  <p>Use the table below as a starting point.</p>
+                  <div class="cost-table"><table><thead><tr><th>Symptom</th><th>Possible Cause</th><th>Who to Contact</th></tr></thead><tbody>${symptomRows.map(row => `<tr><td><strong>${escapeHtml(row[0])}</strong></td><td>${escapeHtml(row[1])}</td><td>${escapeHtml(row[2])}</td></tr>`).join("")}</tbody></table></div>
+                  <p>This is why diagnosis matters. If you only repair the visible symptom, you may miss the underlying problem.</p>
+                  <p>For example, if a joist is rotted because the crawl space is wet, replacing or reinforcing the joist without controlling moisture may only provide a temporary fix. If the floor is sagging because a foundation wall is moving, adding a few support posts may not address the real issue.</p>
+                  <div class="inline-cta"><div><h3>Not sure what kind of crawl space issue you have?</h3><p>Start with a symptom and we’ll help identify what type of professional may be appropriate.</p></div><button class="btn btn-white" data-page="find-help">Find out what help you may need</button></div>
+                `)}
+
+                ${articleSection("when-sagging-floors-are-serious", "When Sagging Floors Are Serious", `
+                  <p>Sagging or uneven floors become more concerning when they are new, worsening, or paired with other structural warning signs.</p>
+                  <p>You should consider a professional inspection if you notice:</p>
+                  <ul class="list-cards"><li>⚠️ Floors that feel soft, unstable, or spongy</li><li>⚠️ A sag that appears to be getting worse</li><li>⚠️ Large slopes across multiple rooms</li><li>⚠️ Cracks that are widening</li><li>⚠️ Doors or windows that suddenly stop closing correctly</li><li>⚠️ Visible cracked, split, or rotted joists</li><li>⚠️ Standing water or persistent dampness in the crawl space</li><li>⚠️ Horizontal or stair-step foundation cracks</li><li>⚠️ Gaps opening around walls, trim, ceilings, or baseboards</li><li>⚠️ Recent rapid changes after heavy rain, flooding, or foundation work</li></ul>
+                  <p>The goal is not to panic. The goal is to avoid guessing.</p>
+                  <p>Many sagging floor problems can be repaired, especially when they are caught early. But the longer moisture, wood decay, or structural movement continues, the more extensive the repair can become.</p>
+                `)}
+
+                ${articleSection("can-sagging-floors-be-fixed", "Can Sagging Floors Be Fixed?", `
+                  <p>Yes, many sagging or uneven floor problems can be fixed. The right repair depends on what is causing the problem.</p>
+                  <p>Common repair categories include:</p>
+                  <h3>Moisture Correction</h3><p>If crawl space moisture is contributing to wood rot or framing damage, the repair plan may include drainage improvements, vapor barrier installation, crawl space encapsulation, dehumidification, or waterproofing.</p>
+                  <h3>Drainage Improvements</h3><p>If water is pooling near the foundation or entering the crawl space, gutters, downspouts, grading, sump pumps, or perimeter drainage may be needed.</p>
+                  <h3>Joist Sistering or Reinforcement</h3><p>If floor joists are cracked, weakened, or partially damaged, a contractor may reinforce them by attaching new lumber alongside the existing joists. This is often called sistering.</p>
+                  <h3>Beam Repair or Replacement</h3><p>If a beam is sagging, undersized, rotted, or damaged, it may need reinforcement or replacement.</p>
+                  <h3>Crawl Space Jacks or Support Posts</h3><p>If the floor system lacks adequate support, new posts, piers, or adjustable crawl space jacks may be installed to stabilize the floor.</p>
+                  <h3>Foundation Repair</h3><p>If settlement or foundation movement is causing the uneven floors, foundation repair may be required. The specific method depends on the foundation type, soil conditions, crack pattern, and movement.</p>
+                  <section class="plain-card" style="background:var(--surface-warm)"><p style="margin:0"><strong>Fix the cause, not just the symptom.</strong></p></section>
+                `)}
+
+                ${articleSection("diy-vs-professional-repair", "DIY vs Professional Repair", `
+                  <p>There are some things homeowners can do themselves during the early observation stage.</p>
+                  <p>DIY-friendly steps may include:</p>
+                  <ul class="list-cards"><li>✓ Documenting where floors slope or feel soft</li><li>✓ Taking photos of visible cracks</li><li>✓ Checking whether doors or windows stick</li><li>✓ Looking for water pooling near the home</li><li>✓ Making sure gutters and downspouts are clear</li><li>✓ Noting musty odors or damp areas</li><li>✓ Taking photos inside the crawl space if it is safe to access</li></ul>
+                  <p>However, structural repairs are different.</p>
+                  <p>DIY is generally not recommended for:</p>
+                  <ul class="list-cards"><li>⚠️ Jacking up sagging floors</li><li>⚠️ Replacing load-bearing joists</li><li>⚠️ Repairing structural beams</li><li>⚠️ Modifying crawl space supports</li><li>⚠️ Repairing major foundation cracks</li><li>⚠️ Installing structural posts without evaluation</li><li>⚠️ Cutting or altering framing members</li></ul>
+                  <p>Improper structural work can create new problems. Raising a floor too quickly may crack drywall, damage flooring, shift loads, or stress other parts of the home.</p>
+                  <p>If the issue involves load-bearing framing, foundation movement, or visible structural damage, it is usually best to involve a qualified contractor, inspector, or structural engineer.</p>
+                `)}
+
+                ${articleSection("what-to-expect-during-an-inspection", "What to Expect During an Inspection", `
+                  <p>A good inspection should look beyond the visible floor issue and evaluate the systems connected to it.</p>
+                  <p>A contractor, inspector, or engineer may review:</p>
+                  <ul class="list-cards"><li>✓ Interior floor slope and soft spots</li><li>✓ Wall, ceiling, and trim cracks</li><li>✓ Door and window alignment</li><li>✓ Crawl space moisture levels</li><li>✓ Condition of joists, beams, and subflooring</li><li>✓ Signs of wood rot, mold, or insect damage</li><li>✓ Support posts, piers, and crawl space jacks</li><li>✓ Foundation walls, cracks, and settlement signs</li><li>✓ Exterior grading and drainage</li><li>✓ Gutters and downspouts</li><li>✓ Standing water or water entry points</li></ul>
+                  <p>A strong inspection should result in a clear explanation of the likely cause, not just a repair quote. You should understand whether the problem is related to moisture, joists, beams, supports, foundation movement, drainage, or a combination of issues.</p>
+                `)}
+
+                ${articleSection("questions-to-ask-before-hiring-a-contractor", "Questions to Ask Before Hiring a Contractor", `
+                  <p>Before hiring a crawl space or foundation contractor, ask questions that force the diagnosis to be clear.</p>
+                  <p>Good questions include:</p>
+                  <ul class="list-cards"><li>✓ What is the root cause of the sagging or uneven floor?</li><li>✓ Is this a joist, beam, pier, moisture, drainage, or foundation issue?</li><li>✓ Are you addressing the moisture source as well as the structural damage?</li><li>✓ Do I need a structural engineer?</li><li>✓ Are permits required for this repair?</li><li>✓ What repair options are available?</li><li>✓ What happens if I delay repairs?</li><li>✓ Is the estimate itemized?</li><li>✓ What parts of the repair are structural?</li><li>✓ What warranties apply?</li><li>✓ Can I see photos of the problem areas?</li><li>✓ Will this repair prevent the issue from returning?</li><li>✓ Are drainage or crawl space moisture improvements needed?</li><li>✓ How quickly will the floor be lifted or stabilized?</li><li>✓ Could lifting the floor cause cracks or finish damage?</li></ul>
+                  <p>A trustworthy contractor should be willing to explain the problem in plain language and show evidence from the inspection.</p>
+                `)}
+
+                ${articleSection("get-matched-with-a-local-crawl-space-or-foundation-specialist", "Get Matched With a Local Crawl Space or Foundation Specialist", `
+                  <p>Sagging floors can be caused by several different issues, and the right professional depends on the source of the problem.</p>
+                  <p>You may need a crawl space repair contractor, foundation repair specialist, structural engineer, drainage contractor, or home inspector.</p>
+                  <p>We do not perform crawl space or foundation repairs. We help homeowners understand possible causes and connect with relevant local providers when professional evaluation may be needed.</p>
+                  <p><strong>Compare local crawl space and foundation specialists</strong> to get a clearer diagnosis and understand your repair options.</p>
+                  <div class="inline-cta"><div><h3>Compare local crawl space and foundation specialists</h3><p>We do not perform crawl space or foundation repairs. Request quotes based on your project details and compare inspection scopes before hiring.</p></div><button class="btn btn-white" data-page="find-help">Request quotes based on your project details</button></div>
+                `)}
+
+                <section class="article-section"><h2>Related guides</h2><div class="grid-2">${relatedGuides.map(a => articleCard(a, a.page || "hub")).join("")}</div></section>
+                <section id="faqs-about-sagging-and-uneven-floors" class="article-section"><h2>FAQs About Sagging and Uneven Floors</h2>${faqs.map(([q, a]) => `<details class="faq-item"><summary>${escapeHtml(q)}</summary><p>${escapeHtml(a)}</p></details>`).join("")}</section>
+                <section class="plain-card"><h2 style="font-size:24px">Author &amp; reviewer</h2><p>Written by the CrawlWise Editorial Team. Reviewed by a crawl space, waterproofing, mold, or structural professional placeholder before publication. Replace this placeholder with a real reviewer profile as the site matures.</p></section>
+                <section class="plain-card" style="margin-top:18px;background:var(--surface-warm)"><h2 style="font-size:24px">Get homeowner-friendly repair checklists</h2><p>Occasional guides on crawl space moisture, cost questions, contractor red flags, and maintenance checks.</p><div class="zip-row"><input class="input" placeholder="Email address"><button class="btn btn-primary">Subscribe</button></div></section>
+              </article>
+              <aside class="desktop-only">${sidebarCta()}</aside>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+
     function renderFindHelp() {
       $("#find-help").innerHTML = `
         <section class="section">
@@ -1903,6 +2083,7 @@
         "best-crawl-space-dehumidifier": "Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One | CrawlWise",
         "crawl-space-moisture": "Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes | CrawlWise",
         "crawl-space-mold-remediation": "Crawl Space Mold Remediation: What Homeowners Need to Know | CrawlWise",
+        "sagging-floors-crawl-space": "Sagging or Uneven Floors: Crawl Space, Foundation, and Joist Problems Explained | CrawlWise",
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education"
@@ -1943,6 +2124,7 @@
       renderDehumidifierArticle();
       renderMoistureArticle();
       renderMoldRemediationArticle();
+      renderSaggingFloorsArticle();
       renderHub();
       renderFindHelp();
       renderAbout();
