@@ -548,6 +548,7 @@
     <div id="article" class="page"></div>
     <div id="crawl-space-encapsulation" class="page"></div>
     <div id="best-crawl-space-dehumidifier" class="page"></div>
+    <div id="crawl-space-moisture" class="page"></div>
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
@@ -630,10 +631,11 @@
       {
         title: "Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes",
         slug: "/crawl-space-moisture/",
+        page: "crawl-space-moisture",
         category: "Moisture",
         summary: "Diagnose common sources of crawl space humidity, damp insulation, condensation, and musty odors before choosing a repair path.",
-        readTime: "9 min read",
-        updated: "May 25, 2026"
+        readTime: "13 min read",
+        updated: "May 28, 2026"
       },
       {
         title: "Sagging or Uneven Floors: Crawl Space, Foundation, and Joist Problems Explained",
@@ -703,6 +705,7 @@
       article: '/water-in-crawl-space/',
       "crawl-space-encapsulation": '/crawl-space-encapsulation/',
       "best-crawl-space-dehumidifier": '/best-crawl-space-dehumidifier/',
+      "crawl-space-moisture": '/crawl-space-moisture/',
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
       about: '/about/'
@@ -1180,6 +1183,122 @@
       `;
     }
 
+    function renderMoistureArticle() {
+      const toc = [
+        "Is Moisture in a Crawl Space Normal?",
+        "What Causes Moisture in a Crawl Space?",
+        "Warning Signs of Crawl Space Moisture Problems",
+        "How Serious Is Moisture Under the House?",
+        "How to Reduce Moisture in a Crawl Space",
+        "DIY vs Professional Crawl Space Moisture Control",
+        "Crawl Space Moisture Solutions Compared",
+        "When to Get a Crawl Space Inspection",
+        "Questions to Ask a Crawl Space Moisture Contractor",
+        "Frequently Asked Questions",
+        "Bottom Line: Diagnose the Moisture Source Before Paying for a Fix"
+      ];
+
+      const concernRows = [
+        ["Musty smell indoors", "Mold, mildew, or damp wood", "Medium"],
+        ["Condensation on pipes or ducts", "High humidity", "Medium"],
+        ["Wet or falling insulation", "Air leaks, humidity, or water intrusion", "High"],
+        ["Standing water", "Drainage or waterproofing issue", "High"],
+        ["Soft or sagging floors", "Possible wood damage", "High"],
+        ["Visible mold", "Moisture and organic growth", "High"],
+        ["Pest activity", "Damp conditions attracting insects or rodents", "Medium to high"]
+      ];
+
+      const diyRows = [
+        ["Slight humidity with no damage", "Yes", "Optional"],
+        ["Small vapor barrier tear", "Yes", "Optional"],
+        ["Clogged gutters or short downspouts", "Yes", "Optional"],
+        ["Musty smell throughout the home", "Maybe", "Yes"],
+        ["Mold on joists or insulation", "No", "Yes"],
+        ["Standing water after rain", "No", "Yes"],
+        ["Sagging floors or wood rot", "No", "Yes"],
+        ["Recurring moisture after prior repairs", "No", "Yes"],
+        ["HVAC, plumbing, or electrical concerns", "No", "Yes"]
+      ];
+
+      const solutionRows = [
+        ["Gutter and downspout fixes", "Water pooling near foundation", "Won’t fix existing mold or interior humidity alone", "Check grading and drainage"],
+        ["Vapor barrier", "Ground moisture from exposed soil", "Won’t solve standing water by itself", "Install or repair barrier"],
+        ["Dehumidifier", "High humidity", "Won’t stop water intrusion", "Pair with sealing or encapsulation"],
+        ["Encapsulation", "Persistent moisture or humidity", "Higher cost", "Compare encapsulation providers"],
+        ["Drainage or sump pump", "Standing water", "More invasive", "Get inspection and quote"],
+        ["Mold remediation", "Visible mold", "Moisture source must also be fixed", "Evaluate moisture cause"]
+      ];
+
+      const faqs = [
+        ["Is moisture in a crawl space normal?", "Some seasonal humidity can be normal, especially in humid climates. However, persistent dampness, condensation, musty smells, mold, wet insulation, standing water, or wood damage are signs of a crawl space moisture problem."],
+        ["What causes moisture under a house?", "Common causes include exposed soil, missing or damaged vapor barriers, poor drainage, clogged gutters, short downspouts, humid outdoor air entering through vents, plumbing leaks, HVAC condensation, and water intrusion after rain."],
+        ["How do I know if my crawl space has too much moisture?", "Warning signs include musty odors, condensation, visible mold, wet insulation, pest activity, damp soil, rusted metal, high indoor humidity, standing water, or soft and uneven floors."],
+        ["Can crawl space moisture cause mold?", "Yes. Mold needs moisture and organic material to grow. Crawl spaces often contain wood framing, paper-faced insulation, and other materials that can support mold growth if moisture remains uncontrolled."],
+        ["Can crawl space moisture make floors sag?", "Moisture can contribute to wood rot or weakened floor framing over time. If floors are sagging, soft, or uneven, the crawl space should be inspected for moisture damage, joist problems, or structural concerns."],
+        ["Will a vapor barrier fix crawl space moisture?", "A vapor barrier can help reduce ground moisture from exposed soil. However, it may not solve standing water, drainage problems, plumbing leaks, mold, or severe humidity by itself."],
+        ["Do I need a dehumidifier in my crawl space?", "A dehumidifier may help if the crawl space has ongoing humidity problems, condensation, or musty odors. It is often used with a vapor barrier or encapsulation system. It should not be the only fix if water is entering the crawl space."],
+        ["Is encapsulation better than a vapor barrier?", "Encapsulation is usually more complete than a basic vapor barrier because it may include sealed walls, sealed vents, air sealing, and a dehumidifier. A simple vapor barrier may be enough for lower-level ground moisture, while encapsulation may be better for persistent humidity or recurring moisture problems."],
+        ["Can I fix crawl space moisture myself?", "Some prevention steps can be DIY, such as cleaning gutters, extending downspouts, repairing small vapor barrier tears, and improving basic drainage. Mold, standing water, wood rot, sagging floors, and recurring moisture should be evaluated by a professional."],
+        ["When should I call a crawl space contractor?", "Call a contractor if you see standing water, mold, wet insulation, wood rot, sagging floors, recurring moisture after rain, or a strong musty smell. You should also get an inspection before paying for major repairs like encapsulation, drainage systems, or mold remediation."],
+        ["How much does crawl space moisture repair cost?", "Costs vary widely depending on the source and severity of the moisture. Minor fixes like gutter extensions or vapor barrier repairs may cost much less than encapsulation, mold remediation, drainage, sump pump installation, or structural repair. Get an itemized quote so you can see what problem each repair is meant to solve."],
+        ["What is the best way to prevent crawl space moisture from coming back?", "The best prevention plan usually includes moving water away from the foundation, covering exposed soil with a proper vapor barrier, managing humid air, sealing leaks, repairing plumbing or HVAC issues, and using dehumidification or encapsulation when needed."]
+      ];
+
+      $("#crawl-space-moisture").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Moisture", "Moisture in Crawl Space"])}
+            <div class="article-layout">
+              <aside class="desktop-only"><div class="toc"><p class="toc-title">Table of contents</p>${toc.map(item => `<a href="#${slugify(item)}">${item}</a>`).join("")}</div></aside>
+              <article class="article-body">
+                <span class="badge">Moisture</span>
+                <h1 class="page-title" style="margin-top:16px">Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes</h1>
+                <p class="lead">Moisture in a crawl space is one of the most common problems homeowners notice under their homes. Sometimes it starts with a musty smell. Other times, it shows up as condensation on pipes, damp insulation, mold, pest activity, or soft, uneven floors.</p>
+                <div class="article-meta-row"><span>Last updated: May 28, 2026</span><span>•</span><span>13 min read</span><span>•</span><span>Author: CrawlWise Editorial Team</span><span>•</span><span>Reviewer: Crawl Space Professional Placeholder</span></div>
+                <details class="mobile-toc plain-card"><summary style="font-weight:950;cursor:pointer">Table of contents</summary><div style="display:grid;gap:8px;margin-top:12px">${toc.map(item => `<a href="#${slugify(item)}" style="color:var(--clay);font-weight:850">${item}</a>`).join("")}</div></details>
+                <div class="plain-card" style="margin-bottom:26px"><p style="margin:0;font-size:15px"><strong>Editorial disclosure:</strong> This website provides educational information for homeowners. We are not a substitute for a licensed inspection, structural engineer, mold professional, or contractor. In some cases, we may connect users with service providers.</p></div>
+
+                <p>A little seasonal humidity may not always mean there is a major problem. But persistent moisture under the house should not be ignored. Crawl space moisture can lead to mold growth, wood rot, insulation damage, pest problems, poor indoor air quality, and in more serious cases, structural issues.</p>
+                <p>The right fix depends on where the moisture is coming from. A vapor barrier may help with ground moisture. A dehumidifier may help with humidity. Drainage or waterproofing may be needed if water is entering after rain. Encapsulation may be the better long-term option if the crawl space has recurring dampness or humidity problems.</p>
+                <p>This guide will help you understand what causes crawl space moisture, how to spot warning signs, which fixes may help, and when it makes sense to contact a crawl space professional.</p>
+
+                ${articleSection("is-moisture-in-a-crawl-space-normal", "Is Moisture in a Crawl Space Normal?", `<p>Some moisture in a crawl space can be expected, especially in humid climates or during wet seasons. Crawl spaces are naturally exposed to soil, outdoor air, foundation walls, plumbing, ducts, and temperature changes. That means they are more vulnerable to dampness than the finished living areas of a home.</p><p>However, there is a difference between normal seasonal humidity and a moisture problem.</p><p>Moisture becomes more concerning when you notice:</p><div class="cost-table"><table><thead><tr><th>Sign</th><th>What It May Mean</th><th>Urgency</th></tr></thead><tbody>${concernRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}</tbody></table></div><p>If the crawl space is consistently damp, smells musty, has visible mold, or collects water after rain, it is worth investigating the source of the moisture before choosing a repair.</p>`) }
+
+                ${articleSection("what-causes-moisture-in-a-crawl-space", "What Causes Moisture in a Crawl Space?", `<p>Crawl space moisture can come from several different sources. In many homes, more than one problem is happening at the same time. For example, a home may have poor drainage outside, exposed dirt inside the crawl space, and humid air entering through vents.</p><p>Understanding the source matters because the wrong fix may not solve the problem.</p><h3>Ground Moisture Rising From Exposed Soil</h3><p>Many crawl spaces have dirt floors. When the soil is uncovered or only partially covered, moisture from the ground can rise into the crawl space air. This can increase humidity, create condensation, and contribute to mold or mildew.</p><p>A crawl space vapor barrier is designed to reduce this type of moisture by covering exposed soil. However, a vapor barrier needs to be properly installed, overlapped, sealed, and extended across the crawl space floor to be effective.</p><p>If the plastic is thin, torn, loosely placed, or missing in sections, ground moisture can still enter the crawl space.</p><h3>Poor Drainage Around the Foundation</h3><p>Water outside the home is one of the most important crawl space moisture factors. If rainwater collects near the foundation, it can increase moisture pressure around the crawl space and eventually find its way inside.</p><p>Common drainage problems include:</p><ul class="list-cards"><li>✓ Clogged gutters</li><li>✓ Missing gutters</li><li>✓ Downspouts that discharge too close to the house</li><li>✓ Poor grading around the foundation</li><li>✓ Soil sloping toward the home</li><li>✓ Water pooling near foundation walls</li><li>✓ Low spots near the crawl space access area</li></ul><p>Before investing in major crawl space work, it is usually smart to check whether water is being directed away from the home properly.</p><h3>Open or Poorly Managed Crawl Space Vents</h3><p>Crawl space vents are often intended to provide airflow. But in humid climates, open vents can sometimes make crawl space moisture worse by allowing warm, damp outdoor air into a cooler crawl space.</p><p>When humid air meets cooler crawl space surfaces, condensation can form on ducts, pipes, floor joists, insulation, or foundation walls.</p><p>This does not mean every crawl space should automatically be sealed. Vent strategy depends on the home, climate, crawl space condition, and local building practices. But if the crawl space is consistently damp, vents should be evaluated as part of the moisture-control plan.</p><h3>Plumbing Leaks or HVAC Condensation</h3><p>Not all crawl space moisture comes from the ground or outside rainwater. Sometimes the source is mechanical.</p><p>Possible sources include:</p><ul class="list-cards"><li>✓ Leaking supply lines</li><li>✓ Leaking drain lines</li><li>✓ Water heater leaks</li><li>✓ HVAC condensation</li><li>✓ Sweating ducts</li><li>✓ Poorly insulated pipes</li><li>✓ Condensate drain issues</li></ul><p>A small plumbing leak can keep a crawl space damp even if the vapor barrier and drainage are otherwise in good shape. If one area of the crawl space is much wetter than the rest, a plumbing or HVAC issue may be the cause.</p><h3>Bulk Water Intrusion After Rain</h3><p>There is a big difference between general dampness and standing water. If water enters the crawl space after rain, the problem may require drainage, waterproofing, a sump pump, grading changes, or exterior water management.</p><p>Signs of water intrusion include:</p><ul class="list-cards"><li>⚠️ Puddles in the crawl space</li><li>⚠️ Muddy soil</li><li>⚠️ Water stains on foundation walls</li><li>⚠️ Washed-out areas near the foundation</li><li>⚠️ Dampness that gets worse after storms</li><li>⚠️ Recurring water near the crawl space entrance</li></ul><p>A dehumidifier alone will not fix active water intrusion. The water source needs to be corrected first.</p><h3>Missing, Damaged, or Poorly Installed Vapor Barrier</h3><p>A vapor barrier helps reduce ground moisture, but only if it is installed correctly. If the barrier is ripped, too thin, not sealed at seams, or does not fully cover the crawl space floor, moisture can still rise from the soil.</p><p>A damaged vapor barrier may be enough to create damp conditions, especially in a humid area or a crawl space with poor airflow.</p>${callout("Match the fix to the source", "Moisture control works best when the source is identified first. A dehumidifier, vapor barrier, or encapsulation system may help in the right situation, but active water intrusion needs source-specific correction.")}`)}
+
+                ${articleSection("warning-signs-of-crawl-space-moisture-problems", "Warning Signs of Crawl Space Moisture Problems", `<p>Crawl space moisture problems often show up inside the home before homeowners ever inspect the crawl space.</p><p>Common warning signs include:</p><ul class="list-cards"><li>⚠️ Musty odors inside the house</li><li>⚠️ Mold or mildew smell near floors, closets, or vents</li><li>⚠️ High indoor humidity</li><li>⚠️ Condensation on windows, ducts, pipes, or crawl space walls</li><li>⚠️ Wet, sagging, or falling insulation</li><li>⚠️ Rust on metal components</li><li>⚠️ Pest activity</li><li>⚠️ Visible mold on joists or subflooring</li><li>⚠️ Wood rot or darkened wood</li><li>⚠️ Soft, bouncy, sagging, or uneven floors</li><li>⚠️ Standing water under the home</li><li>⚠️ Allergy-like symptoms or indoor air quality concerns</li></ul><p>Musty smells, mold, condensation, sagging floors, and water damage are especially important warning signs because they can point to a moisture issue that has been present for a while.</p><div class="inline-cta"><div><h3>Not sure what kind of crawl space issue you have?</h3><p>Start with a symptom and we’ll help identify what type of professional may be appropriate.</p></div><button class="btn btn-white" data-page="find-help">Find out what help you may need</button></div>`) }
+
+                ${articleSection("how-serious-is-moisture-under-the-house", "How Serious Is Moisture Under the House?", `<p>The seriousness of crawl space moisture depends on the amount of moisture, how often it occurs, and whether it is causing damage.</p><h3>Low Concern</h3><p>Moisture may be lower concern if:</p><ul class="list-cards"><li>✓ Humidity is slightly elevated only during certain seasons</li><li>✓ There is no visible mold</li><li>✓ There is no standing water</li><li>✓ Insulation is dry and intact</li><li>✓ There is no musty odor inside the home</li><li>✓ Wood appears dry and solid</li><li>✓ The vapor barrier is intact</li></ul><p>In these cases, basic prevention steps may be enough. That could include improving drainage, checking the vapor barrier, monitoring humidity, and making sure gutters and downspouts are moving water away from the foundation.</p><h3>Moderate Concern</h3><p>Moisture becomes more concerning when there are signs like:</p><ul class="list-cards"><li>⚠️ Musty smell</li><li>⚠️ Light condensation</li><li>⚠️ Minor vapor barrier damage</li><li>⚠️ Elevated humidity</li><li>⚠️ Small areas of damp insulation</li><li>⚠️ Early pest activity</li><li>⚠️ Damp soil that does not fully dry out</li></ul><p>At this stage, it may be time to compare moisture-control options such as vapor barrier repair, sealing air leaks, adding a crawl space dehumidifier, or getting a professional inspection.</p><h3>High Concern</h3><p>Moisture is more serious when there is:</p><ul class="list-cards"><li>⚠️ Standing water</li><li>⚠️ Visible mold growth</li><li>⚠️ Wet or falling insulation</li><li>⚠️ Rotted wood</li><li>⚠️ Soft or sagging floors</li><li>⚠️ Recurring moisture after rain</li><li>⚠️ Electrical or HVAC components exposed to damp conditions</li><li>⚠️ Foundation or structural concerns</li></ul><p>If you see these signs, a professional evaluation is recommended. Serious or recurring crawl space moisture issues can involve mold, wood deterioration, drainage failure, foundation concerns, or active water intrusion.</p>${callout("Structural and mold warning", "If moisture is paired with visible mold, rotted wood, sagging floors, electrical concerns, or recurring standing water, avoid covering the symptoms with a quick fix and get the crawl space evaluated.")}`)}
+
+                ${articleSection("how-to-reduce-moisture-in-a-crawl-space", "How to Reduce Moisture in a Crawl Space", `<p>The best way to reduce crawl space moisture is to address the source first. In many homes, moisture control requires a combination of exterior drainage, vapor barrier improvements, air sealing, dehumidification, and sometimes encapsulation or waterproofing.</p><h3>Fix Drainage Outside the Home First</h3><p>Start outside. If water is collecting near the foundation, crawl space repairs may not last.</p><p>Important exterior steps include:</p><ul class="list-cards"><li>✓ Clean gutters</li><li>✓ Repair broken gutters</li><li>✓ Extend downspouts away from the foundation</li><li>✓ Improve grading around the home</li><li>✓ Fill low spots near the foundation</li><li>✓ Make sure soil slopes away from the house</li><li>✓ Move landscaping or mulch away from crawl space vents and foundation openings</li><li>✓ Address water pooling near the home</li></ul><p>If water is being directed toward the foundation, it can continue to create crawl space moisture even after interior work is completed.</p><h3>Install or Repair a Crawl Space Vapor Barrier</h3><p>A vapor barrier helps reduce moisture rising from exposed soil. This is often one of the most common crawl space moisture solutions.</p><p>A vapor barrier may help when:</p><ul class="list-cards"><li>✓ The crawl space has a dirt floor</li><li>✓ The existing barrier is missing or damaged</li><li>✓ Soil feels damp</li><li>✓ Humidity is elevated</li><li>✓ There is no active standing water</li></ul><p>However, a vapor barrier is not a complete solution for every moisture issue. It may not solve standing water, drainage failure, mold contamination, or severe humidity by itself.</p><p>For better performance, the vapor barrier should typically have full coverage, sealed seams, and proper placement around piers and foundation edges.</p><h3>Consider a Crawl Space Dehumidifier</h3><p>A crawl space dehumidifier can help control ongoing humidity. It is especially useful when the crawl space stays humid even after obvious water sources are corrected.</p><p>A dehumidifier may be appropriate when:</p><ul class="list-cards"><li>✓ Humidity remains high</li><li>✓ Condensation forms on pipes or ducts</li><li>✓ The crawl space has musty odors</li><li>✓ The home has indoor humidity problems</li><li>✓ Moisture returns even without standing water</li></ul><p>A dehumidifier should not be used as a substitute for fixing water intrusion. If water is entering after rain, drainage and waterproofing should be addressed first.</p><h3>Seal Air Leaks and Manage Vents</h3><p>Air movement can bring moisture into the crawl space. Gaps around vents, rim joists, plumbing penetrations, ducts, and access doors may allow humid air to enter.</p><p>Depending on the home, moisture control may involve:</p><ul class="list-cards"><li>✓ Sealing air leaks</li><li>✓ Improving the crawl space access door</li><li>✓ Managing or sealing vents</li><li>✓ Insulating pipes or ducts</li><li>✓ Reducing humid outdoor air entering the crawl space</li></ul><p>Because vent strategy depends on climate and crawl space design, this is one area where a professional opinion can be useful.</p><h3>Encapsulate the Crawl Space When Moisture Is Persistent</h3><p>Crawl space encapsulation is a more complete moisture-control system. It usually involves sealing the crawl space floor and walls with a heavy-duty vapor barrier, sealing vents and air leaks, and often adding a dehumidifier.</p><p>Encapsulation may make sense when:</p><ul class="list-cards"><li>✓ Moisture is recurring</li><li>✓ Humidity remains high</li><li>✓ The crawl space smells musty</li><li>✓ Mold risk is present</li><li>✓ The homeowner wants a longer-term solution</li><li>✓ The crawl space affects comfort or indoor air quality</li><li>✓ A simple vapor barrier has not solved the issue</li></ul><p>Encapsulation is usually more expensive than a basic vapor barrier, but it may be more effective for persistent moisture problems.</p><h3>Add Drainage or Waterproofing if Water Is Entering</h3><p>If water enters the crawl space after rain, moisture control may require drainage or waterproofing.</p><p>Possible solutions include:</p><ul class="list-cards"><li>✓ Exterior grading corrections</li><li>✓ Downspout extensions</li><li>✓ French drains</li><li>✓ Interior drainage systems</li><li>✓ Sump pumps</li><li>✓ Crawl space waterproofing systems</li><li>✓ Foundation drainage improvements</li></ul><p>This type of work is usually best evaluated by a crawl space, foundation, drainage, or waterproofing professional.</p>`) }
+
+                ${articleSection("diy-vs-professional-crawl-space-moisture-control", "DIY vs Professional Crawl Space Moisture Control", `<p>Some crawl space moisture issues can be handled with basic maintenance. Others should be inspected by a professional.</p><div class="cost-table"><table><thead><tr><th>Situation</th><th>DIY May Be Reasonable</th><th>Professional Evaluation Recommended</th></tr></thead><tbody>${diyRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}</tbody></table></div><p>DIY steps can help with prevention, but be careful not to overestimate what they can solve. If moisture is recurring, causing damage, or connected to mold, water intrusion, or structural symptoms, a professional inspection is the safer path.</p>`) }
+
+                ${articleSection("crawl-space-moisture-solutions-compared", "Crawl Space Moisture Solutions Compared", `<p>Different crawl space moisture solutions solve different problems. The key is matching the fix to the moisture source.</p><div class="cost-table"><table><thead><tr><th>Solution</th><th>Best For</th><th>Limitations</th><th>Typical Next Step</th></tr></thead><tbody>${solutionRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`).join("")}</tbody></table></div><p>The strongest approach is to diagnose the moisture source before paying for a fix. A dehumidifier, vapor barrier, or encapsulation system may help in the right situation, but none of them should be treated as a one-size-fits-all solution.</p>`) }
+
+                ${articleSection("when-to-get-a-crawl-space-inspection", "When to Get a Crawl Space Inspection", `<p>Consider getting a crawl space inspection if:</p><ul class="list-cards"><li>⚠️ Moisture returns after rain</li><li>⚠️ There is visible mold</li><li>⚠️ Insulation is wet, heavy, or falling</li><li>⚠️ The crawl space smells musty</li><li>⚠️ Floors are sagging, soft, or uneven</li><li>⚠️ There is standing water</li><li>⚠️ The home has recurring pest problems</li><li>⚠️ Wood appears soft, dark, or damaged</li><li>⚠️ You are considering encapsulation</li><li>⚠️ You are unsure whether the problem is humidity, ground moisture, or water intrusion</li><li>⚠️ Previous repairs did not solve the issue</li></ul><p>An inspection can help determine whether you need a vapor barrier, drainage, dehumidifier, encapsulation, mold remediation, or structural repair.</p><div class="inline-cta"><div><h3>Not sure how serious the moisture is?</h3><p>Compare local crawl space moisture specialists and request inspection quotes before choosing a repair. We do not perform crawl space work directly.</p></div><button class="btn btn-white" data-page="find-help">Request inspection quotes</button></div>`) }
+
+                ${articleSection("questions-to-ask-a-crawl-space-moisture-contractor", "Questions to Ask a Crawl Space Moisture Contractor", `<p>Before hiring a contractor, ask questions that help identify the actual source of the moisture.</p><p>Good questions include:</p><ul class="list-cards"><li>✓ 1. What is the source of the moisture?</li><li>✓ 2. Is this humidity, condensation, seepage, or standing water?</li><li>✓ 3. Do I need a vapor barrier, encapsulation, drainage, dehumidifier, or mold remediation?</li><li>✓ 4. Are there signs of wood rot or structural damage?</li><li>✓ 5. Will you address exterior drainage first?</li><li>✓ 6. What happens if moisture returns?</li><li>✓ 7. Is the quote itemized?</li><li>✓ 8. Are photos included in the inspection report?</li><li>✓ 9. Are permits needed?</li><li>✓ 10. What warranties apply, and who provides them?</li><li>✓ 11. Will the repair address the cause or only the symptoms?</li><li>✓ 12. Are mold, insulation, drainage, and structural issues handled separately?</li></ul><p>These questions are especially helpful because crawl space moisture can have multiple causes. A good contractor should be able to explain why they recommend a specific solution.</p>`) }
+
+                <section class="article-section"><h2>Related guides</h2><div class="grid-2">${[articles[0], articles[1], articles[2], articles[4]].map(a => articleCard(a, a.page || "hub")).join("")}</div></section>
+
+                <section id="frequently-asked-questions" class="article-section">
+                  <h2>Frequently Asked Questions</h2>
+                  ${faqs.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><p>${a}</p></details>`).join("")}
+                </section>
+
+                ${articleSection("bottom-line-diagnose-the-moisture-source-before-paying-for-a-fix", "Bottom Line: Diagnose the Moisture Source Before Paying for a Fix", `<p>Crawl space moisture can come from soil, humidity, poor drainage, leaks, condensation, or water intrusion. Because the causes vary, the best fix depends on the source.</p><p>A vapor barrier may help with ground moisture. A dehumidifier may help with humidity. Drainage or waterproofing may be needed for standing water. Encapsulation may be the better option for recurring moisture or long-term humidity control.</p><p>Before committing to a major repair, try to identify whether the problem is simple dampness, condensation, ground moisture, or active water intrusion. If there is mold, standing water, damaged insulation, sagging floors, or recurring moisture after rain, compare local crawl space moisture specialists and request an inspection quote.</p><div class="inline-cta"><div><h3>Compare local crawl space moisture specialists</h3><p>We do not perform crawl space work directly. We help homeowners understand their options and may connect users with relevant local providers when appropriate.</p></div><button class="btn btn-white" data-page="find-help">Request quotes based on your project details</button></div>`) }
+
+                <section class="plain-card"><h2 style="font-size:24px">Author & reviewer</h2><p>Written by the CrawlWise Editorial Team. Reviewed by a crawl space, waterproofing, mold, or structural professional placeholder before publication. Replace this placeholder with a real reviewer profile as the site matures.</p></section>
+                <section class="plain-card" style="margin-top:18px;background:var(--surface-warm)"><h2 style="font-size:24px">Get homeowner-friendly repair checklists</h2><p>Occasional guides on crawl space moisture, cost questions, contractor red flags, and maintenance checks.</p><div class="zip-row"><input class="input" placeholder="Email address"><button class="btn btn-primary">Subscribe</button></div></section>
+              </article>
+              <aside class="desktop-only">${sidebarCta()}</aside>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
     function renderFindHelp() {
       $("#find-help").innerHTML = `
         <section class="section">
@@ -1255,6 +1374,7 @@
         article: "Water in Crawl Space After Rain | CrawlWise",
         "crawl-space-encapsulation": "Crawl Space Encapsulation: Costs, Alternatives, and When It's Worth It | CrawlWise",
         "best-crawl-space-dehumidifier": "Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One | CrawlWise",
+        "crawl-space-moisture": "Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes | CrawlWise",
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education"
@@ -1292,6 +1412,7 @@
       renderArticle();
       renderEncapsulationArticle();
       renderDehumidifierArticle();
+      renderMoistureArticle();
       renderHub();
       renderFindHelp();
       renderAbout();
