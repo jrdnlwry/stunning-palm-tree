@@ -549,6 +549,7 @@
     <div id="crawl-space-encapsulation" class="page"></div>
     <div id="best-crawl-space-dehumidifier" class="page"></div>
     <div id="crawl-space-moisture" class="page"></div>
+    <div id="crawl-space-mold-remediation" class="page"></div>
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
@@ -621,12 +622,13 @@
         updated: "May 25, 2026"
       },
       {
-        title: "Crawl Space Mold Remediation: Removal, Encapsulation, and Moisture Control",
+        title: "Crawl Space Mold Remediation: What Homeowners Need to Know Before Hiring a Contractor",
         slug: "/crawl-space-mold-remediation/",
+        page: "crawl-space-mold-remediation",
         category: "Mold",
-        summary: "A homeowner-first guide to spotting mold concerns, understanding remediation options, and preventing moisture from coming back.",
-        readTime: "10 min read",
-        updated: "May 25, 2026"
+        summary: "Understand crawl space mold remediation, when professional help may be needed, how encapsulation fits into prevention, and what to ask before hiring a local specialist.",
+        readTime: "14 min read",
+        updated: "May 28, 2026"
       },
       {
         title: "Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes",
@@ -706,6 +708,7 @@
       "crawl-space-encapsulation": '/crawl-space-encapsulation/',
       "best-crawl-space-dehumidifier": '/best-crawl-space-dehumidifier/',
       "crawl-space-moisture": '/crawl-space-moisture/',
+      "crawl-space-mold-remediation": '/crawl-space-mold-remediation/',
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
       about: '/about/'
@@ -1297,6 +1300,210 @@
       `;
     }
 
+
+    function renderMoldRemediationArticle() {
+      const toc = [
+        "What Is Crawl Space Mold Remediation?",
+        "Why Mold Grows in Crawl Spaces",
+        "Signs You May Have Mold in Your Crawl Space",
+        "Is Crawl Space Mold Dangerous?",
+        "Mold Removal vs. Mold Remediation vs. Encapsulation",
+        "Does Encapsulation Kill Mold?",
+        "When Is Professional Mold Remediation Needed?",
+        "Can You Remove Crawl Space Mold Yourself?",
+        "What Should a Crawl Space Mold Remediation Quote Include?",
+        "How Much Does Crawl Space Mold Remediation Cost?",
+        "How to Choose a Crawl Space Mold Specialist",
+        "Local Considerations for Crawl Space Mold",
+        "Next Steps If You Found Mold in Your Crawl Space",
+        "Compare Local Crawl Space Mold Remediation Specialists",
+        "Frequently Asked Questions"
+      ];
+
+      const comparisonRows = [
+        ["Mold removal", "Cleans or removes visible mold growth", "Small or localized areas", "The underlying moisture source"],
+        ["Mold remediation", "Controls, removes, cleans, and helps prevent spread", "Larger, recurring, or confirmed mold problems", "Long-term prevention unless moisture is fixed"],
+        ["Encapsulation", "Seals the crawl space with a heavy-duty liner and moisture-control system", "Chronic crawl space humidity or ground moisture", "Existing mold unless remediation happens first"],
+        ["Dehumidifier", "Controls relative humidity", "Humid crawl spaces", "Bulk water intrusion or drainage problems"],
+        ["Drainage or sump pump", "Removes or redirects water", "Standing water or water intrusion", "Mold already present on wood or insulation"]
+      ];
+
+      const faqs = [
+        ["Is mold in a crawl space common?", "Yes, crawl space mold is common in homes with excess moisture, high humidity, poor drainage, wet insulation, plumbing leaks, or damaged vapor barriers. It is especially common in humid climates."],
+        ["Is crawl space mold dangerous?", "Crawl space mold can affect indoor air quality and may irritate sensitive individuals, especially people with allergies, asthma, respiratory issues, or immune concerns. However, the severity depends on the extent of mold growth, airflow into the home, and individual sensitivity."],
+        ["Does crawl space mold affect indoor air quality?", "It can. Air from the crawl space may enter the living area through gaps, floors, duct leaks, plumbing penetrations, or other openings. If the crawl space has mold, musty odors, or high humidity, indoor air quality may be affected."],
+        ["Can mold in a crawl space spread into the house?", "Mold spores and odors can move through air pathways between the crawl space and living space. Moisture problems can also affect materials above the crawl space. That is why crawl space mold should not be ignored."],
+        ["Should mold be removed before encapsulation?", "In many cases, yes. Existing mold or contaminated materials should usually be addressed before encapsulation. Encapsulation can help control future moisture, but it should not be used to simply cover up an active mold problem."],
+        ["Does encapsulation get rid of mold?", "Encapsulation does not automatically remove existing mold. It can help reduce the conditions that allow mold to grow by controlling moisture and humidity, but existing mold may require remediation first."],
+        ["Can I spray bleach on crawl space mold?", "Bleach is often not the best answer for crawl space mold, especially on porous materials like wood. Spraying bleach may discolor visible growth without solving the moisture problem. For larger or recurring mold issues, professional evaluation is usually safer."],
+        ["Is DIY crawl space mold removal safe?", "DIY may be reasonable for very small, accessible, non-recurring areas if the moisture source has been fixed. However, crawl spaces can involve respiratory exposure, contaminated insulation, electrical hazards, plumbing hazards, and difficult access. Larger problems should be evaluated by a professional."],
+        ["How do I know whether I need mold remediation or moisture control?", "You may need both. Mold remediation addresses existing growth, while moisture control helps prevent it from coming back. If humidity, standing water, leaks, or vapor barrier issues remain, mold may return after cleaning."],
+        ["What should I ask a crawl space mold contractor?", "Ask whether they remediate mold or only encapsulate, how they will address the moisture source, whether insulation removal is included, whether they provide photos and moisture readings, and what happens if mold returns."],
+        ["Will mold come back after remediation?", "It can come back if the moisture problem is not fixed. Long-term prevention may require drainage improvements, vapor barrier replacement, dehumidification, air sealing, or encapsulation."],
+        ["Do I need a mold test before remediation?", "Not always. If visible mold is present, many professionals can recommend remediation based on inspection findings. Testing may be useful when the source is unclear, documentation is needed, or a third-party verification is required during a real estate transaction."]
+      ];
+
+      $("#crawl-space-mold-remediation").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Mold", "Crawl Space Mold Remediation"])}
+            <div class="article-layout">
+              <aside class="desktop-only">
+                <div class="toc">
+                  <p class="toc-title">Table of contents</p>
+                  ${toc.map(item => `<a href="#${slugify(item)}">${item}</a>`).join("")}
+                </div>
+              </aside>
+
+              <article class="article-body">
+                <span class="badge">Mold</span>
+                <h1 class="page-title" style="margin-top:16px">Crawl Space Mold Remediation: What Homeowners Need to Know Before Hiring a Contractor</h1>
+                <p class="lead">Finding mold in your crawl space can feel overwhelming. Maybe you noticed a musty smell inside your home, a home inspector flagged mold on the joists or insulation, or you saw dark, white, green, or fuzzy growth under the house.</p>
+                <div class="article-meta-row"><span>Last updated: May 28, 2026</span><span>•</span><span>14 min read</span><span>•</span><span>Author: CrawlWise Editorial Team</span><span>•</span><span>Reviewer: Crawl Space Professional Placeholder</span></div>
+
+                <details class="mobile-toc plain-card"><summary style="font-weight:950;cursor:pointer">Table of contents</summary><div style="display:grid;gap:8px;margin-top:12px">${toc.map(item => `<a href="#${slugify(item)}" style="color:var(--clay);font-weight:850">${item}</a>`).join("")}</div></details>
+
+                <div class="plain-card" style="margin-bottom:26px"><p style="margin:0;font-size:15px"><strong>Editorial disclosure:</strong> This website provides educational information for homeowners. We are not a substitute for a licensed inspection, structural engineer, mold professional, or contractor. In some cases, we may connect users with service providers.</p></div>
+
+                <section class="article-section">
+                  <p>The most important thing to understand is this:</p>
+                  <p><strong>Crawl space mold is usually a moisture problem first and a mold problem second.</strong></p>
+                  <p>Mold removal may be necessary, but if the moisture source is not fixed, the problem can come back. That means a complete solution may involve mold remediation, moisture control, insulation removal, vapor barrier replacement, drainage improvements, a crawl space dehumidifier, or full encapsulation.</p>
+                  <p>This guide explains what crawl space mold remediation involves, when professional help may be needed, how encapsulation fits into the process, and what to ask before hiring a local crawl space mold specialist.</p>
+                </section>
+
+                ${articleSection("what-is-crawl-space-mold-remediation", "What Is Crawl Space Mold Remediation?", `
+                  <p>Crawl space mold remediation is the process of identifying, containing, cleaning, removing, or treating mold growth in a crawl space while also addressing the conditions that allowed the mold to grow.</p>
+                  <p>It is not the same as simply spraying a chemical over visible mold. A proper remediation plan usually looks at:</p>
+                  <ul class="list-cards"><li>✓ Where the mold is growing</li><li>✓ How much of the crawl space is affected</li><li>✓ Whether insulation, joists, subflooring, ducts, or vapor barriers are impacted</li><li>✓ Whether the crawl space has excess humidity, standing water, leaks, or drainage problems</li><li>✓ What needs to happen to prevent mold from returning</li></ul>
+                  <p>In many cases, mold remediation may include cleaning affected wood, removing contaminated insulation, improving moisture control, replacing a damaged vapor barrier, installing a dehumidifier, or recommending encapsulation after the mold issue has been addressed.</p>
+                  <p>The key point: <strong>remediation should deal with both the mold and the reason it appeared.</strong></p>
+                `)}
+
+                ${articleSection("why-mold-grows-in-crawl-spaces", "Why Mold Grows in Crawl Spaces", `
+                  <p>Mold needs moisture to grow. Crawl spaces are especially vulnerable because they are often dark, humid, poorly ventilated, and close to the ground.</p>
+                  <p>Common causes of crawl space mold include:</p>
+                  <ul class="list-cards"><li>✓ High humidity</li><li>✓ Ground moisture</li><li>✓ Missing or damaged vapor barrier</li><li>✓ Standing water after rain</li><li>✓ Poor exterior drainage</li><li>✓ Plumbing leaks</li><li>✓ HVAC condensation</li><li>✓ Wet or fallen insulation</li><li>✓ Open foundation vents in humid climates</li><li>✓ Poor airflow</li><li>✓ Water pooling near the foundation</li></ul>
+                  <p>In humid regions, especially areas like North Carolina and the Southeast, crawl spaces can hold moisture for long periods. Vented crawl spaces may also allow warm, humid outdoor air to enter and condense on cooler crawl space surfaces, ductwork, insulation, or wood framing.</p>
+                  <p>That is why long-term mold prevention usually depends on controlling water and humidity, not just cleaning what you can see.</p>
+                `)}
+
+                ${articleSection("signs-you-may-have-mold-in-your-crawl-space", "Signs You May Have Mold in Your Crawl Space", `
+                  <p>You may not see the mold right away. In many homes, the first warning sign is odor or humidity inside the living space.</p>
+                  <p>Common signs of crawl space mold include:</p>
+                  <ul class="list-cards"><li>✓ Musty or earthy odors indoors</li><li>✓ Visible dark, white, green, or fuzzy growth on joists or subflooring</li><li>✓ Damp, sagging, or fallen insulation</li><li>✓ Condensation on ducts, pipes, or framing</li><li>✓ High indoor humidity</li><li>✓ Allergy-like irritation in sensitive individuals</li><li>✓ Cupping, soft, or uneven floors</li><li>✓ Pest activity</li><li>✓ Moisture stains on wood</li><li>✓ Home inspection report findings</li><li>✓ Damaged or missing vapor barrier</li><li>✓ Standing water or muddy areas under the home</li></ul>
+                  <p>A musty smell is especially important. Even if you do not see mold inside the living area, odor from the crawl space may indicate excess moisture, microbial growth, wet insulation, or poor air sealing between the crawl space and the home.</p>
+                `)}
+
+                ${articleSection("is-crawl-space-mold-dangerous", "Is Crawl Space Mold Dangerous?", `
+                  <p>Crawl space mold should be taken seriously, but it is important not to overstate the issue.</p>
+                  <p>Mold can contribute to poor indoor air quality, musty odors, and irritation for people who are sensitive to mold. Some people with allergies, asthma, respiratory conditions, or immune concerns may be more vulnerable to mold exposure.</p>
+                  <p>However, you should avoid assuming that every crawl space mold issue is a severe health emergency. The right next step is usually to determine:</p>
+                  <ul class="list-cards"><li>✓ How extensive the mold growth is</li><li>✓ Whether the source of moisture is active</li><li>✓ Whether mold is affecting structural wood or insulation</li><li>✓ Whether air from the crawl space is entering the living space</li><li>✓ Whether professional remediation is needed</li></ul>
+                  <p>Homeowners with asthma, allergies, immune concerns, or persistent symptoms should consult qualified health and environmental professionals. A crawl space contractor or remediation provider can assess the building condition, but they should not be treated as a medical authority.</p>
+                `)}
+
+                <div class="inline-cta"><div><h3>Not sure what kind of crawl space issue you have?</h3><p>Start with a symptom and we’ll help identify what type of professional may be appropriate.</p></div><button class="btn btn-white" data-page="find-help">Find out what help you may need</button></div>
+
+                ${articleSection("mold-removal-vs-mold-remediation-vs-encapsulation", "Mold Removal vs. Mold Remediation vs. Encapsulation", `
+                  <p>Homeowners often use these terms interchangeably, but they do not mean the same thing.</p>
+                  <div class="cost-table"><table><thead><tr><th>Option</th><th>What It Does</th><th>When It Helps</th><th>What It Does Not Solve</th></tr></thead><tbody>${comparisonRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`).join("")}</tbody></table></div>
+                  <p>The best solution depends on the condition of the crawl space. Some homes may only need localized cleaning and moisture correction. Others may need remediation, insulation removal, vapor barrier replacement, drainage improvements, and encapsulation.</p>
+                `)}
+
+                ${articleSection("does-encapsulation-kill-mold", "Does Encapsulation Kill Mold?", `
+                  <p>No. <strong>Encapsulation should not be described as a way to “kill” existing mold.</strong></p>
+                  <p>Crawl space encapsulation can help prevent future mold growth by controlling ground moisture and humidity. But if mold is already growing on joists, subflooring, insulation, or other materials, that issue may need to be addressed before encapsulation.</p>
+                  <p>This is where many homeowners get confused. Encapsulation is often part of the long-term moisture solution, but it is not automatically a substitute for mold remediation.</p>
+                  <p>A better sequence is usually:</p>
+                  <ol><li>Identify the moisture source.</li><li>Assess the mold-affected materials.</li><li>Remove or clean affected materials where appropriate.</li><li>Fix drainage, leaks, humidity, or vapor barrier issues.</li><li>Consider encapsulation or dehumidification to prevent recurrence.</li></ol>
+                  <p>If a contractor recommends encapsulation for a moldy crawl space, ask whether the existing mold will be remediated first and what steps are included in the quote.</p>
+                  ${callout("Do not cover up active mold", "Encapsulation can be part of long-term prevention, but existing mold, contaminated insulation, standing water, active leaks, or structural damage should be evaluated before the crawl space is sealed.")}
+                `)}
+
+                ${articleSection("when-is-professional-mold-remediation-needed", "When Is Professional Mold Remediation Needed?", `
+                  <p>Professional evaluation is usually a good idea when the mold problem is more than small, isolated surface growth.</p>
+                  <p>Consider contacting a crawl space mold remediation specialist if:</p>
+                  <ul class="list-cards"><li>✓ Mold covers a large area</li><li>✓ Mold is growing on structural wood</li><li>✓ Insulation is wet, fallen, or contaminated</li><li>✓ There is standing water in the crawl space</li><li>✓ The crawl space is difficult or unsafe to access</li><li>✓ The issue was found during a real estate inspection</li><li>✓ Mold keeps returning after cleaning</li><li>✓ There is a persistent musty odor indoors</li><li>✓ The crawl space has sewage, floodwater, or contaminated water exposure</li><li>✓ You or someone in the home has respiratory sensitivity</li><li>✓ You are unsure whether the issue is mold, mildew, wood staining, or fungal growth</li></ul>
+                  <p>Professional remediation may also be necessary when containment, personal protective equipment, specialized cleaning methods, or post-remediation verification are needed.</p>
+                `)}
+
+                ${articleSection("can-you-remove-crawl-space-mold-yourself", "Can You Remove Crawl Space Mold Yourself?", `
+                  <p>Small, accessible, non-recurring mold spots may sometimes be manageable for a homeowner, especially if the moisture source is obvious and has already been fixed.</p>
+                  <p>However, DIY mold removal in a crawl space is often risky because crawl spaces can involve:</p>
+                  <ul class="list-cards"><li>⚠️ Confined access</li><li>⚠️ Poor ventilation</li><li>⚠️ Respiratory exposure</li><li>⚠️ Contaminated insulation</li><li>⚠️ Electrical hazards</li><li>⚠️ Plumbing hazards</li><li>⚠️ Pest debris</li><li>⚠️ Sharp materials</li><li>⚠️ Structural wood</li><li>⚠️ Hidden water intrusion</li></ul>
+                  <p>DIY may not be appropriate if:</p>
+                  <ul class="list-cards"><li>⚠️ The mold covers a large area</li><li>⚠️ Mold is on joists, beams, or subflooring</li><li>⚠️ Insulation is affected</li><li>⚠️ There is standing water</li><li>⚠️ You smell mold inside the house</li><li>⚠️ The issue is part of a home sale or inspection</li><li>⚠️ You have health concerns</li><li>⚠️ The mold has returned after previous cleaning</li><li>⚠️ You do not know where the moisture is coming from</li></ul>
+                  <p>Also be careful with bleach. Bleach is often not the right solution for porous building materials, and spraying chemicals without fixing moisture can create a false sense of progress. The visible growth may fade, but the underlying conditions may remain.</p>
+                `)}
+
+                ${articleSection("what-should-a-crawl-space-mold-remediation-quote-include", "What Should a Crawl Space Mold Remediation Quote Include?", `
+                  <p>This is one of the most important parts of hiring a contractor. A quote should not simply say “treat mold” or “spray crawl space.” It should explain what the provider found, what they plan to do, and how they will address moisture.</p>
+                  <p>A strong crawl space mold remediation quote should include:</p>
+                  <ul class="list-cards"><li>✓ Inspection findings</li><li>✓ Photos of affected areas</li><li>✓ Moisture readings, if available</li><li>✓ Scope of the affected area</li><li>✓ Location of mold growth</li><li>✓ Whether insulation is affected</li><li>✓ Whether structural wood is affected</li><li>✓ Cleaning or removal method</li><li>✓ Containment plan, if needed</li><li>✓ Personal protective equipment and safety approach</li><li>✓ Insulation removal or replacement details</li><li>✓ Vapor barrier repair or replacement</li><li>✓ Drainage or waterproofing recommendations</li><li>✓ Dehumidifier recommendations</li><li>✓ Encapsulation recommendations, if appropriate</li><li>✓ Whether post-remediation verification is included</li><li>✓ Warranty or maintenance terms</li><li>✓ Clear list of exclusions</li></ul>
+                  <p>A vague quote can lead to incomplete work. For example, one provider may only clean visible mold, while another may include insulation removal, vapor barrier replacement, drainage correction, and humidity control.</p><p>When comparing quotes, make sure you are comparing the same scope of work.</p>
+                `)}
+
+                ${articleSection("how-much-does-crawl-space-mold-remediation-cost", "How Much Does Crawl Space Mold Remediation Cost?", `
+                  <p>Crawl space mold remediation cost varies widely because the scope can range from localized cleaning to full remediation and moisture correction.</p>
+                  <p>Cost factors include:</p>
+                  <ul class="list-cards"><li>✓ Crawl space size</li><li>✓ Severity of mold growth</li><li>✓ Accessibility</li><li>✓ Whether insulation must be removed</li><li>✓ Whether wood framing needs cleaning or treatment</li><li>✓ Whether a vapor barrier is missing or damaged</li><li>✓ Whether encapsulation is recommended</li><li>✓ Whether a dehumidifier is needed</li><li>✓ Whether drainage or sump pump work is required</li><li>✓ Regional labor rates</li><li>✓ Whether post-remediation verification is included</li></ul>
+                  <p>Because mold-related work is highly dependent on site conditions, it is usually better to get multiple quotes than to rely on a generic price range.</p>
+                  <p>A lower quote may only include surface treatment. A higher quote may include moisture control, drainage, insulation work, and encapsulation. The more important question is not just “What does it cost?” but “What problem is this quote actually solving?”</p>
+                `)}
+
+                ${articleSection("how-to-choose-a-crawl-space-mold-specialist", "How to Choose a Crawl Space Mold Specialist", `
+                  <p>Not every crawl space contractor handles mold remediation the same way. Some specialize in encapsulation. Some focus on waterproofing. Others provide mold remediation, insulation removal, drainage, and moisture control.</p>
+                  <p>Before hiring a contractor, ask:</p>
+                  <ul class="list-cards"><li>✓ Do you perform mold remediation, or only encapsulation?</li><li>✓ Will you identify and address the moisture source?</li><li>✓ What standards, training, or remediation practices do you follow?</li><li>✓ Will you provide photos of the affected areas?</li><li>✓ Will you take moisture readings?</li><li>✓ Is insulation removal included if needed?</li><li>✓ Will mold be addressed before encapsulation?</li><li>✓ Are vapor barrier, drainage, and dehumidifier recommendations included?</li><li>✓ What happens if mold returns?</li><li>✓ Do you offer post-remediation verification?</li><li>✓ What is excluded from the quote?</li><li>✓ Do you recommend getting more than one quote?</li></ul>
+                  <p>Red flags include:</p>
+                  <ul class="list-cards"><li>⚠️ Recommending encapsulation without discussing existing mold</li><li>⚠️ Saying mold can be solved with a quick spray</li><li>⚠️ Ignoring standing water or drainage</li><li>⚠️ Refusing to provide photos or scope details</li><li>⚠️ Using scare tactics without explaining the actual findings</li><li>⚠️ Giving a quote that does not mention moisture control</li></ul>
+                  <p>The best provider should be able to explain both parts of the problem: <strong>mold cleanup and moisture prevention.</strong></p>
+                `)}
+
+                ${articleSection("local-considerations-for-crawl-space-mold", "Local Considerations for Crawl Space Mold", `
+                  <p>Crawl space mold is especially common in humid regions. In states like North Carolina and throughout the Southeast, homes often deal with:</p>
+                  <ul class="list-cards"><li>✓ High outdoor humidity</li><li>✓ Frequent rainfall</li><li>✓ Clay soils that hold moisture</li><li>✓ Vented crawl spaces</li><li>✓ HVAC equipment or ductwork in crawl spaces</li><li>✓ Poor yard drainage</li><li>✓ Seasonal condensation</li></ul>
+                  <p>A local crawl space specialist should understand how regional climate affects crawl space moisture. For example, in humid climates, open crawl space vents may not always keep the space dry. In some cases, outside air can increase humidity inside the crawl space.</p>
+                  <p>That is why local recommendations may include vapor barrier upgrades, drainage improvements, air sealing, dehumidification, or encapsulation.</p>
+                `)}
+
+                ${articleSection("next-steps-if-you-found-mold-in-your-crawl-space", "Next Steps If You Found Mold in Your Crawl Space", `
+                  <p>If you discovered mold or suspect a crawl space moisture issue, take a step-by-step approach.</p>
+                  <h3>1. Document what you see.</h3><p>Take photos of visible growth, wet insulation, standing water, vapor barrier damage, or wood staining.</p>
+                  <h3>2. Pay attention to odors.</h3><p>Note whether the musty smell is strongest near floors, vents, closets, or crawl space access points.</p>
+                  <h3>3. Look for obvious water sources.</h3><p>Check gutters, downspouts, grading, plumbing leaks, condensation, and water pooling near the foundation.</p>
+                  <h3>4. Avoid disturbing large moldy areas.</h3><p>Disturbing mold can spread particles, especially in a tight crawl space.</p>
+                  <h3>5. Get 2–3 quotes if the issue is not urgent.</h3><p>Ask each provider to explain how they will address both mold and moisture.</p>
+                  <h3>6. Compare the scope of work.</h3><p>Make sure each quote clearly states whether it includes remediation, insulation removal, vapor barrier work, drainage, dehumidification, or encapsulation.</p>
+                  <h3>7. Keep records.</h3><p>Save photos, reports, invoices, and post-remediation documentation. This can matter for resale, inspections, or future maintenance.</p>
+                `)}
+
+                ${articleSection("compare-local-crawl-space-mold-remediation-specialists", "Compare Local Crawl Space Mold Remediation Specialists", `
+                  <p>Not sure whether you need mold removal, encapsulation, moisture control, drainage, or a dehumidifier?</p>
+                  <p>A local crawl space specialist can inspect the issue, explain the source of moisture, and recommend the right combination of remediation and prevention.</p>
+                  <p><strong>Before choosing a provider, compare quotes carefully.</strong> Look for a contractor who explains what caused the mold, what materials are affected, and how they will help prevent the problem from returning.</p>
+                  <div class="inline-cta"><div><h3>Compare local crawl space professionals</h3><p>We do not perform crawl space work directly. We help homeowners understand their options and may connect users with relevant local providers when appropriate.</p></div><button class="btn btn-white" data-page="find-help">Request quotes based on your project details</button></div>
+                `)}
+
+                <section class="article-section"><h2>Related guides</h2><div class="grid-2">${[articles[1], articles[2], articles[5], articles[0]].map(a => articleCard(a, a.page || "hub")).join("")}</div></section>
+
+                <section id="frequently-asked-questions" class="article-section"><h2>Frequently Asked Questions</h2>${faqs.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><p>${a}</p></details>`).join("")}</section>
+
+                <section class="plain-card"><h2 style="font-size:24px">Author & reviewer</h2><p>Written by the CrawlWise Editorial Team. Reviewed by a crawl space, waterproofing, mold, or structural professional placeholder before publication. Replace this placeholder with a real reviewer profile as the site matures.</p></section>
+
+                <section class="plain-card" style="margin-top:18px;background:var(--surface-warm)"><h2 style="font-size:24px">Get homeowner-friendly repair checklists</h2><p>Occasional guides on crawl space moisture, cost questions, contractor red flags, and maintenance checks.</p><div class="zip-row"><input class="input" placeholder="Email address"><button class="btn btn-primary">Subscribe</button></div></section>
+              </article>
+
+              <aside class="desktop-only">
+                ${sidebarCta()}
+              </aside>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
     function renderFindHelp() {
       $("#find-help").innerHTML = `
         <section class="section">
@@ -1373,6 +1580,7 @@
         "crawl-space-encapsulation": "Crawl Space Encapsulation: Costs, Alternatives, and When It's Worth It | CrawlWise",
         "best-crawl-space-dehumidifier": "Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One | CrawlWise",
         "crawl-space-moisture": "Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes | CrawlWise",
+        "crawl-space-mold-remediation": "Crawl Space Mold Remediation: What Homeowners Need to Know | CrawlWise",
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education"
@@ -1411,6 +1619,7 @@
       renderEncapsulationArticle();
       renderDehumidifierArticle();
       renderMoistureArticle();
+      renderMoldRemediationArticle();
       renderHub();
       renderFindHelp();
       renderAbout();
