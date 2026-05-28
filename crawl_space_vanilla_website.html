@@ -546,6 +546,7 @@
   <main>
     <div id="home" class="page active"></div>
     <div id="article" class="page"></div>
+    <div id="crawl-space-repair-near-me" class="page"></div>
     <div id="crawl-space-encapsulation" class="page"></div>
     <div id="best-crawl-space-dehumidifier" class="page"></div>
     <div id="crawl-space-moisture" class="page"></div>
@@ -594,6 +595,15 @@
         summary: "Learn why crawl spaces collect water after storms, what warning signs matter, and which fixes may be worth discussing with a professional.",
         readTime: "9 min read",
         updated: "May 25, 2026"
+      },
+      {
+        title: "Crawl Space Repair Near Me: Signs, Costs, and When to Call a Contractor",
+        slug: "/crawl-space-repair-near-me/",
+        page: "crawl-space-repair-near-me",
+        category: "Repair",
+        summary: "Learn what crawl space repair can include, warning signs to watch for, what affects cost, and how to compare local crawl space repair contractors before requesting quotes.",
+        readTime: "14 min read",
+        updated: "May 28, 2026"
       },
       {
         title: "Crawl Space Encapsulation: When It’s Worth It, Costs, and Alternatives",
@@ -705,6 +715,7 @@
     const pageToPath = {
       home: '/',
       article: '/water-in-crawl-space/',
+      "crawl-space-repair-near-me": '/crawl-space-repair-near-me/',
       "crawl-space-encapsulation": '/crawl-space-encapsulation/',
       "best-crawl-space-dehumidifier": '/best-crawl-space-dehumidifier/',
       "crawl-space-moisture": '/crawl-space-moisture/',
@@ -744,6 +755,7 @@
 
     function hubCard(hub) {
       const [icon, title, copy, questions] = hub;
+      const targetPage = title.includes("Water") ? "article" : title === "Crawl Space Repair" ? "crawl-space-repair-near-me" : "hub";
       return `
         <article class="hub-card">
           <div class="hub-icon">${icon}</div>
@@ -752,18 +764,21 @@
           <div class="question-list">
             ${questions.map(q => `<div>✓ ${escapeHtml(q)}</div>`).join("")}
           </div>
-          <a class="text-link" href="${pagePath(title.includes("Water") ? "article" : "hub")}" data-page="${title.includes("Water") ? "article" : "hub"}">Read the full guide →</a>
+          <a class="text-link" href="${pagePath(targetPage)}" data-page="${targetPage}">Read the full guide →</a>
         </article>
       `;
     }
 
     function symptomGrid() {
-      return symptoms.map(([icon, label]) => `
-        <a class="symptom-card" href="${pagePath(label.includes("Standing water") ? "article" : "hub")}" data-page="${label.includes("Standing water") ? "article" : "hub"}">
+      return symptoms.map(([icon, label]) => {
+        const targetPage = label.includes("Standing water") ? "article" : label.includes("Sagging") || label.includes("Wood rot") ? "crawl-space-repair-near-me" : "hub";
+        return `
+        <a class="symptom-card" href="${pagePath(targetPage)}" data-page="${targetPage}">
           <span class="symptom-left"><span class="icon-box">${icon}</span>${escapeHtml(label)}</span>
           <span class="arrow">→</span>
         </a>
-      `).join("");
+      `;
+      }).join("");
     }
 
     function breadcrumb(items) {
@@ -1023,6 +1038,189 @@
         ["Who should inspect my crawl space?", "Depending on the issue, you may need a crawl space contractor, waterproofing specialist, mold professional, HVAC contractor, electrician, pest professional, or structural engineer."]
       ];
       return faqs.map(([q,a]) => `<details class="faq-item"><summary>${q}</summary><p>${a}</p></details>`).join("");
+    }
+
+
+
+    function renderCrawlSpaceRepairArticle() {
+      const toc = [
+        "What Crawl Space Repair Usually Means",
+        "Signs You May Need Crawl Space Repair",
+        "When Is Crawl Space Repair Urgent?",
+        "Common Crawl Space Repair Options",
+        "How Much Does Crawl Space Repair Cost?",
+        "Crawl Space Repair vs. Encapsulation vs. Waterproofing",
+        "How to Choose a Crawl Space Repair Contractor Near You",
+        "Red Flags When Comparing Crawl Space Repair Quotes",
+        "Should You DIY Crawl Space Repair?",
+        "What to Expect During a Crawl Space Inspection",
+        "Compare Crawl Space Repair Providers Near You",
+        "Crawl Space Repair FAQs"
+      ];
+      const relatedGuides = articles.filter((article) => ["article", "crawl-space-moisture", "crawl-space-mold-remediation", "crawl-space-encapsulation"].includes(article.page));
+      const repairRows = [
+        ["Standing water", "Poor drainage, groundwater, plumbing leak, short downspouts", "Drainage correction, sump pump, grading, gutters, waterproofing", "Crawl space waterproofing contractor"],
+        ["Damp soil", "Missing or damaged vapor barrier, high humidity", "Vapor barrier replacement, encapsulation, dehumidifier", "Crawl space repair specialist"],
+        ["Mold", "Moisture, humidity, wet insulation, poor airflow", "Moisture correction, mold remediation, insulation removal", "Mold remediation or crawl space contractor"],
+        ["Sagging floors", "Damaged joists, weak beams, failing supports", "Joist repair, beam repair, support jacks, pier correction", "Structural or foundation contractor"],
+        ["Musty smell", "Mold, damp soil, wet insulation, humid air", "Inspection, vapor barrier, dehumidifier, mold treatment", "Crawl space specialist"],
+        ["Falling insulation", "Moisture, pests, poor installation", "Insulation removal/replacement, air sealing, moisture control", "Crawl space or insulation contractor"],
+        ["Wood rot", "Long-term moisture exposure", "Wood repair, moisture correction, structural evaluation", "Structural or crawl space contractor"]
+      ];
+      const repairFaqs = [
+        ["How do I know if my crawl space needs repair?", "You may need crawl space repair if you notice standing water, damp soil, musty odors, mold, sagging floors, wet insulation, pest activity, wood rot, foundation cracks, or high indoor humidity. The best next step is to identify whether the issue is caused by water intrusion, humidity, structural damage, or another source."],
+        ["Is standing water in a crawl space serious?", "Standing water should be taken seriously, especially if it happens repeatedly. It can contribute to mold, wood rot, insulation damage, pest problems, and humidity inside the home. A contractor should inspect where the water is coming from before recommending a repair."],
+        ["How much does crawl space repair usually cost?", "Crawl space repair costs vary widely based on the size of the crawl space, severity of moisture, mold, insulation damage, structural issues, drainage needs, and whether the project includes vapor barrier replacement, encapsulation, waterproofing, or dehumidification. Always ask for an itemized quote."],
+        ["Is crawl space encapsulation the same as repair?", "No. Encapsulation is one type of crawl space repair or improvement. It usually involves sealing the crawl space with a vapor barrier and may include sealing vents and adding a dehumidifier. Crawl space repair can also include waterproofing, mold remediation, insulation replacement, drainage, or structural work."],
+        ["Can I fix a wet crawl space myself?", "You may be able to handle minor prevention tasks, such as extending downspouts or replacing a small section of vapor barrier. However, standing water, mold, wood rot, electrical hazards, and structural issues should be inspected by a professional."],
+        ["What type of contractor fixes crawl spaces?", "Depending on the issue, you may need a crawl space repair specialist, waterproofing contractor, foundation repair contractor, mold remediation company, insulation contractor, pest control provider, or structural repair specialist. Some companies handle several of these services."],
+        ["Should I get more than one crawl space repair quote?", "Yes. Getting multiple quotes can help you compare scope, cost, materials, warranties, and recommendations. This is especially important for large projects involving encapsulation, drainage, mold treatment, or structural repair."],
+        ["What questions should I ask before hiring a crawl space contractor?", "Ask what caused the problem, what the quote includes, what is excluded, whether drainage was inspected, whether mold or insulation is included, whether structural work is needed, whether permits apply, and what warranty terms mean."],
+        ["Does homeowners insurance cover crawl space repair?", "It depends on the cause of damage and your policy. Sudden plumbing leaks may be treated differently from long-term moisture, poor maintenance, flooding, mold, or groundwater intrusion. Contact your insurance provider before assuming a repair is covered."],
+        ["Is mold in a crawl space dangerous?", "Mold in a crawl space should be evaluated because it indicates excess moisture and may affect indoor air quality, especially if crawl space air moves into the home. Mold cleanup should be paired with moisture correction so the problem does not return."]
+      ];
+
+      $("#crawl-space-repair-near-me").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Repair", "Crawl Space Repair Near Me"])}
+            <div class="article-layout">
+              <aside class="desktop-only">
+                <div class="toc"><p class="toc-title">Table of contents</p>${toc.map(item => `<a href="#${slugify(item)}">${item}</a>`).join("")}</div>
+              </aside>
+              <article class="article-body">
+                <span class="badge">Repair</span>
+                <h1 class="page-title" style="margin-top:16px">Crawl Space Repair Near Me: Signs, Costs, and When to Call a Contractor</h1>
+                <p class="lead">If you are searching for “crawl space repair near me,” there is a good chance something already feels wrong in your home.</p>
+                <div class="article-meta-row"><span>Last updated: May 28, 2026</span><span>•</span><span>14 min read</span><span>•</span><span>Author: CrawlWise Editorial Team</span><span>•</span><span>Reviewer: Crawl Space Professional Placeholder</span></div>
+                <details class="mobile-toc plain-card"><summary style="font-weight:950;cursor:pointer">Table of contents</summary><div style="display:grid;gap:8px;margin-top:12px">${toc.map(item => `<a href="#${slugify(item)}" style="color:var(--clay);font-weight:850">${item}</a>`).join("")}</div></details>
+                <div class="plain-card" style="margin-bottom:26px"><p style="margin:0;font-size:15px"><strong>Editorial disclosure:</strong> This website provides educational information for homeowners. We are not a substitute for a licensed inspection, structural engineer, mold professional, or contractor. In some cases, we may connect users with service providers.</p></div>
+                <p>Maybe you noticed a musty smell. Maybe your floors feel uneven. Maybe there is standing water under the house after heavy rain. Or maybe a contractor already gave you a large quote for encapsulation, waterproofing, mold treatment, or structural repair, and you want to understand whether the recommendation makes sense.</p>
+                <p>Crawl space repair can mean several different things depending on the problem. In some homes, the fix may be as simple as replacing a damaged vapor barrier or improving drainage around the foundation. In others, the issue may involve mold, wood rot, sagging floor joists, standing water, insulation damage, or structural support problems.</p>
+                <p>This guide explains what crawl space repair usually includes, warning signs to watch for, when the issue may be urgent, what affects cost, and how to compare local crawl space repair contractors before requesting quotes.</p>
+                <p>We do not perform crawl space repair directly. This page is designed to help homeowners understand their options and, where available, connect with local crawl space specialists or contractors.</p>
+
+                ${articleSection("what-crawl-space-repair-usually-means", "What Crawl Space Repair Usually Means", `
+                  <p>“Crawl space repair” is a broad term. It does not refer to one specific service.</p>
+                  <p>Depending on the condition of your home, crawl space repair may include:</p>
+                  <ul class="list-cards"><li>✓ Moisture control</li><li>✓ Standing water removal or drainage correction</li><li>✓ Mold remediation</li><li>✓ Vapor barrier replacement</li><li>✓ Crawl space encapsulation</li><li>✓ Sump pump installation</li><li>✓ Dehumidifier installation</li><li>✓ Insulation removal or replacement</li><li>✓ Wood rot repair</li><li>✓ Floor joist repair</li><li>✓ Support beam or post repair</li><li>✓ Pest-related damage repair</li><li>✓ Foundation or structural correction</li></ul>
+                  <p>The most important thing to understand is that the visible symptom is not always the root cause.</p>
+                  <p>For example, a wet crawl space could be caused by poor grading, clogged gutters, short downspouts, groundwater intrusion, plumbing leaks, missing vapor barrier coverage, or poor humidity control. A musty smell could come from damp soil, mold growth, wet insulation, or air from the crawl space moving into the home.</p>
+                  <p>That is why the right repair should start with diagnosis, not a one-size-fits-all recommendation.</p>
+                  <p>A good crawl space contractor should be able to explain what is happening, why it is happening, and which repairs address the source of the problem.</p>
+                `)}
+
+                ${articleSection("signs-you-may-need-crawl-space-repair", "Signs You May Need Crawl Space Repair", `
+                  <p>Some crawl space problems are obvious. Others show up inside the home before you ever look under the house.</p>
+                  <p>Common signs you may need crawl space repair include:</p>
+                  <h3>Standing Water or Damp Soil</h3><p>Water pooling in the crawl space is one of the clearest signs that something needs attention. Even if the water eventually dries, repeated moisture can lead to mold, wood rot, insulation damage, pest activity, and humidity problems inside the home.</p>
+                  <h3>Musty Odors</h3><p>A musty smell indoors may be coming from the crawl space, especially if the odor is strongest near floor vents, closets, bathrooms, or lower levels of the home. Musty odors often point to excess moisture, mold, mildew, or damp organic material under the house.</p>
+                  <h3>Mold or Mildew</h3><p>Visible mold on wood framing, insulation, vapor barriers, or foundation walls should be evaluated. Mold is usually a moisture symptom. Cleaning it without correcting the moisture source may only provide a temporary fix.</p>
+                  <h3>Sagging or Uneven Floors</h3><p>Sagging floors, sloping rooms, bouncy areas, or gaps between flooring and baseboards can indicate issues with joists, beams, piers, or crawl space supports. These problems should be evaluated by a qualified professional, especially if they appear to be getting worse.</p>
+                  <h3>Wet or Falling Insulation</h3><p>Crawl space insulation that is damp, sagging, falling, or torn can reduce energy efficiency and signal moisture problems. Wet insulation can also hold moisture against wood framing.</p>
+                  <h3>High Indoor Humidity</h3><p>If your home feels humid even when the HVAC is running, the crawl space may be contributing moisture to the indoor air. This is especially common in humid climates or homes with vented crawl spaces.</p>
+                  <h3>Pest Activity</h3><p>Rodents, insects, termites, and other pests are often attracted to damp, damaged, or poorly sealed crawl spaces. Pest activity can also create additional damage to insulation, vapor barriers, ductwork, and wood.</p>
+                  <h3>Wood Rot or Soft Framing</h3><p>Soft wood, crumbling joists, dark staining, or fungal growth can signal long-term moisture exposure. Wood rot can become a structural issue if ignored.</p>
+                  <h3>Foundation or Drywall Cracks</h3><p>Cracks in foundation walls, interior drywall, or exterior brick may be related to settlement, soil movement, moisture, or structural shifting. Not every crack is serious, but cracks combined with floor movement or moisture should be inspected.</p>
+                  <h3>Higher Energy Bills</h3><p>A damaged crawl space can affect indoor comfort and energy efficiency. Wet insulation, air leaks, duct issues, and uncontrolled humidity can all make the HVAC system work harder.</p>
+                `)}
+
+                ${articleSection("when-is-crawl-space-repair-urgent", "When Is Crawl Space Repair Urgent?", `
+                  <p>Not every crawl space issue is an emergency, but some problems should be evaluated quickly.</p>
+                  <h3>Call a Professional Soon</h3>
+                  <p>You should consider calling a crawl space repair contractor soon if you notice:</p>
+                  <ul class="list-cards"><li>⚠️ Standing water after rain</li><li>⚠️ Persistent damp soil</li><li>⚠️ Mold or mildew growth</li><li>⚠️ Wet or falling insulation</li><li>⚠️ Musty smells spreading indoors</li><li>⚠️ High indoor humidity</li><li>⚠️ Pest infestation</li><li>⚠️ A damaged or missing vapor barrier</li></ul>
+                  <p>These issues may not mean your home is in immediate danger, but they can get worse over time. Moisture problems rarely fix themselves. The longer they continue, the more likely they are to affect wood framing, indoor air quality, insulation, pests, or energy efficiency.</p>
+                  <h3>Get Evaluated Immediately</h3>
+                  <p>You should seek a professional evaluation more urgently if you notice:</p>
+                  <ul class="list-cards"><li>⚠️ Sagging floors</li><li>⚠️ Soft or rotting floor joists</li><li>⚠️ Cracked or shifting foundation walls</li><li>⚠️ Structural movement</li><li>⚠️ Large areas of standing water</li><li>⚠️ Electrical or plumbing components exposed to water</li><li>⚠️ Sudden floor movement</li><li>⚠️ Major pest or termite damage</li></ul>
+                  <p>Structural symptoms deserve more caution. A crawl space specialist, foundation repair contractor, structural contractor, or licensed engineer may be needed depending on the severity of the issue.</p>
+                  <p>The goal is not to panic. The goal is to identify whether the issue is cosmetic, moisture-related, structural, or a combination of problems.</p>
+                  ${callout("Structural caution", "Sagging floors, soft joists, foundation movement, and electrical or plumbing components exposed to water should be evaluated promptly by a qualified professional.")}
+                  <div class="inline-cta"><div><h3>Not sure what kind of crawl space issue you have?</h3><p>Start with a symptom and we’ll help identify what type of professional may be appropriate.</p></div><button class="btn btn-white" data-page="find-help">Find out what help you may need</button></div>
+                `)}
+
+                ${articleSection("common-crawl-space-repair-options", "Common Crawl Space Repair Options", `
+                  <p>The right repair depends on the cause. Here are common crawl space problems and the types of solutions contractors may recommend.</p>
+                  <div class="cost-table"><table><thead><tr><th>Problem</th><th>Possible Cause</th><th>Common Repair Options</th><th>Who to Call</th></tr></thead><tbody>${repairRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`).join("")}</tbody></table></div>
+                  <p>A trustworthy contractor should explain which problem they found and why a specific repair is recommended.</p>
+                  <p>For example, encapsulation may help control humidity, but it may not solve active water intrusion unless drainage is also addressed. A vapor barrier can reduce ground moisture, but it may not fix poor grading or water entering through the foundation. Mold treatment may clean affected surfaces, but the mold may return if the moisture source is not corrected.</p>
+                `)}
+
+                ${articleSection("how-much-does-crawl-space-repair-cost", "How Much Does Crawl Space Repair Cost?", `
+                  <p>Crawl space repair costs can vary widely because the phrase covers many different repairs. A small vapor barrier replacement is very different from full encapsulation, mold remediation, drainage installation, sump pump work, insulation removal, and structural repair.</p>
+                  <p>The cost of crawl space repair depends on factors such as:</p>
+                  <ul class="list-cards"><li>• Crawl space size</li><li>• Accessibility</li><li>• Amount of standing water</li><li>• Moisture severity</li><li>• Mold or mildew growth</li><li>• Wood rot or structural damage</li><li>• Insulation condition</li><li>• Whether drainage is needed</li><li>• Whether a sump pump is needed</li><li>• Whether encapsulation is included</li><li>• Whether a dehumidifier is included</li><li>• Local labor costs</li><li>• Permit or engineering requirements</li><li>• Whether the quote includes cleanup and disposal</li></ul>
+                  <h3>Why Quotes Can Vary So Much</h3>
+                  <p>Two crawl space repair quotes may look completely different because they may not include the same scope of work.</p>
+                  <p>One contractor might quote a basic vapor barrier replacement. Another might quote full encapsulation with sealed vents, drainage matting, a sump pump, insulation removal, mold treatment, air sealing, and a dehumidifier. A third contractor may include structural repairs to joists, beams, or supports.</p>
+                  <p>That does not automatically mean the most expensive quote is wrong or the cheapest quote is best. It means you need to compare the details.</p>
+                  <p>Before choosing a contractor, ask:</p>
+                  <ul class="list-cards"><li>✓ What exact problem is this quote solving?</li><li>✓ Is the moisture source being corrected?</li><li>✓ Does the quote include mold treatment?</li><li>✓ Does it include insulation removal or replacement?</li><li>✓ Does it include drainage or waterproofing?</li><li>✓ Does it include structural repairs?</li><li>✓ Does it include a dehumidifier?</li><li>✓ What is excluded?</li><li>✓ What happens if more damage is found after work begins?</li></ul>
+                  <p>The more itemized the quote, the easier it is to compare options.</p>
+                `)}
+
+                ${articleSection("crawl-space-repair-vs-encapsulation-vs-waterproofing", "Crawl Space Repair vs. Encapsulation vs. Waterproofing", `
+                  <p>Homeowners often hear these terms used together, but they do not mean the same thing.</p>
+                  <h3>Crawl Space Repair</h3><p>Crawl space repair is the broad category. It can include moisture control, mold remediation, insulation replacement, wood repair, structural support, waterproofing, or encapsulation.</p>
+                  <h3>Crawl Space Encapsulation</h3><p>Encapsulation usually means sealing the crawl space with a heavy-duty vapor barrier along the ground and walls. It may also include sealing vents, air sealing, installing a dehumidifier, and conditioning the space.</p><p>Encapsulation is often recommended for humidity control, but it may not be enough if there is active water intrusion.</p>
+                  <h3>Crawl Space Waterproofing</h3><p>Waterproofing focuses on controlling water. This may include drainage systems, sump pumps, grading corrections, downspout extensions, foundation drainage, or other methods to prevent water from collecting under the home.</p>
+                  <h3>Structural Crawl Space Repair</h3><p>Structural repair involves damaged or weakened framing, such as joists, beams, posts, piers, or supports. This is usually more serious than simple moisture control and may require a foundation repair contractor, structural repair specialist, or engineer.</p>
+                  <p>The best solution may include more than one category. For example, a wet crawl space with mold and sagging insulation may require drainage correction, mold treatment, insulation removal, vapor barrier replacement, and humidity control.</p>
+                `)}
+
+                ${articleSection("how-to-choose-a-crawl-space-repair-contractor-near-you", "How to Choose a Crawl Space Repair Contractor Near You", `
+                  <p>Choosing the right crawl space repair contractor is not just about finding the closest company. It is about finding someone who can diagnose the problem accurately and provide a clear scope of work.</p>
+                  <p>Before hiring a crawl space repair company, ask these questions:</p>
+                  <ul class="list-cards"><li>✓ <strong>1. What is causing the problem?</strong><br>The contractor should explain the source of moisture, damage, or structural movement.</li><li>✓ <strong>2. Did you inspect drainage, gutters, downspouts, grading, plumbing, and ventilation?</strong><br>Crawl space moisture often starts outside the crawl space.</li><li>✓ <strong>3. Is this repair addressing the cause or only the symptom?</strong><br>For example, removing mold without fixing moisture may not solve the issue long term.</li><li>✓ <strong>4. What is included in the quote?</strong><br>Ask for itemized pricing for vapor barrier, encapsulation, waterproofing, insulation, mold treatment, dehumidifier, sump pump, and structural work.</li><li>✓ <strong>5. What is excluded?</strong><br>Exclusions matter. Some quotes do not include insulation removal, mold remediation, electrical work, plumbing work, or structural repairs.</li><li>✓ <strong>6. Are permits needed?</strong><br>Some structural, drainage, electrical, or mechanical work may require permits depending on your location.</li><li>✓ <strong>7. Who performs the work?</strong><br>Ask whether the company uses employees, subcontractors, or a mix.</li><li>✓ <strong>8. What warranties apply?</strong><br>Ask what is covered, who backs the warranty, how long it lasts, and what voids it.</li><li>✓ <strong>9. Can you provide photos or documentation?</strong><br>Before-and-after photos, moisture readings, and written scopes help you understand the work.</li><li>✓ <strong>10. Is the recommendation repair, encapsulation, waterproofing, or all three?</strong><br>Make sure the contractor is clear about what type of solution they are proposing.</li></ul>
+                  <p>A good contractor should be willing to answer questions without pressuring you to sign immediately.</p>
+                `)}
+
+                ${articleSection("red-flags-when-comparing-crawl-space-repair-quotes", "Red Flags When Comparing Crawl Space Repair Quotes", `
+                  <p>Crawl space repairs can be expensive, so it is worth watching for red flags.</p>
+                  <p>Be cautious if a contractor:</p>
+                  <ul class="list-cards"><li>⚠️ Recommends full encapsulation without explaining the moisture source</li><li>⚠️ Uses a one-size-fits-all solution for every problem</li><li>⚠️ Refuses to provide an itemized quote</li><li>⚠️ Pressures you to sign the same day</li><li>⚠️ Does not provide a written scope of work</li><li>⚠️ Does not explain what is included or excluded</li><li>⚠️ Mentions mold but does not explain how it will be handled</li><li>⚠️ Ignores drainage, gutters, grading, or plumbing</li><li>⚠️ Recommends structural repairs without clear evidence</li><li>⚠️ Uses vague warranty language</li><li>⚠️ Claims a “lifetime warranty” without explaining the terms</li><li>⚠️ Cannot show photos or inspection findings</li><li>⚠️ Avoids questions about permits, subcontractors, or materials</li></ul>
+                  <p>A strong quote should help you understand the problem better. If the quote creates more confusion than clarity, get another opinion.</p>
+                  ${callout("Quote comparison tip", "A strong repair recommendation should explain the problem, the cause, the proposed scope, exclusions, warranties, and what happens if hidden damage is found.")}
+                `)}
+
+                ${articleSection("should-you-diy-crawl-space-repair", "Should You DIY Crawl Space Repair?", `
+                  <p>Some minor crawl space tasks may be reasonable for a careful homeowner. Others are better left to professionals.</p>
+                  <p>DIY may be reasonable for:</p>
+                  <ul class="list-cards"><li>✓ Basic visual inspection</li><li>✓ Checking gutters and downspouts</li><li>✓ Extending downspouts away from the foundation</li><li>✓ Cleaning small debris</li><li>✓ Monitoring humidity</li><li>✓ Replacing a small section of vapor barrier</li><li>✓ Checking for obvious plumbing leaks</li><li>✓ Taking photos before getting quotes</li></ul>
+                  <p>However, professional evaluation is usually better for:</p>
+                  <ul class="list-cards"><li>⚠️ Standing water</li><li>⚠️ Mold growth</li><li>⚠️ Electrical hazards</li><li>⚠️ Sagging floors</li><li>⚠️ Wood rot</li><li>⚠️ Foundation cracks</li><li>⚠️ Large vapor barrier or encapsulation projects</li><li>⚠️ Drainage installation</li><li>⚠️ Sump pump installation</li><li>⚠️ Structural repairs</li><li>⚠️ Pest or termite damage</li></ul>
+                  <p>The main risk with DIY crawl space repair is missing the cause. You may replace a vapor barrier, but if water is entering because of grading or drainage problems, the issue can return. You may clean mold, but if humidity stays high, mold can come back. You may add supports under a sagging floor, but if the underlying framing is damaged, the problem may require a more careful structural repair.</p>
+                  <p>DIY can help with inspection and prevention. For active water, mold, or structural symptoms, it is usually safer to get a professional opinion.</p>
+                `)}
+
+                ${articleSection("what-to-expect-during-a-crawl-space-inspection", "What to Expect During a Crawl Space Inspection", `
+                  <p>A crawl space inspection should do more than glance under the house and hand you a sales quote.</p>
+                  <p>A thorough inspection may include:</p>
+                  <ul class="list-cards"><li>✓ Checking for standing water or damp soil</li><li>✓ Looking for mold or mildew</li><li>✓ Inspecting wood framing for rot or damage</li><li>✓ Reviewing insulation condition</li><li>✓ Checking vapor barrier coverage and condition</li><li>✓ Looking for pest activity</li><li>✓ Checking foundation walls, piers, posts, beams, and joists</li><li>✓ Reviewing plumbing or HVAC components in the crawl space</li><li>✓ Looking at drainage, gutters, grading, and downspouts</li><li>✓ Taking photos or videos</li><li>✓ Measuring moisture or humidity</li><li>✓ Providing a written estimate</li></ul>
+                  <p>Before the inspection, it helps to write down what you have noticed inside the home. Include musty smells, humidity, floor movement, cracks, high energy bills, or when water appears after rain.</p>
+                  <p>You can also take photos of visible issues if it is safe to do so. Do not enter a crawl space with standing water, electrical hazards, heavy mold, pests, or structural concerns.</p>
+                `)}
+
+                ${articleSection("compare-crawl-space-repair-providers-near-you", "Compare Crawl Space Repair Providers Near You", `
+                  <p>If you are dealing with a wet crawl space, mold, sagging floors, wood rot, or moisture damage, getting multiple quotes can help you understand your options.</p>
+                  <p>We do not perform crawl space repair directly. Instead, we help homeowners learn what to look for and, where available, connect with local crawl space repair providers.</p>
+                  <p>When requesting quotes, be ready to describe:</p>
+                  <ul class="list-cards"><li>✓ Your ZIP code or city</li><li>✓ The main issue you noticed</li><li>✓ Whether there is standing water</li><li>✓ Whether you see mold or smell musty odors</li><li>✓ Whether floors are sagging or uneven</li><li>✓ Whether insulation is wet or falling</li><li>✓ Approximate crawl space size, if known</li><li>✓ Whether you have photos</li><li>✓ How urgent the issue feels</li></ul>
+                  <p><strong>Compare local crawl space repair providers</strong> and use the quote checklist above to evaluate each recommendation carefully.</p>
+                  <div class="inline-cta"><div><h3>Compare local crawl space repair providers</h3><p>We do not perform crawl space repair directly. We help homeowners understand their options and may connect users with relevant local providers when appropriate.</p></div><button class="btn btn-white" data-page="find-help">Request quotes based on your project details</button></div>
+                `)}
+
+                <section class="article-section"><h2>Related guides</h2><div class="grid-2">${relatedGuides.map(a => articleCard(a, a.page || "hub")).join("")}</div></section>
+                <section id="crawl-space-repair-faqs" class="article-section"><h2>Crawl Space Repair FAQs</h2>${repairFaqs.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><p>${a}</p></details>`).join("")}</section>
+                <section class="plain-card"><h2 style="font-size:24px">Author & reviewer</h2><p>Written by the CrawlWise Editorial Team. Reviewed by a crawl space, waterproofing, mold, or structural professional placeholder before publication. Replace this placeholder with a real reviewer profile as the site matures.</p></section>
+                <section class="plain-card" style="margin-top:18px;background:var(--surface-warm)"><h2 style="font-size:24px">Get homeowner-friendly repair checklists</h2><p>Occasional guides on crawl space moisture, cost questions, contractor red flags, and maintenance checks.</p><div class="zip-row"><input class="input" placeholder="Email address"><button class="btn btn-primary">Subscribe</button></div></section>
+              </article>
+              <aside class="desktop-only">${sidebarCta()}</aside>
+            </div>
+          </div>
+        </section>
+      `;
     }
 
 
@@ -1577,6 +1775,7 @@
       const titles = {
         home: "CrawlWise | Crawl Space Education & Homeowner Guides",
         article: "Water in Crawl Space After Rain | CrawlWise",
+        "crawl-space-repair-near-me": "Crawl Space Repair Near Me: Signs, Costs, and When to Call a Contractor | CrawlWise",
         "crawl-space-encapsulation": "Crawl Space Encapsulation: Costs, Alternatives, and When It's Worth It | CrawlWise",
         "best-crawl-space-dehumidifier": "Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One | CrawlWise",
         "crawl-space-moisture": "Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes | CrawlWise",
@@ -1616,6 +1815,7 @@
     function init() {
       renderHome();
       renderArticle();
+      renderCrawlSpaceRepairArticle();
       renderEncapsulationArticle();
       renderDehumidifierArticle();
       renderMoistureArticle();
