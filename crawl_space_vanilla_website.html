@@ -547,6 +547,7 @@
     <div id="home" class="page active"></div>
     <div id="article" class="page"></div>
     <div id="crawl-space-encapsulation" class="page"></div>
+    <div id="best-crawl-space-dehumidifier" class="page"></div>
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
@@ -600,6 +601,15 @@
         summary: "Understand what crawl space encapsulation includes, when it is worth considering, what it costs, and when vapor barriers, drainage, mold remediation, or other repairs may need to come first.",
         readTime: "11 min read",
         updated: "May 25, 2026"
+      },
+      {
+        title: "Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One",
+        slug: "/best-crawl-space-dehumidifier/",
+        page: "best-crawl-space-dehumidifier",
+        category: "Moisture Control",
+        summary: "Compare crawl-space-rated dehumidifier features, costs, sizing factors, installation options, and when moisture-control repairs should come first.",
+        readTime: "13 min read",
+        updated: "May 28, 2026"
       },
       {
         title: "Crawl Space Vapor Barrier Cost: DIY vs Professional Installation",
@@ -692,6 +702,7 @@
       home: '/',
       article: '/water-in-crawl-space/',
       "crawl-space-encapsulation": '/crawl-space-encapsulation/',
+      "best-crawl-space-dehumidifier": '/best-crawl-space-dehumidifier/',
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
       about: '/about/'
@@ -1053,6 +1064,122 @@
       `;
     }
 
+
+    function renderDehumidifierArticle() {
+      const toc = [
+        "Do You Need a Crawl Space Dehumidifier?",
+        "Best Crawl Space Dehumidifier Features to Look For",
+        "Best Crawl Space Dehumidifier Types",
+        "Crawl Space Dehumidifier Cost",
+        "How to Size a Crawl Space Dehumidifier",
+        "Crawl Space Dehumidifier vs Encapsulation",
+        "DIY vs Professional Installation",
+        "Common Mistakes When Buying a Crawl Space Dehumidifier",
+        "When a Dehumidifier Is Not Enough",
+        "How to Choose a Crawl Space Moisture-Control Provider",
+        "Recommended Next Steps",
+        "FAQ: Crawl Space Dehumidifiers"
+      ];
+
+      const costRows = [
+        ["Budget portable dehumidifier", "$200–$600", "Usually not ideal for harsh crawl space conditions"],
+        ["Crawl-space-rated dehumidifier", "$900–$2,000+", "More durable, better airflow, continuous drainage"],
+        ["High-capacity commercial unit", "$1,500–$2,500+", "Better for large or very humid crawl spaces"],
+        ["Condensate pump", "$100–$250+", "Needed when gravity drainage is not practical"],
+        ["Drain line materials", "$50–$300+", "Depends on distance and discharge location"],
+        ["Professional installation", "Varies widely", "Depends on access, electrical, drainage, and setup"],
+        ["Full moisture-control project", "$1,500–$10,000+", "May include vapor barrier, drainage, sump pump, mold remediation, or encapsulation"]
+      ];
+
+      const sizingRows = [
+        ["Small, sealed crawl space with mild humidity", "Compact crawl space dehumidifier"],
+        ["Average crawl space with moderate humidity", "70-pint crawl space dehumidifier"],
+        ["Large crawl space or high humidity", "High-capacity crawl space dehumidifier"],
+        ["No gravity drain available", "Unit with pump or separate condensate pump"],
+        ["Standing water present", "Fix drainage/waterproofing before relying on a dehumidifier"],
+        ["Mold or wood damage present", "Inspection and remediation may be needed"]
+      ];
+
+      const nextStepRows = [
+        ["Mild humidity, no water, no mold", "Compare crawl-space-rated dehumidifiers"],
+        ["High humidity in an encapsulated crawl space", "Check sizing, drainage, and humidistat settings"],
+        ["Standing water after rain", "Address drainage or waterproofing first"],
+        ["Musty odor or visible mold", "Inspect for mold and moisture source"],
+        ["Missing or torn vapor barrier", "Repair or replace vapor barrier"],
+        ["Sagging floors or damaged wood", "Get structural or foundation evaluation"],
+        ["Unsure what is causing the problem", "Request inspection from a crawl space specialist"]
+      ];
+
+      const faqs = [
+        ["What size dehumidifier do I need for my crawl space?", "It depends on crawl space size, height, humidity level, climate, ventilation, vapor barrier condition, and drainage. Many homeowners compare compact, 70-pint, and high-capacity crawl-space-rated units. If there is standing water, mold, or wood damage, inspect the crawl space before sizing a unit."],
+        ["How much does a crawl space dehumidifier cost?", "A crawl-space-rated dehumidifier often costs around $900 to $2,000 or more for the unit alone. Budget portable units may cost less, but they are usually not ideal for crawl spaces. Total project cost can increase if you need drainage, electrical work, a condensate pump, vapor barrier repair, mold remediation, or encapsulation."],
+        ["Is a crawl space dehumidifier worth it?", "A crawl space dehumidifier can be worth it if excess humidity is causing musty odors, condensation, mold risk, or indoor air quality concerns. It is less likely to solve the problem by itself if the crawl space has standing water, drainage issues, or a missing vapor barrier."],
+        ["Can I use a regular dehumidifier in a crawl space?", "You can in some mild situations, but it is usually not the best choice. Regular room dehumidifiers may not be built for low-clearance, dusty, humid crawl spaces. A crawl-space-rated unit is usually more durable and better suited for continuous drainage."],
+        ["Do I need a dehumidifier if my crawl space is encapsulated?", "Often, yes. Encapsulation reduces moisture entry, but a dehumidifier may still be needed to maintain stable humidity. Many encapsulated crawl spaces include a dedicated dehumidifier as part of the moisture-control system."],
+        ["Should crawl space vents be open or closed when using a dehumidifier?", "In many humid climates, open vents can bring moist outdoor air into the crawl space and make the dehumidifier work harder. Whether vents should be sealed depends on the crawl space design, local code, climate, and whether the space is encapsulated."],
+        ["Where does the water from a crawl space dehumidifier go?", "The water usually drains through a gravity drain line, condensate pump, sump pump system, or approved exterior discharge location. Reliable drainage is essential for the dehumidifier to work properly."],
+        ["Can a dehumidifier stop crawl space mold?", "A dehumidifier can help reduce humidity conditions that support mold growth, but it does not remove existing mold. If mold is already present, you may need remediation and moisture-source correction."],
+        ["Is a dehumidifier enough if there is standing water?", "No. Standing water usually points to a drainage, waterproofing, grading, gutter, or foundation moisture problem. Fix bulk water intrusion before relying on a dehumidifier."],
+        ["Should I install a crawl space dehumidifier myself?", "DIY may be reasonable if the crawl space is dry, accessible, has safe electrical power, has no mold, and has a clear drainage route. Call a professional if there is standing water, mold, damaged wood, electrical work, drainage issues, or uncertainty about the moisture source."]
+      ];
+
+      $("#best-crawl-space-dehumidifier").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Moisture Control", "Best Crawl Space Dehumidifier"])}
+            <div class="article-layout">
+              <aside class="desktop-only"><div class="toc"><p class="toc-title">Table of contents</p>${toc.map(item => `<a href="#${slugify(item)}">${item}</a>`).join("")}</div></aside>
+              <article class="article-body">
+                <span class="badge">Moisture Control</span>
+                <h1 class="page-title" style="margin-top:16px">Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One</h1>
+                <p class="lead">A damp crawl space can make your home smell musty, raise indoor humidity, encourage mold growth, and put wood framing, insulation, ducts, and floors at risk.</p>
+                <div class="article-meta-row"><span>Last updated: May 28, 2026</span><span>•</span><span>13 min read</span><span>•</span><span>Author: CrawlWise Editorial Team</span><span>•</span><span>Reviewer: Crawl Space Professional Placeholder</span></div>
+                <details class="mobile-toc plain-card"><summary style="font-weight:950;cursor:pointer">Table of contents</summary><div style="display:grid;gap:8px;margin-top:12px">${toc.map(item => `<a href="#${slugify(item)}" style="color:var(--clay);font-weight:850">${item}</a>`).join("")}</div></details>
+                <div class="plain-card" style="margin-bottom:26px"><p style="margin:0;font-size:15px"><strong>Editorial disclosure:</strong> This website provides educational information for homeowners. We are not a substitute for a licensed inspection, structural engineer, mold professional, or contractor. In some cases, we may connect users with service providers.</p></div>
+                <p>A damp crawl space can make your home smell musty, raise indoor humidity, encourage mold growth, and put wood framing, insulation, ducts, and floors at risk. For many homeowners, a crawl space dehumidifier is one of the most effective ways to control humidity under the house.</p>
+                <p>But a dehumidifier is not always the whole solution.</p>
+                <p>If your crawl space has standing water, active leaks, poor drainage, mold, a missing vapor barrier, or damaged wood, buying a dehumidifier alone may not fix the real problem. The right approach depends on whether you are dealing with air humidity, ground moisture, bulk water, or a larger crawl space repair issue.</p>
+                <p>This guide explains how to choose the best crawl space dehumidifier, how much one typically costs, how to size a unit, and when it makes sense to call a crawl space moisture-control professional.</p>
+
+                ${articleSection("do-you-need-a-crawl-space-dehumidifier", "Do You Need a Crawl Space Dehumidifier?", `<p>You may need a crawl space dehumidifier if the area under your home stays humid even when there is no obvious standing water.</p><p>Common signs include:</p><ul class="list-cards"><li>✓ Musty odors inside the home</li><li>✓ Damp or humid air coming from the crawl space</li><li>✓ Condensation on ducts, pipes, or insulation</li><li>✓ Mold or mildew smell</li><li>✓ Soft, damp, or sagging insulation</li><li>✓ High indoor humidity</li><li>✓ Wood moisture concerns</li><li>✓ Pest activity in the crawl space</li><li>✓ Encapsulated crawl space that still feels humid</li><li>✓ HVAC ducts sweating under the house</li></ul><p>A crawl space dehumidifier helps remove excess moisture from the air. This can reduce humidity, improve indoor comfort, and help prevent conditions that allow mold and mildew to grow.</p><p>However, a dehumidifier does <strong>not</strong> fix every crawl space problem. If water is entering after rain, pooling near the foundation, leaking through vents, or rising from exposed soil, the underlying moisture source should be addressed first.</p>${callout("A good rule of thumb", "A dehumidifier controls humidity. It does not replace drainage repair, waterproofing, mold remediation, structural repair, or a proper vapor barrier.")}`)}
+
+                ${articleSection("best-crawl-space-dehumidifier-features-to-look-for", "Best Crawl Space Dehumidifier Features to Look For", `<p>Not every dehumidifier is designed for a crawl space. A standard room or basement dehumidifier may work in mild conditions, but crawl spaces are harder environments. They often have low clearance, dirt floors, poor access, high humidity, and temperature swings.</p><p>When comparing crawl space dehumidifiers, look for these features.</p><h3>Pint Capacity</h3><p>Pint capacity measures how much moisture the unit can remove from the air over a set period, usually per day. Many crawl-space-rated units fall into the 50- to 100-pint range, though larger commercial units are available.</p><p>Higher pint capacity is useful for:</p><ul class="list-cards"><li>✓ Larger crawl spaces</li><li>✓ Humid climates</li><li>✓ Encapsulated crawl spaces with persistent humidity</li><li>✓ Homes with HVAC ducts in the crawl space</li><li>✓ Crawl spaces with previous moisture issues</li></ul><p>Do not choose based only on pint rating, though. Airflow, drainage, durability, and installation conditions matter too.</p><h3>Coverage Area</h3><p>Manufacturers often list an estimated square-foot coverage range. This can help you compare units, but it should not be treated as a perfect sizing formula.</p><p>Coverage depends on:</p><ul class="list-cards"><li>✓ Crawl space height</li><li>✓ Air volume</li><li>✓ Humidity level</li><li>✓ Whether the space is vented or sealed</li><li>✓ Whether a vapor barrier is present</li><li>✓ Local climate</li><li>✓ Drainage conditions</li></ul><p>A 1,500-square-foot crawl space with sealed walls and a good vapor barrier may need less moisture removal than a smaller vented crawl space with exposed soil.</p><h3>CFM and Airflow</h3><p>CFM stands for cubic feet per minute. It measures how much air the unit can move.</p><p>Airflow matters because a crawl space dehumidifier needs to pull in humid air and circulate drier air through the space. Higher airflow can be helpful in larger or irregularly shaped crawl spaces.</p><h3>Low-Clearance Design</h3><p>Crawl spaces often have limited vertical clearance. Choose a unit designed to fit low, tight areas. Many crawl-space-rated units have a horizontal design so they can fit between floor joists or in low-clearance spaces.</p><p>Before buying, measure:</p><ul class="list-cards"><li>✓ Crawl space entrance size</li><li>✓ Height of the crawl space</li><li>✓ Available installation area</li><li>✓ Drainage path</li><li>✓ Electrical access</li></ul><h3>Built-In Humidistat</h3><p>A humidistat allows the unit to turn on and off based on humidity levels. This helps maintain a target humidity range without running constantly.</p><p>Many homeowners aim to keep crawl space relative humidity below the range where mold and mildew become more likely, but exact targets can depend on climate, crawl space condition, and contractor recommendations.</p><h3>Continuous Drainage</h3><p>A crawl space dehumidifier should be able to drain continuously. Emptying a bucket in a crawl space is inconvenient and often unrealistic.</p><p>Common drainage options include:</p><ul class="list-cards"><li>✓ Gravity drain line</li><li>✓ Condensate pump</li><li>✓ Drainage to sump pump system</li><li>✓ Drainage to approved exterior location</li></ul><p>The drainage setup is one of the biggest reasons homeowners choose professional installation.</p><h3>Condensate Pump Compatibility</h3><p>If the water cannot drain downhill by gravity, you may need a condensate pump. A pump moves collected water upward or across the crawl space to a proper discharge location.</p><p>This is especially important when:</p><ul class="list-cards"><li>✓ There is no floor drain</li><li>✓ The crawl space is below the exterior grade</li><li>✓ The dehumidifier sits far from a drainage point</li><li>✓ Water needs to be moved to a sump pump or exterior line</li></ul><h3>Auto Defrost</h3><p>Crawl spaces can get cool depending on climate, season, and ventilation. Auto defrost helps prevent coil freezing in lower temperatures.</p><h3>Filter Access</h3><p>Crawl spaces are dusty. Choose a unit with an accessible, washable, or replaceable filter. If the filter is hard to reach, maintenance is less likely to happen.</p><h3>Energy Efficiency</h3><p>A dehumidifier may run for long periods during humid seasons. Energy-efficient models can reduce long-term operating costs.</p><h3>Warranty and Serviceability</h3><p>Look for a unit with a strong warranty and replacement parts availability. Crawl-space-rated models are usually more expensive than portable dehumidifiers, so serviceability matters.</p>`)}
+
+                ${articleSection("best-crawl-space-dehumidifier-types", "Best Crawl Space Dehumidifier Types", `<p>There is no single best crawl space dehumidifier for every home. The right choice depends on size, humidity severity, drainage, access, and whether the crawl space is sealed or vented.</p><h3>Compact Crawl Space Dehumidifiers</h3><p>Compact units are designed for smaller crawl spaces or spaces with moderate humidity.</p><p>They may be a good fit when:</p><ul class="list-cards"><li>✓ The crawl space is small</li><li>✓ Humidity is mild to moderate</li><li>✓ There is already a vapor barrier</li><li>✓ There is no standing water</li><li>✓ Access is tight</li><li>✓ You need a lower-profile unit</li></ul><p>Compact models may not be powerful enough for large, wet, or poorly sealed crawl spaces.</p><h3>70-Pint Crawl Space Dehumidifiers</h3><p>A 70-pint crawl space dehumidifier is a common default category for many homes. These units are often large enough for moderate-to-high humidity while still being manageable for residential crawl spaces.</p><p>They may be appropriate for:</p><ul class="list-cards"><li>✓ Average-sized crawl spaces</li><li>✓ Encapsulated crawl spaces</li><li>✓ Homes with musty odors</li><li>✓ Crawl spaces with HVAC ducts</li><li>✓ Moderate moisture problems</li></ul><p>For many homeowners, this is the category worth comparing first.</p><h3>High-Capacity Crawl Space Dehumidifiers</h3><p>High-capacity or commercial-grade units are designed for larger spaces or heavier moisture loads.</p><p>They may be needed when:</p><ul class="list-cards"><li>✓ The crawl space is large</li><li>✓ Humidity is consistently high</li><li>✓ The home is in a humid climate</li><li>✓ The crawl space has a history of mold</li><li>✓ The area was recently encapsulated</li><li>✓ The crawl space has complex airflow issues</li></ul><p>These units cost more, but they may perform better in demanding conditions.</p><h3>Crawl Space Dehumidifiers With Pumps</h3><p>A dehumidifier with a built-in pump, or one connected to a condensate pump, is useful when gravity drainage is not possible.</p><p>This setup may be needed if the unit cannot drain downhill to a safe discharge point.</p><h3>Whole-House or Ducted Dehumidifiers</h3><p>In some cases, crawl space humidity is part of a larger indoor air quality issue. A whole-house or ducted dehumidifier may be considered when moisture affects the living space, HVAC system, or multiple areas of the home.</p><p>This usually requires professional evaluation.</p>`)}
+
+                ${articleSection("crawl-space-dehumidifier-cost", "Crawl Space Dehumidifier Cost", `<p>Crawl space dehumidifier cost depends on the unit, capacity, drainage setup, electrical access, installation difficulty, and whether other moisture-control repairs are needed.</p><p>Here is a practical cost breakdown:</p><div class="cost-table"><table><thead><tr><th>Cost Item</th><th>Typical Range</th><th>Notes</th></tr></thead><tbody>${costRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}</tbody></table></div><p>Product-only cost is much easier to estimate than installed cost. A standalone crawl-space-rated unit may cost around $900 to $2,000 or more. But if the crawl space needs electrical work, drainage, a condensate pump, mold treatment, vapor barrier replacement, or encapsulation, the total project cost can be much higher.</p>${callout("Product cost vs. system cost", "Buying a dehumidifier is a product cost. Fixing a crawl space moisture problem may be a system cost.")}<p>That system may include drainage, vapor barrier, air sealing, encapsulation, sump pump installation, mold remediation, and humidity control.</p>`)}
+
+                ${articleSection("how-to-size-a-crawl-space-dehumidifier", "How to Size a Crawl Space Dehumidifier", `<p>Sizing a crawl space dehumidifier is not just about square footage. Square footage matters, but it is only one part of the decision.</p><p>Important sizing factors include:</p><ul class="list-cards"><li>✓ Crawl space square footage</li><li>✓ Crawl space height</li><li>✓ Air volume</li><li>✓ Relative humidity level</li><li>✓ Local climate</li><li>✓ Whether the crawl space is vented</li><li>✓ Whether the crawl space is sealed or encapsulated</li><li>✓ Whether there is a vapor barrier</li><li>✓ Whether there is standing water</li><li>✓ Whether HVAC ducts are present</li><li>✓ Drainage route</li><li>✓ Mold or wood moisture concerns</li></ul><p>A simple starting point:</p><div class="cost-table"><table><thead><tr><th>Crawl Space Condition</th><th>Possible Dehumidifier Category</th></tr></thead><tbody>${sizingRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td></tr>`).join("")}</tbody></table></div><p>This table is only a starting point. If the crawl space has visible mold, standing water, rotted wood, wet insulation, or sagging floors, sizing a dehumidifier should come after diagnosing the larger issue.</p>`)}
+
+                ${articleSection("crawl-space-dehumidifier-vs-encapsulation", "Crawl Space Dehumidifier vs Encapsulation", `<p>A dehumidifier and encapsulation are related, but they are not the same thing.</p><ul class="list-cards"><li>• A crawl space dehumidifier removes moisture from the air.</li><li>• A vapor barrier limits moisture coming from the ground.</li><li>• Encapsulation seals the crawl space from outside air and ground moisture.</li><li>• Drainage systems handle bulk water intrusion.</li><li>• Mold remediation removes or treats existing mold growth.</li><li>• Structural repair addresses damaged joists, beams, or subflooring.</li></ul><p>In many homes, a dehumidifier works best as part of a larger crawl space moisture-control system. For example, an encapsulated crawl space may still need a dehumidifier to maintain stable humidity. But a dehumidifier in a vented, exposed-dirt crawl space may have to work constantly because moisture keeps entering.</p><p>A dehumidifier may be enough when:</p><ul class="list-cards"><li>✓ There is no standing water</li><li>✓ The vapor barrier is intact</li><li>✓ The crawl space is reasonably sealed</li><li>✓ Humidity is the main issue</li><li>✓ There is no mold or structural damage</li></ul><p>A dehumidifier may not be enough when:</p><ul class="list-cards"><li>⚠️ Water enters after rain</li><li>⚠️ Soil is exposed</li><li>⚠️ Vents are open in a humid climate</li><li>⚠️ Mold is already present</li><li>⚠️ Insulation is wet or falling</li><li>⚠️ Wood is soft or damaged</li><li>⚠️ Floors are sagging</li><li>⚠️ Drainage is poor</li><li>⚠️ Gutters and downspouts are dumping water near the foundation</li></ul><div class="inline-cta"><div><h3>Not sure what kind of crawl space issue you have?</h3><p>Start with a symptom and we’ll help identify what type of professional may be appropriate.</p></div><button class="btn btn-white" data-page="find-help">Find out what help you may need</button></div>`)}
+
+                ${articleSection("diy-vs-professional-installation", "DIY vs Professional Installation", `<p>Some homeowners can install a crawl space dehumidifier themselves. Others are better off hiring a crawl space, HVAC, or moisture-control professional.</p><h3>When DIY May Be Reasonable</h3><p>DIY installation may make sense if:</p><ul class="list-cards"><li>✓ The crawl space is dry</li><li>✓ There is no standing water</li><li>✓ There is no visible mold</li><li>✓ The vapor barrier is in good shape</li><li>✓ There is already a safe electrical outlet</li><li>✓ The crawl space is easy to access</li><li>✓ Gravity drainage is available</li><li>✓ The unit can be placed on a stable surface</li><li>✓ You can maintain the filter and drain line</li></ul><p>In this situation, the main challenge is choosing the right unit and setting up reliable drainage.</p><h3>When to Call a Professional</h3><p>Professional help is usually worth considering if:</p><ul class="list-cards"><li>⚠️ There is standing water</li><li>⚠️ You smell mold or mildew</li><li>⚠️ You see visible growth on wood or insulation</li><li>⚠️ The crawl space has no drainage route</li><li>⚠️ Electrical work is needed</li><li>⚠️ The vapor barrier is missing or damaged</li><li>⚠️ Encapsulation may be needed</li><li>⚠️ Floors are sagging or uneven</li><li>⚠️ Wood appears damaged</li><li>⚠️ HVAC ducts are sweating</li><li>⚠️ Humidity remains high after previous repairs</li><li>⚠️ You are unsure where the water is coming from</li></ul><p>Not sure whether a dehumidifier is enough? Compare local crawl space moisture-control providers who can inspect humidity, drainage, vapor barrier condition, and possible mold issues.</p>`)}
+
+                ${articleSection("common-mistakes-when-buying-a-crawl-space-dehumidifier", "Common Mistakes When Buying a Crawl Space Dehumidifier", `<p>Choosing the wrong dehumidifier can waste money and leave the underlying moisture problem unresolved.</p><p>Avoid these common mistakes.</p><h3>Buying a Regular Room Dehumidifier</h3><p>A portable room dehumidifier may not be durable enough for a crawl space. It may have poor airflow, require manual bucket emptying, or fail sooner in dusty, humid conditions.</p><h3>Ignoring Drainage</h3><p>A dehumidifier needs somewhere to send the water it removes. Without continuous drainage, the system becomes inconvenient or ineffective.</p><h3>Choosing Based Only on Pint Rating</h3><p>Pint capacity matters, but so do CFM, crawl space layout, drainage, clearance, energy efficiency, and durability.</p><h3>Undersizing the Unit</h3><p>An undersized dehumidifier may run constantly and still fail to control humidity.</p><h3>Skipping the Vapor Barrier</h3><p>If ground moisture is constantly entering the crawl space, the dehumidifier may be fighting a losing battle.</p><h3>Running a Dehumidifier in a Vented Crawl Space</h3><p>In humid climates, open vents can allow warm, moist outdoor air into the crawl space. The dehumidifier may run constantly without solving the issue.</p><h3>Ignoring Standing Water</h3><p>A dehumidifier is not a substitute for drainage repair. Standing water should be addressed before relying on humidity control.</p><h3>Forgetting Maintenance</h3><p>Filters, drain lines, pumps, and coils need maintenance. A neglected dehumidifier can lose performance or fail.</p>`)}
+
+                ${articleSection("when-a-dehumidifier-is-not-enough", "When a Dehumidifier Is Not Enough", `<p>This is the most important section for homeowners trying to avoid wasting money.</p><p>A crawl space dehumidifier may not be enough if you have:</p><ul class="list-cards"><li>⚠️ Water in the crawl space after rain</li><li>⚠️ Standing water under the house</li><li>⚠️ Mold smell or visible mold</li><li>⚠️ Rotten or soft wood</li><li>⚠️ Sagging floors</li><li>⚠️ Failed or missing vapor barrier</li><li>⚠️ Open vents causing humidity problems</li><li>⚠️ Poor grading around the foundation</li><li>⚠️ Missing or clogged gutters</li><li>⚠️ Downspouts discharging near the foundation</li><li>⚠️ Wet insulation</li><li>⚠️ Pest issues</li><li>⚠️ High humidity after encapsulation</li></ul><p>In those cases, the dehumidifier may still be useful, but it should not be the first or only fix.</p><p>The better sequence is usually:</p><ul class="list-cards"><li>1. Find where the moisture is coming from.</li><li>2. Fix drainage or bulk water problems.</li><li>3. Repair or install the vapor barrier.</li><li>4. Address mold or damaged materials.</li><li>5. Seal or encapsulate if appropriate.</li><li>6. Add a properly sized dehumidifier to control humidity.</li></ul>${callout("Fix the source first", "A dehumidifier can still be useful in a larger repair plan, but it should not be used to hide standing water, mold contamination, or structural damage.")}`)}
+
+                ${articleSection("how-to-choose-a-crawl-space-moisture-control-provider", "How to Choose a Crawl Space Moisture-Control Provider", `<p>If you decide to get professional help, ask questions before agreeing to a project.</p><p>Good questions include:</p><ul class="list-cards"><li>✓ Do you inspect for standing water before recommending a dehumidifier?</li><li>✓ Do you measure crawl space humidity?</li><li>✓ Do you measure wood moisture?</li><li>✓ Do I need drainage repair before humidity control?</li><li>✓ Is my vapor barrier adequate?</li><li>✓ Do I need encapsulation or just a dehumidifier?</li><li>✓ What brands do you install?</li><li>✓ What size unit do you recommend and why?</li><li>✓ Where will the water drain?</li><li>✓ Is a condensate pump needed?</li><li>✓ Is electrical work included?</li><li>✓ What maintenance does the unit require?</li><li>✓ What warranty applies to the unit?</li><li>✓ What warranty applies to the installation?</li></ul><p>Be cautious if a company recommends an expensive system without explaining the source of the moisture.</p>`)}
+
+                ${articleSection("recommended-next-steps", "Recommended Next Steps", `<p>Use this decision guide:</p><div class="cost-table"><table><thead><tr><th>Situation</th><th>Best Next Step</th></tr></thead><tbody>${nextStepRows.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td></tr>`).join("")}</tbody></table></div><p>A crawl space dehumidifier can be a smart investment, but it works best when matched to the right problem. If your issue is humidity, a properly sized unit may help. If your issue is water intrusion, mold, drainage, or structural damage, the dehumidifier should be part of a broader repair plan.</p><div class="inline-cta"><div><h3>Compare local crawl space professionals</h3><p>We do not perform crawl space work directly. We help homeowners understand their options and may connect users with relevant local providers when appropriate.</p></div><button class="btn btn-white" data-page="find-help">Request quotes based on your project details</button></div>`)}
+
+                <section class="article-section"><h2>Related guides</h2><div class="grid-2">${[articles[0], articles[1], articles[3], articles[4]].map(a => articleCard(a, a.page || "hub")).join("")}</div></section>
+
+                <section id="faq-crawl-space-dehumidifiers" class="article-section">
+                  <h2>FAQ: Crawl Space Dehumidifiers</h2>
+                  ${faqs.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><p>${a}</p></details>`).join("")}
+                </section>
+
+                <section class="plain-card"><h2 style="font-size:24px">Author & reviewer</h2><p>Written by the CrawlWise Editorial Team. Reviewed by a crawl space, waterproofing, mold, or structural professional placeholder before publication. Replace this placeholder with a real reviewer profile as the site matures.</p></section>
+                <section class="plain-card" style="margin-top:18px;background:var(--surface-warm)"><h2 style="font-size:24px">Get homeowner-friendly repair checklists</h2><p>Occasional guides on crawl space moisture, cost questions, contractor red flags, and maintenance checks.</p><div class="zip-row"><input class="input" placeholder="Email address"><button class="btn btn-primary">Subscribe</button></div></section>
+              </article>
+              <aside class="desktop-only">${sidebarCta()}</aside>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
     function renderFindHelp() {
       $("#find-help").innerHTML = `
         <section class="section">
@@ -1127,6 +1254,7 @@
         home: "CrawlWise | Crawl Space Education & Homeowner Guides",
         article: "Water in Crawl Space After Rain | CrawlWise",
         "crawl-space-encapsulation": "Crawl Space Encapsulation: Costs, Alternatives, and When It's Worth It | CrawlWise",
+        "best-crawl-space-dehumidifier": "Best Crawl Space Dehumidifier: Cost, Sizing, and When You Need One | CrawlWise",
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education"
@@ -1163,6 +1291,7 @@
       renderHome();
       renderArticle();
       renderEncapsulationArticle();
+      renderDehumidifierArticle();
       renderHub();
       renderFindHelp();
       renderAbout();
