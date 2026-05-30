@@ -553,6 +553,12 @@
     <div id="crawl-space-moisture" class="page"></div>
     <div id="crawl-space-mold-remediation" class="page"></div>
     <div id="sagging-floors-crawl-space" class="page"></div>
+    <div id="water-problems" class="page"></div>
+    <div id="moisture-problems" class="page"></div>
+    <div id="mold-problems" class="page"></div>
+    <div id="structural-problems" class="page"></div>
+    <div id="vapor-barrier-problems" class="page"></div>
+    <div id="pest-problems" class="page"></div>
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
@@ -685,6 +691,73 @@
       ["🛠️", "Wood rot or soft joists"]
     ];
 
+    const categoryPages = [
+      {
+        page: "water-problems",
+        path: "/water-problems/",
+        icon: "💧",
+        title: "Water Problems",
+        kicker: "Water intrusion category",
+        summary: "Start here for standing water after rain, wet insulation, puddles, drainage concerns, and water-driven crawl space humidity.",
+        symptoms: ["Standing water after rain", "Wet insulation"],
+        articlePages: ["article", "crawl-space-moisture", "best-crawl-space-dehumidifier"]
+      },
+      {
+        page: "moisture-problems",
+        path: "/moisture-problems/",
+        icon: "🌬️",
+        title: "Moisture & Humidity Problems",
+        kicker: "Moisture category",
+        summary: "Use this path for musty smells, high indoor humidity, condensation, damp surfaces, and crawl spaces that feel persistently humid.",
+        symptoms: ["Musty smells", "High indoor humidity"],
+        articlePages: ["crawl-space-moisture", "best-crawl-space-dehumidifier", "crawl-space-encapsulation", "crawl-space-vapor-barrier-cost"]
+      },
+      {
+        page: "mold-problems",
+        path: "/mold-problems/",
+        icon: "🌿",
+        title: "Mold Problems",
+        kicker: "Mold category",
+        summary: "Review mold-related crawl space guidance when you see growth on joists, smell persistent odors, or suspect moisture has been feeding organic growth.",
+        symptoms: ["Mold on joists"],
+        articlePages: ["crawl-space-mold-remediation", "crawl-space-moisture", "crawl-space-encapsulation", "best-crawl-space-dehumidifier"]
+      },
+      {
+        page: "structural-problems",
+        path: "/structural-problems/",
+        icon: "🏠",
+        title: "Structural & Wood Damage Problems",
+        kicker: "Structural category",
+        summary: "Start here for sagging floors, uneven rooms, soft joists, wood rot, and symptoms that may involve framing, supports, or foundation movement.",
+        symptoms: ["Sagging or uneven floors", "Wood rot or soft joists"],
+        articlePages: ["sagging-floors-crawl-space", "crawl-space-repair-near-me", "crawl-space-moisture", "article"]
+      },
+      {
+        page: "vapor-barrier-problems",
+        path: "/vapor-barrier-problems/",
+        icon: "✅",
+        title: "Vapor Barrier Problems",
+        kicker: "Vapor barrier category",
+        summary: "Use this category when the ground cover is torn, missing, poorly sealed, or no longer controlling crawl space moisture effectively.",
+        symptoms: ["Damaged vapor barrier"],
+        articlePages: ["crawl-space-vapor-barrier-cost", "crawl-space-encapsulation", "crawl-space-moisture", "best-crawl-space-dehumidifier"]
+      },
+      {
+        page: "pest-problems",
+        path: "/pest-problems/",
+        icon: "⚠️",
+        title: "Pest Activity & Crawl Space Conditions",
+        kicker: "Pest activity category",
+        summary: "Pest activity often overlaps with damp insulation, openings, wood damage, standing moisture, and damaged liners. These guides help identify the conditions to correct alongside pest treatment.",
+        symptoms: ["Pest activity"],
+        articlePages: ["crawl-space-repair-near-me", "crawl-space-moisture", "crawl-space-encapsulation", "crawl-space-vapor-barrier-cost"]
+      }
+    ];
+
+    const symptomCategoryMap = Object.fromEntries(
+      categoryPages.flatMap(category => category.symptoms.map(symptom => [symptom, category.page]))
+    );
+
     const costRows = [
       ["Basic drainage or grading improvements", "$500–$3,000+", "Often depends on exterior drainage, gutters, and site conditions."],
       ["Sump pump installation", "$1,000–$4,000+", "May be paired with perimeter drainage if water repeatedly enters."],
@@ -726,6 +799,7 @@
       "crawl-space-moisture": '/crawl-space-moisture/',
       "crawl-space-mold-remediation": '/crawl-space-mold-remediation/',
       "sagging-floors-crawl-space": '/sagging-floors-crawl-space/',
+      ...Object.fromEntries(categoryPages.map(category => [category.page, category.path])),
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
       about: '/about/'
@@ -761,7 +835,7 @@
 
     function hubCard(hub) {
       const [icon, title, copy, questions] = hub;
-      const targetPage = title.includes("Water") ? "article" : title === "Crawl Space Repair" ? "crawl-space-repair-near-me" : title.includes("Vapor") ? "crawl-space-vapor-barrier-cost" : title.includes("Sagging") ? "sagging-floors-crawl-space" : "hub";
+      const targetPage = title.includes("Water") ? "water-problems" : title.includes("Moisture") ? "moisture-problems" : title.includes("Mold") ? "mold-problems" : title.includes("Vapor") ? "vapor-barrier-problems" : title.includes("Sagging") ? "structural-problems" : title.includes("Repair") ? "structural-problems" : "hub";
       return `
         <article class="hub-card">
           <div class="hub-icon">${icon}</div>
@@ -777,7 +851,7 @@
 
     function symptomGrid() {
       return symptoms.map(([icon, label]) => {
-        const targetPage = label.includes("Standing water") ? "article" : label.includes("Sagging") ? "sagging-floors-crawl-space" : label.includes("Wood rot") ? "crawl-space-repair-near-me" : "hub";
+        const targetPage = symptomCategoryMap[label] || "hub";
         return `
         <a class="symptom-card" href="${pagePath(targetPage)}" data-page="${targetPage}">
           <span class="symptom-left"><span class="icon-box">${icon}</span>${escapeHtml(label)}</span>
@@ -896,6 +970,70 @@
       `;
     }
 
+    function getArticleByPage(page) {
+      return articles.find(article => article.page === page);
+    }
+
+    function categoryPageCard(category) {
+      return `
+        <article class="hub-card">
+          <div class="hub-icon">${category.icon}</div>
+          <p class="section-kicker" style="margin:0 0 10px">${escapeHtml(category.kicker)}</p>
+          <h3>${escapeHtml(category.title)}</h3>
+          <p>${escapeHtml(category.summary)}</p>
+          <div class="question-list">
+            ${category.symptoms.map(symptom => `<div>✓ ${escapeHtml(symptom)}</div>`).join("")}
+          </div>
+          <a class="text-link" href="${pagePath(category.page)}" data-page="${category.page}">View related articles →</a>
+        </article>
+      `;
+    }
+
+    function renderCategoryPage(category) {
+      const relatedArticles = category.articlePages.map(getArticleByPage).filter(Boolean);
+      const otherCategories = categoryPages.filter(item => item.page !== category.page);
+      document.getElementById(category.page).innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Symptom Checker", category.title])}
+            <div style="max-width:900px">
+              <p class="section-kicker">${escapeHtml(category.kicker)}</p>
+              <h1 class="page-title"><span aria-hidden="true">${category.icon}</span> ${escapeHtml(category.title)}</h1>
+              <p class="lead">${escapeHtml(category.summary)}</p>
+            </div>
+
+            <div class="plain-card" style="margin-top:32px;background:var(--surface-warm)">
+              <h2 style="font-size:24px;margin-bottom:12px">Symptoms this category covers</h2>
+              <div class="grid-3">
+                ${category.symptoms.map(symptom => `<div class="trust-card"><div style="font-size:24px">${category.icon}</div><h3>${escapeHtml(symptom)}</h3><p>These articles are prefiltered for homeowners who clicked this symptom in the checker.</p></div>`).join("")}
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 340px;gap:32px;margin-top:48px" class="hub-bottom">
+              <div>
+                <h2 style="font-size:36px;letter-spacing:-.04em">Recommended articles for this symptom</h2>
+                <p class="lead" style="font-size:18px">Read these guides first to compare likely causes, practical checks, repair paths, and when to call a qualified professional.</p>
+                <div class="grid-2" style="margin-top:22px">${relatedArticles.map(article => articleCard(article, article.page)).join("")}</div>
+              </div>
+              <aside>
+                ${sidebarCta()}
+                <div class="plain-card" style="margin-top:16px">
+                  <h3>Browse other symptom categories</h3>
+                  <div class="question-list">
+                    ${otherCategories.map(item => `<a class="text-link" href="${pagePath(item.page)}" data-page="${item.page}">${item.icon} ${escapeHtml(item.title)} →</a>`).join("")}
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderCategoryPages() {
+      categoryPages.forEach(renderCategoryPage);
+    }
+
     function renderHub() {
       $("#hub").innerHTML = `
         <section class="section">
@@ -906,7 +1044,7 @@
               <h1 class="page-title">Crawl Space Problems, Repair Guides, and Cost Resources</h1>
               <p class="lead">Use this hub as a scalable template for crawl space repair, water intrusion, encapsulation, vapor barriers, mold, moisture, and structural issue clusters.</p>
             </div>
-            <div class="grid-4" style="margin-top:48px">${hubs.map(hubCard).join("")}</div>
+            <div class="grid-4" style="margin-top:48px">${categoryPages.map(categoryPageCard).join("")}</div>
             <div style="display:grid;grid-template-columns:1fr 340px;gap:32px;margin-top:64px" class="hub-bottom">
               <div>
                 <h2 style="font-size:36px;letter-spacing:-.04em">Recommended reading path</h2>
@@ -2294,6 +2432,7 @@
         "crawl-space-moisture": "Moisture in Crawl Space: Causes, Warning Signs, and Best Fixes | CrawlWise",
         "crawl-space-mold-remediation": "Crawl Space Mold Remediation: What Homeowners Need to Know | CrawlWise",
         "sagging-floors-crawl-space": "Sagging or Uneven Floors: Crawl Space, Foundation, and Joist Problems Explained | CrawlWise",
+        ...Object.fromEntries(categoryPages.map(category => [category.page, `${category.title} | CrawlWise`])),
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education"
@@ -2336,6 +2475,7 @@
       renderMoistureArticle();
       renderMoldRemediationArticle();
       renderSaggingFloorsArticle();
+      renderCategoryPages();
       renderHub();
       renderFindHelp();
       renderAbout();
