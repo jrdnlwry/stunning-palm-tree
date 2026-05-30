@@ -564,6 +564,7 @@
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
+    <div id="editorial-policy" class="page"></div>
     <div id="privacy-policy" class="page"></div>
   </main>
 
@@ -585,7 +586,7 @@
         <div class="footer-cols">
           <div><h3>Crawl Space Problems</h3><button data-page="article">Water in Crawl Space</button><button data-page="hub">Moisture</button><button data-page="hub">Mold</button><button data-page="hub">Sagging Floors</button></div>
           <div><h3>Repair Guides</h3><button data-page="hub">Crawl Space Repair</button><button data-page="hub">Encapsulation</button><button data-page="crawl-space-vapor-barrier-cost">Vapor Barriers</button></div>
-          <div><h3>Company</h3><button data-page="find-help">Find Help</button><button data-page="about">About</button><button data-page="about">Contact</button><button data-page="about">Editorial Policy</button></div>
+          <div><h3>Company</h3><button data-page="find-help">Find Help</button><button data-page="about">About</button><button data-page="about">Contact</button><button data-page="editorial-policy">Editorial Policy</button></div>
           <div><h3>Legal</h3><button data-page="privacy-policy">Privacy Policy</button><button data-page="about">Terms</button><button data-page="about">Disclosure</button></div>
         </div>
       </div>
@@ -806,6 +807,7 @@
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
       about: '/about/',
+      "editorial-policy": '/editorial-policy/',
       "privacy-policy": '/privacy-policy/'
     };
 
@@ -2411,6 +2413,76 @@
       `;
     }
 
+    function renderEditorialPolicy() {
+      $("#editorial-policy").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Company", "Editorial Policy"])}
+            <p class="section-kicker">Editorial Policy</p>
+            <h1 class="page-title">How CrawlWise creates homeowner-first crawl space guidance.</h1>
+            <p class="lead">Our editorial policy explains how we plan, write, review, update, and disclose educational crawl space content so readers can understand what they are seeing before making repair decisions.</p>
+            <div class="article-layout" style="margin-top:42px">
+              <aside class="desktop-only">
+                <div class="toc">
+                  <div class="toc-title">Policy sections</div>
+                  <a href="#editorial-mission">Mission</a>
+                  <a href="#content-process">Content process</a>
+                  <a href="#review-standards">Review standards</a>
+                  <a href="#cost-and-safety">Costs and safety</a>
+                  <a href="#affiliate-and-lead-disclosure">Disclosures</a>
+                  <a href="#updates-and-corrections">Updates and corrections</a>
+                  <a href="#contact-editorial">Contact</a>
+                </div>
+              </aside>
+              <article class="article-body">
+                <section id="editorial-mission" class="article-section" style="border-top:0;padding-top:0">
+                  <h2>Mission</h2>
+                  <p>CrawlWise publishes plain-English crawl space education for homeowners. Our goal is to explain likely causes, warning signs, repair paths, and questions to ask before a homeowner hires a contractor or approves a scope of work.</p>
+                  <p>We prioritize practical understanding over urgency-driven sales language. Content should help readers distinguish routine maintenance from water intrusion, mold, pest, vapor barrier, insulation, drainage, and structural concerns that may require qualified help.</p>
+                </section>
+
+                <section id="content-process" class="article-section">
+                  <h2>Content process</h2>
+                  <p>Articles are planned around common homeowner symptoms, crawl space repair questions, and search intent. Drafts should include clear headings, definitions of technical terms, common causes, reasonable next steps, and links to related guides where useful.</p>
+                  <p>Writers should avoid making guarantees about diagnoses, pricing, health outcomes, or repair results. When a topic depends on local codes, climate, home design, material condition, or inspection findings, the article should say so clearly.</p>
+                </section>
+
+                <section id="review-standards" class="article-section">
+                  <h2>Review standards</h2>
+                  <p>Before publication, guides should be checked for clarity, internal consistency, safety-sensitive language, disclosure language, and whether professional review is needed. Technical claims should be conservative and framed as general education unless verified by a qualified source.</p>
+                  <p>Where content discusses mold, structural movement, electrical hazards, HVAC systems, pest damage, or major water intrusion, it should encourage readers to involve an appropriate licensed or qualified professional rather than rely on a website alone.</p>
+                </section>
+
+                <section id="cost-and-safety" class="article-section">
+                  <h2>Costs and safety</h2>
+                  <p>Cost ranges are estimates for educational context only. They may change based on crawl space size, access, region, material selection, labor conditions, permitting, hidden damage, and the sequence of repairs needed.</p>
+                  <p>Safety guidance should be cautious. Articles may suggest visual checks from a safe location, but they should not encourage homeowners to enter unsafe crawl spaces, disturb suspected mold, handle electrical hazards, or perform structural repairs without proper qualifications.</p>
+                </section>
+
+                <section id="affiliate-and-lead-disclosure" class="article-section">
+                  <h2>Affiliate, advertising, and lead disclosures</h2>
+                  <p>CrawlWise is an educational content platform and may connect users with crawl space professionals or service providers. Any lead handoff should be transparent, optional, and secondary to helping readers understand their issue.</p>
+                  <p>If affiliate links, sponsored placements, advertising pixels, or paid partnerships are added, related pages should include clear disclosure language and this policy should be updated to explain how those relationships work.</p>
+                </section>
+
+                <section id="updates-and-corrections" class="article-section">
+                  <h2>Updates and corrections</h2>
+                  <p>Content should be refreshed when pricing assumptions, common repair recommendations, disclosure needs, or safety guidance materially change. Article dates should reflect meaningful updates rather than cosmetic edits.</p>
+                  <p>If readers identify an error, unclear statement, outdated recommendation, or missing disclosure, we review the concern and update the relevant content when appropriate.</p>
+                </section>
+
+                <section id="contact-editorial" class="article-section">
+                  <h2>Contact</h2>
+                  <p>For editorial questions, corrections, or disclosure concerns, contact us at contact@example.com. Please include the page URL and a short description of the issue.</p>
+                  <p><strong>Last updated:</strong> May 30, 2026.</p>
+                </section>
+              </article>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
     function renderPrivacyPolicy() {
       $("#privacy-policy").innerHTML = `
         <section class="section">
@@ -2510,6 +2582,7 @@
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
         about: "About CrawlWise | Crawl Space Education",
+        "editorial-policy": "Editorial Policy | CrawlWise",
         "privacy-policy": "Privacy Policy | CrawlWise"
       };
       document.title = titles[page] || titles.home;
@@ -2554,6 +2627,7 @@
       renderHub();
       renderFindHelp();
       renderAbout();
+      renderEditorialPolicy();
       renderPrivacyPolicy();
       bindEvents();
       goToPage(pathToPage(window.location.pathname), false);
