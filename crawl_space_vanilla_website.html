@@ -564,6 +564,7 @@
     <div id="hub" class="page"></div>
     <div id="find-help" class="page"></div>
     <div id="about" class="page"></div>
+    <div id="privacy-policy" class="page"></div>
   </main>
 
   <footer class="site-footer">
@@ -585,7 +586,7 @@
           <div><h3>Crawl Space Problems</h3><button data-page="article">Water in Crawl Space</button><button data-page="hub">Moisture</button><button data-page="hub">Mold</button><button data-page="hub">Sagging Floors</button></div>
           <div><h3>Repair Guides</h3><button data-page="hub">Crawl Space Repair</button><button data-page="hub">Encapsulation</button><button data-page="crawl-space-vapor-barrier-cost">Vapor Barriers</button></div>
           <div><h3>Company</h3><button data-page="find-help">Find Help</button><button data-page="about">About</button><button data-page="about">Contact</button><button data-page="about">Editorial Policy</button></div>
-          <div><h3>Legal</h3><button data-page="about">Privacy Policy</button><button data-page="about">Terms</button><button data-page="about">Disclosure</button></div>
+          <div><h3>Legal</h3><button data-page="privacy-policy">Privacy Policy</button><button data-page="about">Terms</button><button data-page="about">Disclosure</button></div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -804,7 +805,8 @@
       ...Object.fromEntries(categoryPages.map(category => [category.page, category.path])),
       hub: '/crawl-space-problems/',
       "find-help": '/find-help/',
-      about: '/about/'
+      about: '/about/',
+      "privacy-policy": '/privacy-policy/'
     };
 
     function pagePath(page) {
@@ -2409,6 +2411,76 @@
       `;
     }
 
+    function renderPrivacyPolicy() {
+      $("#privacy-policy").innerHTML = `
+        <section class="section">
+          <div class="container">
+            ${breadcrumb(["Home", "Legal", "Privacy Policy"])}
+            <p class="section-kicker">Privacy Policy</p>
+            <h1 class="page-title">How CrawlWise handles homeowner information.</h1>
+            <p class="lead">This Privacy Policy explains what information CrawlWise may collect, how we use it, and the choices you have when you read our guides, request crawl space help, or contact us.</p>
+            <div class="article-layout" style="margin-top:42px">
+              <aside class="desktop-only">
+                <div class="toc">
+                  <div class="toc-title">Policy sections</div>
+                  <a href="#privacy-overview">Overview</a>
+                  <a href="#information-we-collect">Information we collect</a>
+                  <a href="#how-we-use-information">How we use information</a>
+                  <a href="#sharing-information">Sharing information</a>
+                  <a href="#cookies-and-analytics">Cookies and analytics</a>
+                  <a href="#your-choices">Your choices</a>
+                  <a href="#contact-privacy">Contact</a>
+                </div>
+              </aside>
+              <article class="article-body">
+                <section id="privacy-overview" class="article-section" style="border-top:0;padding-top:0">
+                  <h2>Overview</h2>
+                  <p>CrawlWise is an educational crawl space content platform. Most visitors can read our guides without submitting personal information. If you choose to use a form, request help, or contact us, we may collect information needed to respond to your request.</p>
+                  <p>This policy is written for the current demo site and should be reviewed by qualified counsel before launch, especially if the site will collect leads, use advertising pixels, or operate in jurisdictions with specific privacy requirements.</p>
+                </section>
+
+                <section id="information-we-collect" class="article-section">
+                  <h2>Information we collect</h2>
+                  <p>We may collect information you provide directly, such as your name, email address, phone number, ZIP code, crawl space concerns, uploaded photos, or messages submitted through a contact or help request form.</p>
+                  <p>We may also collect basic technical information automatically, such as browser type, device information, pages viewed, approximate location derived from IP address, referring page, and usage patterns that help us understand how visitors use the site.</p>
+                </section>
+
+                <section id="how-we-use-information" class="article-section">
+                  <h2>How we use information</h2>
+                  <p>We may use information to provide educational content, respond to inquiries, route help requests, improve website usability, measure content performance, prevent spam or misuse, and communicate about services or resources related to your request.</p>
+                  <p>If you submit a request for crawl space help, we may use the details you provide to understand the issue and determine whether a relevant professional or service provider may be appropriate.</p>
+                </section>
+
+                <section id="sharing-information" class="article-section">
+                  <h2>Sharing information</h2>
+                  <p>We do not sell personal information as a standalone product. If you ask to be connected with crawl space help, we may share relevant request details with service providers, lead-routing partners, or operational vendors who help respond to your inquiry.</p>
+                  <p>We may also disclose information if required by law, to protect rights and safety, to enforce site terms, or as part of a business transfer such as a merger, acquisition, or asset sale.</p>
+                </section>
+
+                <section id="cookies-and-analytics" class="article-section">
+                  <h2>Cookies and analytics</h2>
+                  <p>CrawlWise may use cookies, analytics tools, or similar technologies to remember preferences, understand traffic sources, improve content, and measure how pages perform. Browser settings may allow you to block or delete cookies, though some features may not work as intended.</p>
+                  <p>If advertising, remarketing, or third-party tracking tools are added later, this policy should be updated to describe those tools and any opt-out options.</p>
+                </section>
+
+                <section id="your-choices" class="article-section">
+                  <h2>Your choices</h2>
+                  <p>You can choose not to submit forms or provide optional information. You may also contact us to request access, correction, or deletion of information associated with your inquiry, subject to verification and applicable legal requirements.</p>
+                  <p>If you receive communications from us, follow the unsubscribe instructions where provided or contact us directly to ask that we stop non-transactional messages.</p>
+                </section>
+
+                <section id="contact-privacy" class="article-section">
+                  <h2>Contact</h2>
+                  <p>For privacy questions or requests, contact us at contact@example.com. Please include enough detail for us to identify and respond to your request.</p>
+                  <p><strong>Last updated:</strong> May 30, 2026.</p>
+                </section>
+              </article>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
     function slugify(str) {
       return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
     }
@@ -2437,7 +2509,8 @@
         ...Object.fromEntries(categoryPages.map(category => [category.page, `${category.title} | CrawlWise`])),
         hub: "Crawl Space Problems & Repair Guides | CrawlWise",
         "find-help": "Get Crawl Space Help | CrawlWise",
-        about: "About CrawlWise | Crawl Space Education"
+        about: "About CrawlWise | Crawl Space Education",
+        "privacy-policy": "Privacy Policy | CrawlWise"
       };
       document.title = titles[page] || titles.home;
     }
@@ -2481,6 +2554,7 @@
       renderHub();
       renderFindHelp();
       renderAbout();
+      renderPrivacyPolicy();
       bindEvents();
       goToPage(pathToPage(window.location.pathname), false);
     }
