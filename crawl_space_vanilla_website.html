@@ -324,6 +324,7 @@
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .hub-bottom { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 32px; }
 
     .symptom-card,
     .hub-card,
@@ -490,6 +491,7 @@
       .mobile-toc { display: block; margin: 24px 0; }
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
       .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .hub-bottom { grid-template-columns: minmax(0, 1fr); }
     }
 
     @media (max-width: 720px) {
@@ -1009,7 +1011,7 @@
               </div>
             </div>
 
-            <div style="display:grid;grid-template-columns:1fr 340px;gap:32px;margin-top:48px" class="hub-bottom">
+            <div style="margin-top:48px" class="hub-bottom">
               <div>
                 <h2 style="font-size:36px;letter-spacing:-.04em">Recommended articles for this symptom</h2>
                 <p class="lead" style="font-size:18px">Read these guides first to compare likely causes, practical checks, repair paths, and when to call a qualified professional.</p>
@@ -1045,7 +1047,7 @@
               <p class="lead">Use this hub as a scalable template for crawl space repair, water intrusion, encapsulation, vapor barriers, mold, moisture, and structural issue clusters.</p>
             </div>
             <div class="grid-4" style="margin-top:48px">${categoryPages.map(categoryPageCard).join("")}</div>
-            <div style="display:grid;grid-template-columns:1fr 340px;gap:32px;margin-top:64px" class="hub-bottom">
+            <div style="margin-top:64px" class="hub-bottom">
               <div>
                 <h2 style="font-size:36px;letter-spacing:-.04em">Recommended reading path</h2>
                 <div class="grid-2" style="margin-top:22px">${articles.map((a) => articleCard(a, a.page || "hub")).join("")}</div>
