@@ -36,21 +36,28 @@ function isExternalOrSpecial(reference) {
 function validateLocalReference(route, attribute, reference) {
   if (!reference || isExternalOrSpecial(reference)) return;
 
-  if (!reference.startsWith('/')) {
-    failures.push(`Non-root-relative ${attribute} on ${route}: ${reference}`);
+  const cleanReference = decodeURIComponent(reference.split('#')[0].split('?')[0]);
+  if (!cleanReference) return;
+
+  if (cleanReference.startsWith('/')) {
+    if (cleanReference.endsWith('/')) {
+      if (!fs.existsSync(routeFile(cleanReference))) failures.push(`Broken internal clean URL on ${route}: ${reference}`);
+      return;
+    }
+
+    const diskPath = path.join(root, cleanReference.slice(1));
+    if (!fs.existsSync(diskPath)) failures.push(`Missing root-relative asset on ${route}: ${reference}`);
     return;
   }
 
-  const cleanPath = decodeURIComponent(reference.split('#')[0].split('?')[0]);
-  if (!cleanPath) return;
-
-  if (cleanPath.endsWith('/')) {
-    if (!fs.existsSync(routeFile(cleanPath))) failures.push(`Broken internal clean URL on ${route}: ${reference}`);
-    return;
+  const pageDirectory = path.dirname(routeFile(route));
+  const diskPath = path.resolve(pageDirectory, cleanReference);
+  const relativePath = path.relative(root, diskPath);
+  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+    failures.push(`Local reference escapes the site root on ${route}: ${reference}`);
+  } else if (!fs.existsSync(diskPath)) {
+    failures.push(`Missing page-relative asset on ${route}: ${reference}`);
   }
-
-  const diskPath = path.join(root, cleanPath.slice(1));
-  if (!fs.existsSync(diskPath)) failures.push(`Missing root-relative asset on ${route}: ${reference}`);
 }
 
 for (const route of requiredRoutes) {
@@ -90,8 +97,9 @@ for (const route of routesToValidate) {
   const expectedCanonical = `https://crawlwise.io${canonicalOverrides.get(route) ?? route}`;
   if (canonical !== expectedCanonical) failures.push(`Incorrect canonical at ${route}: expected ${expectedCanonical}`);
   if (h1Count !== 1) failures.push(`Expected one H1 at ${route}; found ${h1Count}`);
-  if (!/<link\s+rel="stylesheet"\s+href="\/styles\.css">/.test(html)) failures.push(`Missing root-relative global stylesheet at ${route}`);
-  if (!/<script\s+src="\/script\.js"\s+defer><\/script>/.test(html)) failures.push(`Missing root-relative global script at ${route}`);
+  const expectedAssetPrefix = route === '/' ? './' : '../';
+  if (!html.includes(`<link rel="stylesheet" href="${expectedAssetPrefix}styles.css">`)) failures.push(`Incorrect global stylesheet path at ${route}`);
+  if (!html.includes(`<script src="${expectedAssetPrefix}script.js" defer></script>`)) failures.push(`Incorrect global script path at ${route}`);
   if (sharedHeader && pageHeader !== sharedHeader) failures.push(`Shared header differs from homepage at ${route}`);
   if (sharedFooter && pageFooter !== sharedFooter) failures.push(`Shared footer differs from homepage at ${route}`);
   if (html.includes('${')) failures.push(`Unrendered template expression at ${route}`);
@@ -122,4 +130,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Validated ${urls.length} sitemap URLs, ${routesToValidate.length} total routes, required direct routes, canonical aliases, ${titles.size} unique titles, ${descriptions.size} unique descriptions, shared layouts, root-relative assets, H1s, and internal clean links.`);
+console.log(`Validated ${urls.length} sitemap URLs, ${routesToValidate.length} total routes, required direct routes, canonical aliases, ${titles.size} unique titles, ${descriptions.size} unique descriptions, shared layouts, portable asset paths, H1s, and internal clean links.`);
