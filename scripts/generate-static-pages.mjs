@@ -101,6 +101,20 @@ const header = source.match(/<header class="site-header">([\s\S]*?)<\/header>/)?
 const footer = source.match(/<footer class="site-footer">([\s\S]*?)<\/footer>/)?.[0];
 if (!style || !header || !footer) throw new Error('Could not extract shared page assets.');
 
+function portablePath(fromRoute, targetPath) {
+  const relativePath = path.posix.relative(fromRoute, targetPath);
+  const prefix = relativePath.startsWith('.') ? relativePath : `./${relativePath}`;
+  return targetPath.endsWith('/') ? `${prefix.replace(/\/$/, '')}/` : prefix;
+}
+
+function makeInternalLinksPortable(html, route) {
+  return html.replace(/\b(href|action)="(\/[^"]*)"/g, (_match, attribute, reference) => {
+    const target = new URL(reference, 'https://crawlwise.io');
+    const portableReference = `${portablePath(route, target.pathname)}${target.search}${target.hash}`;
+    return `${attribute}="${portableReference}"`;
+  });
+}
+
 function convertPageButtons(html) {
   return html.replace(/<button([^>]*\sdata-page="([^"]+)"[^>]*)>([\s\S]*?)<\/button>/g, (_match, attrs, page, content) => {
     const cleanAttrs = attrs.replace(/\s+type="button"/g, '');
@@ -115,12 +129,14 @@ fs.writeFileSync(path.join(root, 'styles.css'), `${style}\n`);
 fs.writeFileSync(path.join(root, 'script.js'), `const toggle = document.querySelector('#mobileToggle');\nconst menu = document.querySelector('#mobileMenu');\nif (toggle && menu) {\n  toggle.addEventListener('click', () => {\n    menu.classList.toggle('open');\n    toggle.textContent = menu.classList.contains('open') ? '×' : '☰';\n  });\n}\nconst form = document.querySelector('#leadForm');\nif (form) {\n  form.addEventListener('submit', event => {\n    event.preventDefault();\n    const message = document.querySelector('#formMessage');\n    if (message) message.textContent = 'Form submitted in demo mode. Connect this form to your CRM, email service, or lead-routing backend when ready.';\n  });\n}\n`);
 
 for (const route of routes) {
-  const content = convertPageButtons(elements.get(route.page).innerHTML);
+  const content = makeInternalLinksPortable(convertPageButtons(elements.get(route.page).innerHTML), route.path);
+  const pageHeader = makeInternalLinksPortable(sharedHeader, route.path);
+  const pageFooter = makeInternalLinksPortable(sharedFooter, route.path);
   if (!content.includes('<h1')) throw new Error(`Route ${route.path} does not contain an H1.`);
 
   const canonical = `https://crawlwise.io${route.canonicalPath ?? route.path}`;
   const assetPrefix = route.path === '/' ? './' : '../';
-  const html = `<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>${route.title}</title>\n  <meta name="description" content="${route.description}">\n  <link rel="canonical" href="${canonical}">\n  <link rel="stylesheet" href="${assetPrefix}styles.css">\n</head>\n<body>\n${sharedHeader}\n  <main>\n    <div id="${route.page}" class="page active">${content}</div>\n  </main>\n${sharedFooter}\n  <script src="${assetPrefix}script.js" defer></script>\n</body>\n</html>\n`;
+  const html = `<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>${route.title}</title>\n  <meta name="description" content="${route.description}">\n  <link rel="canonical" href="${canonical}">\n  <link rel="stylesheet" href="${assetPrefix}styles.css">\n</head>\n<body>\n${pageHeader}\n  <main>\n    <div id="${route.page}" class="page active">${content}</div>\n  </main>\n${pageFooter}\n  <script src="${assetPrefix}script.js" defer></script>\n</body>\n</html>\n`;
 
   const outputPath = route.path === '/'
     ? path.join(root, 'index.html')
