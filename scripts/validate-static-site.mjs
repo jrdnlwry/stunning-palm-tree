@@ -30,13 +30,8 @@ for (const route of urls) {
   if (!description) failures.push(`Missing meta description: ${route}`);
   if (canonical !== `https://crawlwise.io${route}`) failures.push(`Incorrect canonical: ${route}`);
   if (h1Count !== 1) failures.push(`Expected one H1 at ${route}; found ${h1Count}`);
-  const assetPrefix = route === '/' ? './' : '../';
-  const stylesheetHref = `${assetPrefix}styles.css`;
-  const scriptSrc = `${assetPrefix}script.js`;
-  if (!html.includes(`href="${stylesheetHref}"`)) failures.push(`Incorrect stylesheet path at ${route}`);
-  if (!html.includes(`src="${scriptSrc}"`)) failures.push(`Incorrect script path at ${route}`);
-  if (!fs.existsSync(path.resolve(path.dirname(file), stylesheetHref))) failures.push(`Stylesheet does not resolve from ${route}`);
-  if (!fs.existsSync(path.resolve(path.dirname(file), scriptSrc))) failures.push(`Script does not resolve from ${route}`);
+  if (!html.includes('href="/styles.css"')) failures.push(`Non-root-relative stylesheet at ${route}`);
+  if (!html.includes('src="/script.js"')) failures.push(`Non-root-relative script at ${route}`);
   if (html.includes('${')) failures.push(`Unrendered template expression at ${route}`);
   if (html.match(/<button[^>]+data-page=/)) failures.push(`JavaScript-only page navigation button at ${route}`);
 

@@ -116,8 +116,7 @@ for (const route of routes) {
   if (!content.includes('<h1')) throw new Error(`Route ${route.path} does not contain an H1.`);
 
   const canonical = `https://crawlwise.io${route.path}`;
-  const assetPrefix = route.path === '/' ? './' : '../';
-  const html = `<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>${route.title}</title>\n  <meta name="description" content="${route.description}">\n  <link rel="canonical" href="${canonical}">\n  <link rel="stylesheet" href="${assetPrefix}styles.css">\n</head>\n<body>\n${sharedHeader}\n  <main>\n    <div id="${route.page}" class="page active">${content}</div>\n  </main>\n${sharedFooter}\n  <script src="${assetPrefix}script.js" defer></script>\n</body>\n</html>\n`;
+  const html = `<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>${route.title}</title>\n  <meta name="description" content="${route.description}">\n  <link rel="canonical" href="${canonical}">\n  <link rel="stylesheet" href="/styles.css">\n</head>\n<body>\n${sharedHeader}\n  <main>\n    <div id="${route.page}" class="page active">${content}</div>\n  </main>\n${sharedFooter}\n  <script src="/script.js" defer></script>\n</body>\n</html>\n`;
 
   const outputPath = route.path === '/'
     ? path.join(root, 'index.html')
