@@ -15,7 +15,7 @@ const routes = [
   { path: '/best-crawl-space-dehumidifier/', page: 'best-crawl-space-dehumidifier', title: 'Best Crawl Space Dehumidifier: Sizing, Cost, and Features | CrawlWise', description: 'Learn how to size a crawl space dehumidifier, compare drainage and efficiency features, estimate costs, and decide when one is appropriate.' },
   { path: '/crawl-space-vapor-barrier-cost/', page: 'crawl-space-vapor-barrier-cost', title: 'Crawl Space Vapor Barrier Cost: DIY vs Professional | CrawlWise', description: 'Estimate crawl space vapor barrier costs and compare materials, installation factors, DIY limitations, and professional encapsulation options.' },
   { path: '/crawl-space-mold-remediation/', page: 'crawl-space-mold-remediation', title: 'Crawl Space Mold Remediation: Process, Cost, and Hiring | CrawlWise', description: 'Learn what crawl space mold remediation involves, why moisture correction matters, what affects cost, and how to compare contractor scopes.' },
-  { path: '/crawl-space-mold/', page: 'crawl-space-mold-remediation', title: 'Crawl Space Mold: Remediation, Cost, and Hiring Guide | CrawlWise', description: 'Understand crawl space mold remediation, moisture correction, project costs, and questions to ask when comparing qualified specialists.' },
+  { path: '/crawl-space-mold/', canonicalPath: '/crawl-space-mold-remediation/', page: 'crawl-space-mold-remediation', title: 'Crawl Space Mold: Remediation, Cost, and Hiring Guide | CrawlWise', description: 'Understand crawl space mold remediation, moisture correction, project costs, and questions to ask when comparing qualified specialists.' },
   { path: '/crawl-space-moisture/', page: 'crawl-space-moisture', title: 'Crawl Space Moisture: Causes, Warning Signs, and Fixes | CrawlWise', description: 'Identify crawl space moisture sources, recognize warning signs, and compare vapor barriers, drainage, dehumidification, and encapsulation.' },
   { path: '/sagging-floors-crawl-space/', page: 'sagging-floors-crawl-space', title: 'Sagging Floors and Crawl Space Problems Explained | CrawlWise', description: 'Learn how joist damage, moisture, support issues, and foundation movement can cause sagging floors and which professional should inspect them.' },
   { path: '/water-problems/', page: 'water-problems', title: 'Crawl Space Water Problems: Causes and Repair Guides | CrawlWise', description: 'Explore homeowner guides to standing water, rain intrusion, drainage problems, sump pumps, and crawl space waterproofing decisions.' },
@@ -31,7 +31,9 @@ const routes = [
   { path: '/privacy-policy/', page: 'privacy-policy', title: 'Privacy Policy | CrawlWise', description: 'Read how CrawlWise describes information collection, use, sharing, cookies, analytics, choices, and privacy contact options.' }
 ];
 
-const pageToPath = Object.fromEntries(routes.map(route => [route.page, route.path]));
+const pageToPath = Object.fromEntries(routes
+  .filter(route => !route.canonicalPath)
+  .map(route => [route.page, route.path]));
 const pageIds = routes.map(route => route.page);
 
 class FakeClassList {
@@ -116,7 +118,7 @@ for (const route of routes) {
   const content = convertPageButtons(elements.get(route.page).innerHTML);
   if (!content.includes('<h1')) throw new Error(`Route ${route.path} does not contain an H1.`);
 
-  const canonical = `https://crawlwise.io${route.path}`;
+  const canonical = `https://crawlwise.io${route.canonicalPath ?? route.path}`;
   const html = `<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>${route.title}</title>\n  <meta name="description" content="${route.description}">\n  <link rel="canonical" href="${canonical}">\n  <link rel="stylesheet" href="/styles.css">\n</head>\n<body>\n${sharedHeader}\n  <main>\n    <div id="${route.page}" class="page active">${content}</div>\n  </main>\n${sharedFooter}\n  <script src="/script.js" defer></script>\n</body>\n</html>\n`;
 
   const outputPath = route.path === '/'

@@ -12,6 +12,9 @@ const requiredRoutes = [
   '/crawl-space-mold/',
   '/crawl-space-moisture/'
 ];
+const canonicalOverrides = new Map([
+  ['/crawl-space-mold/', '/crawl-space-mold-remediation/']
+]);
 const failures = [];
 const titles = new Map();
 const descriptions = new Map();
@@ -51,9 +54,15 @@ function validateLocalReference(route, attribute, reference) {
 }
 
 for (const route of requiredRoutes) {
-  if (!urls.includes(route)) failures.push(`Required route is missing from sitemap: ${route}`);
   if (!fs.existsSync(routeFile(route))) failures.push(`Required static page is missing: ${route}`);
 }
+
+for (const [duplicateRoute, canonicalRoute] of canonicalOverrides) {
+  if (urls.includes(duplicateRoute)) failures.push(`Duplicate route must not appear in sitemap: ${duplicateRoute}`);
+  if (!urls.includes(canonicalRoute)) failures.push(`Canonical route is missing from sitemap: ${canonicalRoute}`);
+}
+
+const routesToValidate = [...new Set([...urls, ...requiredRoutes])];
 
 const homepage = fs.existsSync(routeFile('/')) ? fs.readFileSync(routeFile('/'), 'utf8') : '';
 const sharedHeader = extractSharedElement(homepage, 'header', 'site-header');
@@ -61,7 +70,7 @@ const sharedFooter = extractSharedElement(homepage, 'footer', 'site-footer');
 if (!sharedHeader) failures.push('Homepage is missing the shared site header.');
 if (!sharedFooter) failures.push('Homepage is missing the shared site footer.');
 
-for (const route of urls) {
+for (const route of routesToValidate) {
   const file = routeFile(route);
   if (!fs.existsSync(file)) {
     failures.push(`Missing sitemap page: ${route} -> ${path.relative(root, file)}`);
@@ -78,7 +87,8 @@ for (const route of urls) {
 
   if (!title) failures.push(`Missing title: ${route}`);
   if (!description) failures.push(`Missing meta description: ${route}`);
-  if (canonical !== `https://crawlwise.io${route}`) failures.push(`Incorrect canonical: ${route}`);
+  const expectedCanonical = `https://crawlwise.io${canonicalOverrides.get(route) ?? route}`;
+  if (canonical !== expectedCanonical) failures.push(`Incorrect canonical at ${route}: expected ${expectedCanonical}`);
   if (h1Count !== 1) failures.push(`Expected one H1 at ${route}; found ${h1Count}`);
   if (!/<link\s+rel="stylesheet"\s+href="\/styles\.css">/.test(html)) failures.push(`Missing root-relative global stylesheet at ${route}`);
   if (!/<script\s+src="\/script\.js"\s+defer><\/script>/.test(html)) failures.push(`Missing root-relative global script at ${route}`);
@@ -112,4 +122,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Validated ${urls.length} sitemap URLs, required direct routes, ${titles.size} unique titles, ${descriptions.size} unique descriptions, shared layouts, root-relative assets, canonicals, H1s, and internal clean links.`);
+console.log(`Validated ${urls.length} sitemap URLs, ${routesToValidate.length} total routes, required direct routes, canonical aliases, ${titles.size} unique titles, ${descriptions.size} unique descriptions, shared layouts, root-relative assets, H1s, and internal clean links.`);
