@@ -44,6 +44,29 @@
       background: rgba(247,243,234,.92);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--line);
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+    }
+
+    .site-header.is-floating {
+      position: fixed;
+      right: auto;
+      bottom: auto;
+      width: min(var(--max), calc(100% - 32px));
+      max-width: calc(100vw - 32px);
+      border: 1px solid var(--line);
+      border-radius: 0 0 24px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .site-header.is-dragging {
+      cursor: grabbing;
+    }
+
+    .site-header a,
+    .site-header button {
+      user-select: none;
     }
 
     .nav {
